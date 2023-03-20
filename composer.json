@@ -28,13 +28,9 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "files":[
-            "app/Helpers/HelpAgent.php", 
-            "app/Helpers/HelpDate.php", 
-            "app/Helpers/HelpStorage.php", 
-            "app/Helpers/HelpPatternlist.php",
-            "app/Helpers/HelpResearchCS.php",
-            "app/Helpers/HelpRowOdds.php"
+        "files": [
+            "app/Helpers/HelpAgent.php"
+
         ]
     },
     "autoload-dev": {
