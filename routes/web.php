@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\Route;
                 ->name('Peneliti.deletedata');  
         Route::resource('Peneliti', PenelitiController::class);  
     //-----------------------------------------------------------  
+            Route::get('Perguruan_tinggi/{Perguruan_tinggi}/deletedata', 'Perguruan_tinggiController@deletedata')
+            ->name('Perguruan_tinggi.deletedata');  
+        Route::resource('Perguruan_tinggi', Perguruan_tinggiController::class);  
+    //-----------------------------------------------------------  
  
  
 Route::get('/', function () {

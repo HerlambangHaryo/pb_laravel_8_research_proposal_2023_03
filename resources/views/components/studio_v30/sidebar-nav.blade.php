@@ -28,6 +28,19 @@
                 </a>
             </div>   
 
+            <div class="menu-item @if($title == 'Perguruan_tinggi') active @endif">
+                <a href="{{ route('Perguruan_tinggi.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="fas fa-school"></i>
+                    </span>
+                    <span class="menu-text">
+                        Perguruan Tinggi 
+                    </span>
+                </a>
+            </div>   
+
+            
+
         </div>
         <!-- END menu -->
     </div>
