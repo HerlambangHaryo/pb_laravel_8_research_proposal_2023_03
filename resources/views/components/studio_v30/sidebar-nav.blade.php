@@ -17,6 +17,17 @@
                 </a>
             </div>   
 
+            <div class="menu-item @if($title == 'Peneliti') active @endif">
+                <a href="{{ route('Peneliti.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </span>
+                    <span class="menu-text">
+                        Peneliti 
+                    </span>
+                </a>
+            </div>   
+
         </div>
         <!-- END menu -->
     </div>

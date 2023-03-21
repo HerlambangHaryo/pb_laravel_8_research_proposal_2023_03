@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
     
     //-----------------------------------------------------------    
         Route::resource('Dashboard', DashboardController::class);  
+    //-----------------------------------------------------------   
+            Route::get('Peneliti/{Peneliti}/deletedata', 'PenelitiController@deletedata')
+                ->name('Peneliti.deletedata');  
+        Route::resource('Peneliti', PenelitiController::class);  
     //-----------------------------------------------------------  
  
  
