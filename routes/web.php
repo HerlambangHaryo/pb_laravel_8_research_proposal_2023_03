@@ -21,8 +21,14 @@ use Illuminate\Support\Facades\Route;
         Route::resource('Peneliti', PenelitiController::class);  
     //-----------------------------------------------------------  
             Route::get('Perguruan_tinggi/{Perguruan_tinggi}/deletedata', 'Perguruan_tinggiController@deletedata')
-            ->name('Perguruan_tinggi.deletedata');  
+                ->name('Perguruan_tinggi.deletedata');  
         Route::resource('Perguruan_tinggi', Perguruan_tinggiController::class);  
+    //-----------------------------------------------------------  
+            Route::get('Pengalaman_penelitian/Peneliti/{Peneliti}', 'Pengalaman_penelitianController@Peneliti')
+                ->name('Pengalaman_penelitian.Peneliti');  
+            Route::get('Pengalaman_penelitian/{Pengalaman_penelitian}/deletedata', 'Pengalaman_penelitianController@deletedata')
+                ->name('Pengalaman_penelitian.deletedata');  
+        Route::resource('Pengalaman_penelitian', Pengalaman_penelitianController::class); 
     //-----------------------------------------------------------  
  
  
