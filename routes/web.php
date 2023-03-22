@@ -50,9 +50,15 @@ use Illuminate\Support\Facades\Route;
 //-----------------------------------------------------------  
             Route::get('Karya_buku/Peneliti/{Peneliti}', 'Karya_bukuController@Peneliti')
             ->name('Karya_buku.Peneliti');  
-        Route::get('Karya_buku/{Pemakalah_seminar}/deletedata', 'Karya_bukuController@deletedata')
+        Route::get('Karya_buku/{Karya_buku}/deletedata', 'Karya_bukuController@deletedata')
             ->name('Karya_buku.deletedata');  
     Route::resource('Karya_buku', Karya_bukuController::class); 
+//-----------------------------------------------------------  
+            Route::get('Perolehan_hki/Peneliti/{Peneliti}', 'Perolehan_hkiController@Peneliti')
+            ->name('Perolehan_hki.Peneliti');  
+        Route::get('Perolehan_hki/{Perolehan_hki}/deletedata', 'Perolehan_hkiController@deletedata')
+            ->name('Perolehan_hki.deletedata');  
+    Route::resource('Perolehan_hki', Perolehan_hkiController::class); 
 //-----------------------------------------------------------  
  
  

@@ -84,6 +84,11 @@
                     href="{{ route('Karya_buku.Peneliti', $Peneliti->id) }}"
                     class="btn btn-sm btn-secondary"> 
                     Karya Buku
+                </a>     
+                <a  
+                    href="{{ route('Perolehan_hki.Peneliti', $Peneliti->id) }}"
+                    class="btn btn-sm btn-secondary"> 
+                    Perolehan HKI
                 </a>      
             </div>
         </div>
