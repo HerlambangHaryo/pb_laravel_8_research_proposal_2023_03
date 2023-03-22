@@ -23,9 +23,9 @@
                             <tr>               
                                 <x-html.th-content-width title="No." width="10%" />
                                 <x-html.th-content title="Judul" />  
-                                <x-html.th-content title="Penerbit" /> 
+                                <x-html.th-content title="Jenis" /> 
                                 <x-html.th-content title="Tahun" />   
-                                <x-html.th-content title="Halaman" />  
+                                <x-html.th-content title="Nomor" />  
                                 <x-html.th-content-width title="Action." width="10%" /> 
                             </tr>
                         </thead>
@@ -40,13 +40,13 @@
                                         {{ $row->judul }}
                                     </td>   
                                     <td class="text-start"> 
-                                        {{ $row->penerbit }}
+                                        {{ $row->jenis }}
                                     </td>   
                                     <td class="text-start"> 
                                         {{ $row->tahun }}
                                     </td>    
                                     <td class="text-start"> 
-                                        {{ $row->halaman }}
+                                        {{ $row->nomor }}
                                     </td>   
                                     <td class="text-start"> 
                                         <x-studio_v30.menu-dropdown-data content="{{ $content }}" id="{{ $row->id }}" /> 
