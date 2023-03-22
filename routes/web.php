@@ -42,6 +42,18 @@ use Illuminate\Support\Facades\Route;
             ->name('Publikasi_artikel.deletedata');  
     Route::resource('Publikasi_artikel', Publikasi_artikelController::class); 
 //-----------------------------------------------------------  
+            Route::get('Pemakalah_seminar/Peneliti/{Peneliti}', 'Pemakalah_seminarController@Peneliti')
+            ->name('Pemakalah_seminar.Peneliti');  
+        Route::get('Pemakalah_seminar/{Pemakalah_seminar}/deletedata', 'Pemakalah_seminarController@deletedata')
+            ->name('Pemakalah_seminar.deletedata');  
+    Route::resource('Pemakalah_seminar', Pemakalah_seminarController::class); 
+//-----------------------------------------------------------  
+            Route::get('Karya_buku/Peneliti/{Peneliti}', 'Karya_bukuController@Peneliti')
+            ->name('Karya_buku.Peneliti');  
+        Route::get('Karya_buku/{Pemakalah_seminar}/deletedata', 'Karya_bukuController@deletedata')
+            ->name('Karya_buku.deletedata');  
+    Route::resource('Karya_buku', Karya_bukuController::class); 
+//-----------------------------------------------------------  
  
  
 Route::get('/', function () {

@@ -75,6 +75,16 @@
                     class="btn btn-sm btn-secondary"> 
                     Publikasi Artikel
                 </a>      
+                <a  
+                    href="{{ route('Pemakalah_seminar.Peneliti', $Peneliti->id) }}"
+                    class="btn btn-sm btn-secondary"> 
+                    Pemakalah Seminar
+                </a>      
+                <a  
+                    href="{{ route('Karya_buku.Peneliti', $Peneliti->id) }}"
+                    class="btn btn-sm btn-secondary"> 
+                    Karya Buku
+                </a>      
             </div>
         </div>
     </div>
