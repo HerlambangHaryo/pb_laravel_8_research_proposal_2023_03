@@ -65,6 +65,11 @@
                     class="btn btn-sm btn-secondary"> 
                     Pengalaman Penelitian
                 </a>      
+                <a  
+                    href="{{ route('Pengalaman_pengabdian.Peneliti', $Peneliti->id) }}"
+                    class="btn btn-sm btn-secondary"> 
+                    Pengalaman Pengabdian
+                </a>     
             </div>
         </div>
     </div>

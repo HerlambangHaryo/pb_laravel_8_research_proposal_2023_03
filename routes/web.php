@@ -30,6 +30,12 @@ use Illuminate\Support\Facades\Route;
                 ->name('Pengalaman_penelitian.deletedata');  
         Route::resource('Pengalaman_penelitian', Pengalaman_penelitianController::class); 
     //-----------------------------------------------------------  
+            Route::get('Pengalaman_pengabdian/Peneliti/{Peneliti}', 'Pengalaman_pengabdianController@Peneliti')
+            ->name('Pengalaman_pengabdian.Peneliti');  
+        Route::get('Pengalaman_pengabdian/{Pengalaman_pengabdian}/deletedata', 'Pengalaman_pengabdianController@deletedata')
+            ->name('Pengalaman_pengabdian.deletedata');  
+    Route::resource('Pengalaman_pengabdian', Pengalaman_pengabdianController::class); 
+//-----------------------------------------------------------  
  
  
 Route::get('/', function () {
