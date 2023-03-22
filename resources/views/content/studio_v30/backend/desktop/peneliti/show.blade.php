@@ -70,6 +70,11 @@
                     class="btn btn-sm btn-secondary"> 
                     Pengalaman Pengabdian
                 </a>     
+                <a  
+                    href="{{ route('Publikasi_artikel.Peneliti', $Peneliti->id) }}"
+                    class="btn btn-sm btn-secondary"> 
+                    Publikasi Artikel
+                </a>      
             </div>
         </div>
     </div>
