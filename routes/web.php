@@ -60,6 +60,13 @@ use Illuminate\Support\Facades\Route;
             ->name('Perolehan_hki.deletedata');  
     Route::resource('Perolehan_hki', Perolehan_hkiController::class); 
 //-----------------------------------------------------------  
+            Route::get('Kebijakan_publik/Peneliti/{Peneliti}', 'Kebijakan_publikController@Peneliti')
+            ->name('Kebijakan_publik.Peneliti');  
+        Route::get('Kebijakan_publik/{Kebijakan_publik}/deletedata', 'Kebijakan_publikController@deletedata')
+            ->name('Kebijakan_publik.deletedata');  
+    Route::resource('Kebijakan_publik', Kebijakan_publikController::class); 
+//-----------------------------------------------------------  
+ 
  
  
 Route::get('/', function () {

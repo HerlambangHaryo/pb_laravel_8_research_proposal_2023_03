@@ -89,7 +89,12 @@
                     href="{{ route('Perolehan_hki.Peneliti', $Peneliti->id) }}"
                     class="btn btn-sm btn-secondary"> 
                     Perolehan HKI
-                </a>      
+                </a>     
+                <a  
+                    href="{{ route('Kebijakan_publik.Peneliti', $Peneliti->id) }}"
+                    class="btn btn-sm btn-secondary"> 
+                    Kebijakan Publik
+                </a>   
             </div>
         </div>
     </div>
