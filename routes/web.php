@@ -66,6 +66,12 @@ use Illuminate\Support\Facades\Route;
             ->name('Kebijakan_publik.deletedata');  
     Route::resource('Kebijakan_publik', Kebijakan_publikController::class); 
 //-----------------------------------------------------------  
+            Route::get('Penghargaan/Peneliti/{Peneliti}', 'PenghargaanController@Peneliti')
+            ->name('Penghargaan.Peneliti');  
+        Route::get('Penghargaan/{Penghargaan}/deletedata', 'PenghargaanController@deletedata')
+            ->name('Penghargaan.deletedata');  
+    Route::resource('Penghargaan', PenghargaanController::class); 
+//-----------------------------------------------------------  
  
  
  
