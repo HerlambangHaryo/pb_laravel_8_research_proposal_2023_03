@@ -28,12 +28,10 @@
                                 Judul
                             </label>
                             <div class="col-6">
-                                <input 
-                                    type="text" 
-                                    class="form-control form-control-lg"  
-                                    name="judul"
-                                    value="{{ old('judul', $Pengalaman_pengabdian->judul) }}"
-                                >
+                                <textarea 
+                                    class="form-control" 
+                                    name="judul"  
+                                    rows="5">{{ old('judul', $Pengalaman_pengabdian->judul) }}</textarea>  
                             </div>
                         </div> 
 
@@ -43,7 +41,7 @@
                             <label class="col-2 col-form-label">
                                 Tahun
                             </label>
-                            <div class="col-6">
+                            <div class="col-2">
                                 <input  
                                     type="number" min="1900" max="2099"
                                     class="form-control form-control-lg"  
@@ -72,7 +70,7 @@
                             <label class="col-2 col-form-label">
                                 Jumlah Pendanaan
                             </label>
-                            <div class="col-6">
+                            <div class="col-4">
                                 <input 
                                     type="number" 
                                     class="form-control form-control-lg"  
