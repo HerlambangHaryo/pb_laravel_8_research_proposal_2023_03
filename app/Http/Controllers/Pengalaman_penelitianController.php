@@ -72,7 +72,7 @@ class Pengalaman_penelitianController extends Controller
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = $this->content;
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
             
             $template       = $this->template;
             $mode           = $this->mode;
@@ -145,7 +145,7 @@ class Pengalaman_penelitianController extends Controller
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = $this->content;
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
             
             $template       = $this->template;
             $mode           = $this->mode;
@@ -220,7 +220,7 @@ class Pengalaman_penelitianController extends Controller
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = $this->content;
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
             
             $template       = $this->template;
             $mode           = $this->mode;
@@ -263,7 +263,7 @@ class Pengalaman_penelitianController extends Controller
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = $this->content;
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
             
             $template       = $this->template;
             $mode           = $this->mode;

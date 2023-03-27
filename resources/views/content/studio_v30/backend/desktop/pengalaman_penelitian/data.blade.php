@@ -6,9 +6,9 @@
     <div id="datatable" class="mb-5">
         <div class="card">
             <div class="card-header">
-                <div class="row">
+                <div class="row mb-2">
                     <div class="col-6">
-                        Data - {{ $content }} 
+                        Data - {{ $panel_name }} 
                     </div>
                     <div class="col-6 text-end">  
                         <x-studio_v30.button-subcreate id="{{ $id }}" />
