@@ -53,7 +53,7 @@
                             <label class="col-2 col-form-label">
                                 Tahun
                             </label>
-                            <div class="col-6">
+                            <div class="col-2">
                                 <input 
                                     type="year" 
                                     class="form-control form-control-lg"  
@@ -67,7 +67,7 @@
                             <label class="col-2 col-form-label">
                             Nomor
                             </label>
-                            <div class="col-6">
+                            <div class="col-4">
                                 <input 
                                     type="text" 
                                     class="form-control form-control-lg"  
