@@ -110,7 +110,7 @@
                                 <textarea 
                                     class="form-control" 
                                     name="url"  
-                                    rows="5">{{ old('url', $Peneliti->url) }}</textarea> 
+                                    rows="5"></textarea> 
                             </div>
                         </div> 
                     <!-- id_scopus -->
@@ -200,7 +200,7 @@
                                 <textarea 
                                     class="form-control" 
                                     name="alamat_kantor"  
-                                    rows="5">{{ old('alamat_kantor', $Peneliti->alamat_kantor) }}</textarea>  
+                                    rows="5"></textarea>  
                             </div>
                         </div>  
                     <!-- Telepon Kantor -->
@@ -282,7 +282,7 @@
                                 <textarea 
                                     class="form-control" 
                                     name="s1_perguruan_tinggi"  
-                                    rows="5">{{ old('s1_perguruan_tinggi', $Peneliti->s1_perguruan_tinggi) }}</textarea>   
+                                    rows="5"></textarea>   
                             </div>
                         </div>  
                     <!-- Bidang Ilmu S1 -->
@@ -333,7 +333,7 @@
                                 <textarea 
                                     class="form-control" 
                                     name="s1_judul"  
-                                    rows="5">{{ old('s1_judul', $Peneliti->s1_judul) }}</textarea>   
+                                    rows="5"></textarea>   
                             </div>
                         </div> 
                     <!-- Pembimbing S1 -->
@@ -376,7 +376,7 @@
                                 <textarea 
                                     class="form-control" 
                                     name="s2_perguruan_tinggi"  
-                                    rows="5">{{ old('s2_perguruan_tinggi', $Peneliti->s2_perguruan_tinggi) }}</textarea>   
+                                    rows="5"></textarea>   
                             </div>
                         </div>  
                     <!-- Bidang Ilmu s2 -->
@@ -427,7 +427,7 @@
                                 <textarea 
                                     class="form-control" 
                                     name="s2_judul"  
-                                    rows="5">{{ old('s2_judul', $Peneliti->s2_judul) }}</textarea>   
+                                    rows="5"></textarea>   
                             </div>
                         </div> 
                     <!-- Pembimbing s2 -->
@@ -470,7 +470,7 @@
                                 <textarea 
                                     class="form-control" 
                                     name="s3_perguruan_tinggi"  
-                                    rows="5">{{ old('s3_perguruan_tinggi', $Peneliti->s3_perguruan_tinggi) }}</textarea>  
+                                    rows="5"></textarea>  
                             </div>
                         </div>  
                     <!-- Bidang Ilmu s3 -->
@@ -521,7 +521,7 @@
                                 <textarea 
                                     class="form-control" 
                                     name="s3_judul"  
-                                    rows="5">{{ old('s3_judul', $Peneliti->s3_judul) }}</textarea>   
+                                    rows="5"></textarea>   
                             </div>
                         </div> 
                     <!-- Pembimbing s3 -->
