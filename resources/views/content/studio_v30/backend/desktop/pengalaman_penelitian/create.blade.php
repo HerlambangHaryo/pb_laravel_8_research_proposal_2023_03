@@ -21,19 +21,6 @@
             </div>
             <div class="card-body">     
                 <div>  
-                    <!-- Judul -->
-                        <div class="form-group row mb-3">
-                            <label class="col-2 col-form-label">
-                                Judul
-                            </label>
-                            <div class="col-6">
-                                <textarea 
-                                    class="form-control" 
-                                    name="judul"  
-                                    rows="5"></textarea>  
-                            </div>
-                        </div> 
-
                          
                     <!-- Tahun -->
                         <div class="form-group row mb-3">
@@ -48,6 +35,19 @@
                                 >
                             </div>
                         </div> 
+                    <!-- Judul -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                Judul
+                            </label>
+                            <div class="col-6">
+                                <textarea 
+                                    class="form-control" 
+                                    name="judul"  
+                                    rows="5"></textarea>  
+                            </div>
+                        </div> 
+
                     <!-- Sumber Pendanaan -->
                         <div class="form-group row mb-3">
                             <label class="col-2 col-form-label">

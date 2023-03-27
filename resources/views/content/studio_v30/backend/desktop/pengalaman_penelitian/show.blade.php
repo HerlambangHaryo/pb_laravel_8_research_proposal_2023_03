@@ -17,6 +17,23 @@
         </div>
         <div class="card-body">     
             <div>  
+                
+                <!-- Tahun -->
+                <div class="form-group row mb-3">
+                        <label class="col-2 col-form-label">
+                            Tahun
+                        </label>
+                        <div class="col-2">
+                            <input  
+                                type="number" min="1900" max="2099"
+                                class="form-control form-control-lg"  
+                                name="tahun"
+                                value="{{ old('tahun', $Pengalaman_penelitian->tahun) }}"
+                                disabled
+                            >
+                        </div>
+                    </div> 
+                    
                 <!-- Judul -->
                     <div class="form-group row mb-3">
                         <label class="col-2 col-form-label">
@@ -31,21 +48,6 @@
                     </div> 
 
                     
-                <!-- Tahun -->
-                    <div class="form-group row mb-3">
-                        <label class="col-2 col-form-label">
-                            Tahun
-                        </label>
-                        <div class="col-2">
-                            <input  
-                                type="number" min="1900" max="2099"
-                                class="form-control form-control-lg"  
-                                name="tahun"
-                                value="{{ old('tahun', $Pengalaman_penelitian->tahun) }}"
-                                disabled
-                            >
-                        </div>
-                    </div> 
                 <!-- Sumber Pendanaan -->
                     <div class="form-group row mb-3">
                         <label class="col-2 col-form-label">
