@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body">      
+            <div class="card-body pb-4">      
                 <div>
                     <table id="datatableDefault" class="table  ">
                         <thead class=" ">

@@ -20,7 +20,7 @@
                     </div> 
                 </div>
             </div>
-            <div class="card-body">     
+            <div class="card-body pb-4">     
                 <div> 
                     <!-- Nama -->
                         <div class="form-group row mb-3">
@@ -257,7 +257,7 @@
                     </div> 
                 </div>
             </div>
-            <div class="card-body">     
+            <div class="card-body pb-4">     
                 <div> 
                     <!-- Perguruan Tinggi S1 -->
                         <div class="form-group row mb-3">
@@ -359,7 +359,7 @@
                     </div> 
                 </div>
             </div>
-            <div class="card-body">     
+            <div class="card-body pb-4">     
                 <div> 
                     <!-- Perguruan Tinggi s2 -->
                         <div class="form-group row mb-3">
@@ -463,7 +463,7 @@
                     </div> 
                 </div>
             </div>
-            <div class="card-body">     
+            <div class="card-body pb-4">     
                 <div> 
                     <!-- Perguruan Tinggi s3 -->
                         <div class="form-group row mb-3">
