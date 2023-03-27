@@ -45,7 +45,7 @@
                                     <td class="text-start"> 
                                         {{ $row->sumber_pendanaan }}
                                     </td>   
-                                    <td class="text-start"> 
+                                    <td class="text-end"> 
                                         Rp.{{ number_format($row->jumlah_pendanaan,0,".",",") }}
                                     </td>   
                                     <td class="text-start"> 
