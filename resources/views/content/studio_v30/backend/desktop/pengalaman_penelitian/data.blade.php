@@ -6,7 +6,7 @@
     <div id="datatable" class="mb-5">
         <div class="card">
             <div class="card-header">
-                <div class="row mb-2">
+                <div class="row mb-4">
                     <div class="col-6">
                         <h6>    
                             Data - {{ $panel_name }} 
