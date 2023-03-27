@@ -8,7 +8,9 @@
             <div class="card-header">
                 <div class="row mb-2">
                     <div class="col-6">
-                        Data - {{ $panel_name }} 
+                        <h6>    
+                            Data - {{ $panel_name }} 
+                        </h6>   
                     </div>
                     <div class="col-6 text-end">  
                         <x-studio_v30.button-subcreate id="{{ $id }}" />
