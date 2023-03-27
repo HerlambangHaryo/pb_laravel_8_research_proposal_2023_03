@@ -9,7 +9,7 @@
 
         <div class="card mb-4">
             <div class="card-header">
-                <div class="row mt-1 mb-2">
+                <div class="row mb-4">
                     <div class="col-6">
                         <h5>    
                             Form {{ ucfirst($view_file) }} - {{$panel_name}} 
