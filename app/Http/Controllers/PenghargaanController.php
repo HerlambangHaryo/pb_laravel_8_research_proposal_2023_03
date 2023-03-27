@@ -123,7 +123,7 @@ class PenghargaanController extends Controller
             if($data)
             {
                 return redirect()
-                    ->route($content.'.Peneliti', $data->id)
+                    ->route($content.'.Peneliti', $id_peneliti)
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else
@@ -197,7 +197,7 @@ class PenghargaanController extends Controller
             {
                 # Penghargaan/Peneliti/1
                 return redirect()
-                    ->route($content.'.Peneliti', $data->id)
+                    ->route($content.'.Peneliti', $data->id_peneliti)
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else
@@ -305,7 +305,7 @@ class PenghargaanController extends Controller
             if($data)
             {
                 return redirect()
-                    ->route($content.'.Peneliti', $data->id)
+                    ->route($content.'.Peneliti', $data->id_peneliti)
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else
