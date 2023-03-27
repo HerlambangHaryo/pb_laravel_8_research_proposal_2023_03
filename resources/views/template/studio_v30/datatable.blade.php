@@ -23,9 +23,11 @@
 				<div class="container">
 					<div class="row justify-content-center">
 						<div class="col-xl-12">				
-							<x-studio_v30.breadcrumb link2="{{ route($content.'.index') }}" level2="{!!$panel_name!!}" level3="{!!$view_file!!}" />	
-	
-
+							<x-studio_v30.breadcrumb 
+								link2="{{ route($content.'.index') }}" 
+								level2="{!!$panel_name!!}" 
+								level3="{!!$view_file!!}" />	
+	 
 		    				@yield('content')
 						</div>			
 					</div>
