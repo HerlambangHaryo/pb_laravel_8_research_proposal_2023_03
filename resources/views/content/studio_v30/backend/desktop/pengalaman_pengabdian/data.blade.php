@@ -46,7 +46,7 @@
                                         {{ $row->sumber_pendanaan }}
                                     </td>   
                                     <td class="text-start"> 
-                                        {{ $row->jumlah_pendanaan }}
+                                        Rp.{{ number_format($row->jumlah_pendanaan,0,".",",") }}
                                     </td>   
                                     <td class="text-start"> 
                                         <x-studio_v30.menu-dropdown-data content="{{ $content }}" id="{{ $row->id }}" /> 
