@@ -23,9 +23,9 @@
                             <tr>               
                                 <x-html.th-content-width title="No." width="5%" />
                                 <x-html.th-content-width title="Tahun" width="5%" />  
-                                <x-html.th-content-width title="Judul" width="20%" />  
-                                <x-html.th-content title="Sumber" />  
-                                <x-html.th-content title="Jumlah" /> 
+                                <x-html.th-content title="Judul" />  
+                                <x-html.th-content-width title="Sumber" width="15%" />  
+                                <x-html.th-content-width title="Jumlah" width="15%" /> 
                                 <x-html.th-content-width title="Action." width="10%" /> 
                             </tr>
                         </thead>
