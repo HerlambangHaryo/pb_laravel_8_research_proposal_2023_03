@@ -28,12 +28,10 @@
                                 Judul
                             </label>
                             <div class="col-6">
-                                <input 
-                                    type="text" 
-                                    class="form-control form-control-lg"  
-                                    name="judul"
-                                    value="{{ old('judul', $Publikasi_artikel->judul) }}"
-                                >
+                                <textarea 
+                                    class="form-control" 
+                                    name="judul"  
+                                    rows="5">{{ old('judul', $Publikasi_artikel->judul) }}</textarea>   
                             </div>
                         </div> 
                     <!-- Jurnal -->
@@ -83,7 +81,7 @@
                             <label class="col-2 col-form-label">
                                 Tahun
                             </label>
-                            <div class="col-6">
+                            <div class="col-2">
                                 <input 
                                     type="year" 
                                     class="form-control form-control-lg"  
