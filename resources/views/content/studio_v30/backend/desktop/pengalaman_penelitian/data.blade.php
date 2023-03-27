@@ -21,9 +21,9 @@
                     <table id="datatableDefault" class="table  ">
                         <thead class=" ">
                             <tr>               
-                                <x-html.th-content-width title="No." width="10%" />
-                                <x-html.th-content title="Judul" />  
-                                <x-html.th-content title="Tahun" />  
+                                <x-html.th-content-width title="No." width="5%" />
+                                <x-html.th-content-width title="Tahun" width="5%" />  
+                                <x-html.th-content-width title="Judul" width="20%" />  
                                 <x-html.th-content title="Sumber" />  
                                 <x-html.th-content title="Jumlah" /> 
                                 <x-html.th-content-width title="Action." width="10%" /> 
@@ -36,13 +36,13 @@
                                     <td class="text-center"> 
                                         {{ $row->id }}
                                     </td>  
-                                    <td class="text-start"> 
-                                        {{ $row->judul }}
-                                    </td>   
-                                    <td class="text-start"> 
+                                    <td class="text-center"> 
                                         {{ $row->tahun }}
                                     </td>   
                                     <td class="text-start"> 
+                                        {{ $row->judul }}
+                                    </td>   
+                                    <td class="text-center"> 
                                         {{ $row->sumber_pendanaan }}
                                     </td>   
                                     <td class="text-end"> 
