@@ -28,13 +28,11 @@
                                 Judul
                             </label>
                             <div class="col-6">
-                                <input 
-                                    type="text" 
-                                    class="form-control form-control-lg"  
-                                    name="judul"
-                                    value="{{ old('judul', $Perolehan_hki->judul) }}"
-                                    disabled
-                                >
+                                <textarea 
+                                    class="form-control" 
+                                    name="judul"  
+                                    rows="5" 
+                                    disabled>{{ old('judul', $Perolehan_hki->judul) }}</textarea> 
                             </div>
                         </div> 
                     <!-- Jenis -->

@@ -27,11 +27,10 @@
                                 Judul
                             </label>
                             <div class="col-6">
-                                <input 
-                                    type="text" 
-                                    class="form-control form-control-lg"  
-                                    name="judul"
-                                >
+                                <textarea 
+                                    class="form-control" 
+                                    name="judul"  
+                                    rows="5"></textarea> 
                             </div>
                         </div> 
                     <!-- Jenis -->
