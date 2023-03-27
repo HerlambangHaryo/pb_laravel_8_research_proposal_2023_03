@@ -66,7 +66,7 @@
                             </label>
                             <div class="col-6">
                                 <input 
-                                    type="number" 
+                                    type="text" 
                                     class="form-control form-control-lg"  
                                     name="nomor"
                                 >
