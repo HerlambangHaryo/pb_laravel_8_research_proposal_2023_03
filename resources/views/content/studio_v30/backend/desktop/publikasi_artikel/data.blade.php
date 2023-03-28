@@ -3,6 +3,9 @@
 @section('title', $panel_name)
 
 @section('content')   
+    @include('content.include.data_menu_peneliti')
+    @include('content.include.sub_menu_peneliti')
+    
     <div id="datatable" class="mb-5">
         <div class="card">
             <div class="card-header">
@@ -24,11 +27,11 @@
                             <tr>               
                                 <x-html.th-content-width title="No." width="10%" />
                                 <x-html.th-content title="Judul" />  
-                                <x-html.th-content title="Jurnal" />  
-                                <x-html.th-content title="Tahun" /> 
-                                <x-html.th-content title="Volume" />  
-                                <x-html.th-content title="Nomor" /> 
-                                <x-html.th-content title="Link" /> 
+                                <x-html.th-content title="Jurnal" />   
+                                <x-html.th-content-width title="Tahun" width="5%" /> 
+                                <x-html.th-content-width title="Volume" width="5%" /> 
+                                <x-html.th-content-width title="Nomor" width="5%" /> 
+                                <x-html.th-content-width title="Link" width="12%" /> 
                                 <x-html.th-content-width title="Action." width="10%" /> 
                             </tr>
                         </thead>
@@ -54,8 +57,13 @@
                                     <td class="text-start"> 
                                         {{ $row->nomor }}
                                     </td>  
-                                    <td class="text-start"> 
-                                        {{ $row->url }}
+                                    <td class="text-center"> 
+                                        @if(!is_null($row->url))
+                                            <a href="{{ $row->url }}" target="_blank">
+                                                Publikasi_{{ $row->id }}
+                                                <i class="fas fa-external-link-square-alt"></i>
+                                            </a>  
+                                        @endif
                                     </td>   
                                     <td class="text-start"> 
                                         <x-studio_v30.menu-dropdown-data content="{{ $content }}" id="{{ $row->id }}" /> 

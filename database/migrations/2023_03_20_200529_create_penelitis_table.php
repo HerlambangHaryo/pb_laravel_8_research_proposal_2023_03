@@ -30,9 +30,7 @@ class CreatePenelitisTable extends Migration
             $table->string('tempat_lahir')->nullable();
             $table->string('tanggal_lahir')->nullable();
             $table->string('email')->nullable();
-            $table->string('telepon')->nullable();
-            $table->string('alamat_kantor')->nullable();
-            $table->string('telepon_kantor')->nullable();
+            $table->string('telepon')->nullable(); 
 
             $table->string('lulusan_s1')->nullable();
             $table->string('lulusan_s2')->nullable();
@@ -58,6 +56,10 @@ class CreatePenelitisTable extends Migration
             $table->year('s3_tahun_lulus')->nullable(); 
             $table->string('s3_judul')->nullable(); 
             $table->string('s3_pembimbing')->nullable(); 
+
+            $table->integer('id_perguruan_tinggi')->nullable(); 
+
+            
 
             $table->timestamps();
             $table->softDeletes();

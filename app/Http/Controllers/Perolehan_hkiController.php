@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
 
 use App\Models\Perolehan_hki;
+use App\Models\Peneliti;
 
 class Perolehan_hkiController extends Controller
 {
@@ -43,6 +44,9 @@ class Perolehan_hkiController extends Controller
         // ----------------------------------------------------------- Action 
             $data           = Perolehan_hki::where('id_peneliti', '=', $id)
                                 ->get();
+                                     
+            $Peneliti       = Peneliti::where('id', '=', $id)
+                                ->first();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -57,6 +61,7 @@ class Perolehan_hkiController extends Controller
                     'view_file', 
                     'id', 
                     'data', 
+                    'Peneliti', 
                 )
             );
         ///////////////////////////////////////////////////////////////

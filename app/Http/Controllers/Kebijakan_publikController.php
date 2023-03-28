@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
 
 use App\Models\Kebijakan_publik;
+use App\Models\Peneliti;
 
 class Kebijakan_publikController extends Controller
 {
@@ -43,6 +44,9 @@ class Kebijakan_publikController extends Controller
         // ----------------------------------------------------------- Action 
             $data           = Kebijakan_publik::where('id_peneliti', '=', $id)
                                 ->get();
+
+            $Peneliti       = Peneliti::where('id', '=', $id)
+                                ->first();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -57,6 +61,7 @@ class Kebijakan_publikController extends Controller
                     'view_file', 
                     'id', 
                     'data', 
+                    'Peneliti', 
                 )
             );
         ///////////////////////////////////////////////////////////////

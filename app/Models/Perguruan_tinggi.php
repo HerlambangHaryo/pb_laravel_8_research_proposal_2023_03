@@ -22,6 +22,7 @@ class Perguruan_tinggi extends Model
         'provinsi', 
         'kodepos', 
         'telepon',  
+        'fax',  
     ];
 
     protected $hidden = ["deleted_at"];

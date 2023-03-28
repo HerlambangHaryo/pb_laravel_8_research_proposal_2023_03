@@ -119,7 +119,8 @@ class Perguruan_tinggiController extends Controller
                 'kota'              => $request->kota,  
                 'provinsi'          => $request->provinsi,   
                 'kodepos'           => $request->kodepos,  
-                'telepon'           => $request->telepon,       
+                'telepon'           => $request->telepon,   
+                'fax'               => $request->fax,       
             ]);  
 
         // ----------------------------------------------------------- Send
@@ -201,7 +202,8 @@ class Perguruan_tinggiController extends Controller
                 'kota'              => $request->kota,  
                 'provinsi'          => $request->provinsi,   
                 'kodepos'           => $request->kodepos,  
-                'telepon'           => $request->telepon,    
+                'telepon'           => $request->telepon,  
+                'fax'               => $request->fax,        
             ]);  
                 
         // ----------------------------------------------------------- Send

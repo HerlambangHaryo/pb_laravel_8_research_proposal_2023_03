@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
 
 use App\Models\Pemakalah_seminar;
+use App\Models\Peneliti;
 
 class Pemakalah_seminarController extends Controller
 {
@@ -43,6 +44,9 @@ class Pemakalah_seminarController extends Controller
         // ----------------------------------------------------------- Action 
             $data           = Pemakalah_seminar::where('id_peneliti', '=', $id)
                                 ->get();
+
+            $Peneliti       = Peneliti::where('id', '=', $id)
+                                ->first();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -57,6 +61,7 @@ class Pemakalah_seminarController extends Controller
                     'view_file', 
                     'id', 
                     'data', 
+                    'Peneliti', 
                 )
             );
         ///////////////////////////////////////////////////////////////

@@ -6,12 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\Perguruan_tinggi; 
+use DB;
+
 class Peneliti extends Model
 {
     use HasFactory;
     use SoftDeletes;
     
     protected $softDelete = true;
+    
+    public function perguruan_tinggi()
+    {         
+        return $this->belongsTo(Perguruan_tinggi::class,'id_perguruan_tinggi', 'id')
+                ->withDefault([
+                    'nama' => '',
+                ]);
+    }
     
     protected $fillable = [
         'nama',
@@ -26,9 +37,7 @@ class Peneliti extends Model
         'tempat_lahir',
         'tanggal_lahir',
         'email',
-        'telepon',
-        'alamat_kantor',
-        'telepon_kantor',
+        'telepon', 
         'lulusan_s1',
         'lulusan_s2',
         'lulusan_s3',
@@ -50,6 +59,7 @@ class Peneliti extends Model
         's3_tahun_lulus',
         's3_judul',
         's3_pembimbing', 
+        'id_perguruan_tinggi'
     ];
 
     protected $hidden = ["deleted_at"];

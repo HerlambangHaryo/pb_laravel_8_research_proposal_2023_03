@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
 
 use App\Models\Pengalaman_pengabdian;
+use App\Models\Peneliti;
 
 class Pengalaman_pengabdianController extends Controller
 {
@@ -43,6 +44,9 @@ class Pengalaman_pengabdianController extends Controller
         // ----------------------------------------------------------- Action 
             $data           = Pengalaman_pengabdian::where('id_peneliti', '=', $id)
                                 ->get();
+
+            $Peneliti       = Peneliti::where('id', '=', $id)
+                                ->first();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -57,6 +61,7 @@ class Pengalaman_pengabdianController extends Controller
                     'view_file', 
                     'id', 
                     'data', 
+                    'Peneliti', 
                 )
             );
         ///////////////////////////////////////////////////////////////

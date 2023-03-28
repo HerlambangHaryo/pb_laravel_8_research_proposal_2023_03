@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
 
 use App\Models\Pengalaman_penelitian;
+use App\Models\Peneliti;
 
 class Pengalaman_penelitianController extends Controller
 {
@@ -42,7 +43,11 @@ class Pengalaman_penelitianController extends Controller
             
         // ----------------------------------------------------------- Action 
             $data           = Pengalaman_penelitian::where('id_peneliti', '=', $id)
+                                ->whereNull('deleted_at')
                                 ->get();
+
+            $Peneliti       = Peneliti::where('id', '=', $id)
+                                ->first();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -57,6 +62,7 @@ class Pengalaman_penelitianController extends Controller
                     'view_file', 
                     'id', 
                     'data', 
+                    'Peneliti', 
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -232,8 +238,8 @@ class Pengalaman_penelitianController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action  
-            $data = Pengalaman_penelitian::where('id', '=', $Pengalaman_penelitian->id)
-                            ->get(); 
+            $data           = Pengalaman_penelitian::where('id', '=', $Pengalaman_penelitian->id)
+                                ->get(); 
 
         // ----------------------------------------------------------- Send
             return view($view,  

@@ -126,6 +126,20 @@
                                 >
                             </div>
                         </div>  
+                    <!-- Fax -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                Fax
+                            </label>
+                            <div class="col-6">
+                                <input 
+                                    type="text" 
+                                    class="form-control form-control-lg"  
+                                    name="fax"
+                                    value="{{ old('fax', $Perguruan_tinggi->fax) }}"
+                                >
+                            </div>
+                        </div>  
                 </div> 
             </div>            
         </div> 

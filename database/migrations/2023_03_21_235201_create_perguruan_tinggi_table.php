@@ -23,6 +23,7 @@ class CreatePerguruan_tinggiTable extends Migration
             $table->string('provinsi')->nullable();
             $table->string('kodepos')->nullable();
             $table->string('telepon')->nullable();
+            $table->string('fax')->nullable();
 
 
             $table->timestamps();

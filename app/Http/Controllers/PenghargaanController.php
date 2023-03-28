@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
 
 use App\Models\Penghargaan;
+use App\Models\Peneliti;
 
 class PenghargaanController extends Controller
 {
@@ -43,7 +44,9 @@ class PenghargaanController extends Controller
         // ----------------------------------------------------------- Action 
             $data           = Penghargaan::where('id_peneliti', '=', $id)
                                 ->get();
-                                    
+                                     
+            $Peneliti       = Peneliti::where('id', '=', $id)
+                                ->first();
         // ----------------------------------------------------------- Send
             return view($view,  
                 compact(
@@ -57,6 +60,7 @@ class PenghargaanController extends Controller
                     'view_file', 
                     'id', 
                     'data', 
+                    'Peneliti', 
                 )
             );
         ///////////////////////////////////////////////////////////////

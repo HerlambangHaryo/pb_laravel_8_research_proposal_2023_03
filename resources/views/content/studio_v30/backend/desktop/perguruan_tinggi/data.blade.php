@@ -25,12 +25,9 @@
                                 <x-html.th-content-width title="No." width="10%" />
                                 <x-html.th-content title="Nama" />  
                                 <x-html.th-content title="Alamat" />  
-                                <x-html.th-content title="Kel" />  
-                                <x-html.th-content title="Kec" />  
-                                <x-html.th-content title="Kota" />  
-                                <x-html.th-content title="Prov" />  
                                 <x-html.th-content title="Kodepos" />  
-                                <x-html.th-content title="telepon" />  
+                                <x-html.th-content title="Telepon" />  
+                                <x-html.th-content title="Fax" />  
                                 <x-html.th-content-width title="Action." width="10%" /> 
                             </tr>
                         </thead>
@@ -45,25 +42,20 @@
                                         {{ $row->nama }}
                                     </td>  
                                     <td class="text-center"> 
-                                        {{ $row->alamat }}
-                                    </td>  
-                                    <td class="text-center"> 
-                                        {{ $row->kelurahan }}
-                                    </td>  
-                                    <td class="text-center"> 
-                                        {{ $row->kecamatan }}
-                                    </td>  
-                                    <td class="text-center"> 
-                                        {{ $row->kota }}
-                                    </td>  
-                                    <td class="text-center"> 
-                                        {{ $row->provinsi }}
+                                        {{ $row->alamat }}, 
+                                        Kel. {{ $row->kelurahan }}, 
+                                        Kec. {{ $row->kecamatan }}, 
+                                        Kota {{ $row->kota }}, 
+                                        {{ $row->provinsi }} 
                                     </td>  
                                     <td class="text-center"> 
                                         {{ $row->kodepos }}
                                     </td>  
                                     <td class="text-center"> 
                                         {{ $row->telepon }}
+                                    </td>  
+                                    <td class="text-center"> 
+                                        {{ $row->fax }}
                                     </td>  
                                     <td class="text-center">  
                                         <x-studio_v30.menu-dropdown-data content="{{ $content }}" id="{{ $row->id }}" /> 

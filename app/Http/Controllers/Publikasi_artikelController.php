@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
 
 use App\Models\Publikasi_artikel;
+use App\Models\Peneliti;
 
 class Publikasi_artikelController extends Controller
 {
@@ -43,6 +44,9 @@ class Publikasi_artikelController extends Controller
         // ----------------------------------------------------------- Action 
             $data           = Publikasi_artikel::where('id_peneliti', '=', $id)
                                 ->get();
+                                     
+            $Peneliti       = Peneliti::where('id', '=', $id)
+                                ->first();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -57,6 +61,7 @@ class Publikasi_artikelController extends Controller
                     'view_file', 
                     'id', 
                     'data', 
+                    'Peneliti', 
                 )
             );
         ///////////////////////////////////////////////////////////////

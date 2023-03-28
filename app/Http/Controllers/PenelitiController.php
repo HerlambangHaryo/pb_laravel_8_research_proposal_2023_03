@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
 
 use App\Models\Peneliti;
+use App\Models\Perguruan_tinggi;
 
 class PenelitiController extends Controller
 {
@@ -81,6 +82,8 @@ class PenelitiController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action  
+            $Perguruan_tinggi = Perguruan_tinggi::whereNull('deleted_at')
+                                    ->get();
 
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -93,6 +96,7 @@ class PenelitiController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
+                    'Perguruan_tinggi', 
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -124,9 +128,7 @@ class PenelitiController extends Controller
                 'tempat_lahir'                  => $request->tempat_lahir,  
                 'tanggal_lahir'                 => $request->tanggal_lahir,  
                 'email'                         => $request->email,  
-                'telepon'                       => $request->telepon,  
-                'alamat_kantor'                 => $request->alamat_kantor,  
-                'telepon_kantor'                => $request->telepon_kantor,  
+                'telepon'                       => $request->telepon,   
 
                 'lulusan_s1'                    => $request->lulusan_s1,  
                 'lulusan_s2'                    => $request->lulusan_s2,  
@@ -151,7 +153,9 @@ class PenelitiController extends Controller
                 's3_tahun_masuk'                => $request->s3_tahun_masuk,  
                 's3_tahun_lulus'                => $request->s3_tahun_lulus,  
                 's3_judul'                      => $request->s3_judul,   
-                's3_pembimbing'                 => $request->s3_pembimbing,     
+                's3_pembimbing'                 => $request->s3_pembimbing,  
+
+                'id_perguruan_tinggi'           => $request->id_perguruan_tinggi,     
             ]);  
 
         // ----------------------------------------------------------- Send
@@ -192,6 +196,8 @@ class PenelitiController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action 
+            $Perguruan_tinggi = Perguruan_tinggi::whereNull('deleted_at')
+                                    ->get();
 
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -205,6 +211,7 @@ class PenelitiController extends Controller
                     'active_as',
                     'view_file', 
                     'Peneliti',   
+                    'Perguruan_tinggi',   
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -238,9 +245,7 @@ class PenelitiController extends Controller
                 'tempat_lahir'                  => $request->tempat_lahir,  
                 'tanggal_lahir'                 => $request->tanggal_lahir,  
                 'email'                         => $request->email,  
-                'telepon'                       => $request->telepon,  
-                'alamat_kantor'                 => $request->alamat_kantor,  
-                'telepon_kantor'                => $request->telepon_kantor,  
+                'telepon'                       => $request->telepon,   
                 
                 'lulusan_s1'                    => $request->lulusan_s1,  
                 'lulusan_s2'                    => $request->lulusan_s2,  
@@ -266,6 +271,8 @@ class PenelitiController extends Controller
                 's3_tahun_lulus'                => $request->s3_tahun_lulus,  
                 's3_judul'                      => $request->s3_judul,   
                 's3_pembimbing'                 => $request->s3_pembimbing,   
+
+                'id_perguruan_tinggi'           => $request->id_perguruan_tinggi,    
             ]);  
                 
         // ----------------------------------------------------------- Send
@@ -305,9 +312,7 @@ class PenelitiController extends Controller
             $view_file      = 'show';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
-        // ----------------------------------------------------------- Action  
-            $data = Peneliti::where('id', '=', $Peneliti->id)
-                            ->get(); 
+        // ----------------------------------------------------------- Action 
 
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -321,7 +326,6 @@ class PenelitiController extends Controller
                     'active_as',
                     'view_file', 
                     'Peneliti',   
-                    'data',  
                 )
             );
         ///////////////////////////////////////////////////////////////

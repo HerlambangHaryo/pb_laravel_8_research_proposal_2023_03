@@ -3,6 +3,9 @@
 @section('title', $panel_name)
 
 @section('content')   
+    @include('content.include.data_menu_peneliti')
+    @include('content.include.sub_menu_peneliti')
+    
     <div id="datatable" class="mb-5">
         <div class="card">
             <div class="card-header">
