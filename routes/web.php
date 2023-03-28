@@ -76,6 +76,10 @@ use Illuminate\Support\Facades\Route;
             ->name('Penelitian.deletedata');  
     Route::resource('Penelitian', PenelitianController::class); 
 //-----------------------------------------------------------  
+        Route::get('Jadwal_penelitian/{Jadwal_penelitian}/deletedata', 'Jadwal_penelitianController@deletedata')
+        ->name('Jadwal_penelitian.deletedata');  
+    Route::resource('Jadwal_penelitian', Jadwal_penelitianController::class); 
+//-----------------------------------------------------------  
  
  
  

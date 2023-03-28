@@ -7,16 +7,15 @@ use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 use DB;
 
-use App\Models\Penelitian;
-use App\Models\Peneliti;
+use App\Models\Jadwal_penelitian;
 
-class PenelitianController extends Controller
+class Jadwal_penelitianController extends Controller
 {
     //
     public $template    = 'studio_v30';
     public $mode        = '';
     public $themecolor  = '';
-    public $content     = 'Penelitian';
+    public $content     = 'Jadwal_penelitian';
     public $type        = 'backend';
 
     public function index()
@@ -41,7 +40,7 @@ class PenelitianController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action 
-            $data           = Penelitian::get();
+            $data           = Jadwal_penelitian::get();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -59,7 +58,7 @@ class PenelitianController extends Controller
             );
         ///////////////////////////////////////////////////////////////
     } 
- 
+    
     public function create()
     {
         // ----------------------------------------------------------- Auth
@@ -82,8 +81,6 @@ class PenelitianController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action  
-            $peneliti       = Peneliti::get();
-
         // ----------------------------------------------------------- Send
             return view($view,  
                 compact(
@@ -94,8 +91,7 @@ class PenelitianController extends Controller
                     // 'user', 
                     'panel_name', 
                     'active_as',
-                    'view_file', 
-                    'peneliti',
+                    'view_file',  
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -107,20 +103,18 @@ class PenelitianController extends Controller
             // $user = auth()->user();  
             
         // ----------------------------------------------------------- Initialize
+            $id_penelitian = $request->session()->get('id_penelitian');
+
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
-            $data = Penelitian::create([ 
-                'id_ketua'                  => $request->id_ketua, 
-                'id_anggota_1'              => $request->id_anggota_1,
-                'id_anggota_2'              => $request->id_anggota_2,
-                'id_mahasiswa_1'            => $request->id_mahasiswa_1,
-                'id_mahasiswa_2'            => $request->id_mahasiswa_2,
-                'judul'                     => $request->judul,
-                'skema'                     => $request->skema,
-                'tahun'                     => $request->tahun,
-                'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
-                'id_dekan'                  => $request->id_dekan,     
+        // ----------------------------------------------------------- Action  
+        
+            $data = Jadwal_penelitian::create([ 
+                'id_penelitian'         => $id_penelitian,  
+                'kegiatan'              => $request->kegiatan,
+                'urutan'                => $request->urutan,
+                'indikator_capaian'     => $request->indikator_capaian,
+                'bulan'                 => $request->bulan,       
             ]);  
 
         // ----------------------------------------------------------- Send
@@ -139,7 +133,7 @@ class PenelitianController extends Controller
         ///////////////////////////////////////////////////////////////
     }
 
-    public function edit(Penelitian $Penelitian)
+    public function edit(Jadwal_penelitian $Jadwal_penelitian)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -160,8 +154,7 @@ class PenelitianController extends Controller
             $view_file      = 'edit';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
-        // ----------------------------------------------------------- Action  
-            $peneliti       = Peneliti::get();
+        // ----------------------------------------------------------- Action 
 
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -174,14 +167,13 @@ class PenelitianController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'Penelitian',   
-                    'peneliti',   
+                    'Jadwal_penelitian',   
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
 
-    public function update(Request $request, Penelitian $Penelitian)
+    public function update(Request $request, Jadwal_penelitian $Jadwal_penelitian)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -189,59 +181,20 @@ class PenelitianController extends Controller
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
-            $this->validate($request, [
-                'nama'     => 'required', 
-            ]);
+        // ----------------------------------------------------------- Action   
+            $data = Jadwal_penelitian::findOrFail($Jadwal_penelitian->id); 
 
-            $data = Penelitian::findOrFail($Penelitian->id); 
-
-            $data->update([
-                'nama'                          => $request->nama,  
-                'jenis_kelamin'                 => $request->jenis_kelamin,  
-                'jabatan_fungsional'            => $request->jabatan_fungsional,  
-                'nip_nik_lainnya'               => $request->nip_nik_lainnya,  
-                'nidn'                          => $request->nidn,  
-                'id_sinta_google_scholar'       => $request->id_sinta_google_scholar,  
-                'url'                           => $request->url,  
-                'id_scopus'                     => $request->id_scopus,  
-                'id_orchid'                     => $request->id_orchid,  
-                'tempat_lahir'                  => $request->tempat_lahir,  
-                'tanggal_lahir'                 => $request->tanggal_lahir,  
-                'email'                         => $request->email,  
-                'telepon'                       => $request->telepon,  
-                'alamat_kantor'                 => $request->alamat_kantor,  
-                'telepon_kantor'                => $request->telepon_kantor,  
-                
-                'lulusan_s1'                    => $request->lulusan_s1,  
-                'lulusan_s2'                    => $request->lulusan_s2,  
-                'lulusan_s3'                    => $request->lulusan_s3,  
-
-                's1_perguruan_tinggi'           => $request->s1_perguruan_tinggi,  
-                's1_bidang_ilmu'                => $request->s1_bidang_ilmu,  
-                's1_tahun_masuk'                => $request->s1_tahun_masuk,  
-                's1_tahun_lulus'                => $request->s1_tahun_lulus,  
-                's1_judul'                      => $request->s1_judul,  
-                's1_pembimbing'                 => $request->s1_pembimbing,  
-
-                's2_perguruan_tinggi'           => $request->s2_perguruan_tinggi,  
-                's2_bidang_ilmu'                => $request->s2_bidang_ilmu,  
-                's2_tahun_masuk'                => $request->s2_tahun_masuk,  
-                's2_tahun_lulus'                => $request->s2_tahun_lulus,  
-                's2_judul'                      => $request->s2_judul,  
-                's2_pembimbing'                 => $request->s2_pembimbing,  
-
-                's3_perguruan_tinggi'           => $request->s3_perguruan_tinggi,  
-                's3_bidang_ilmu'                => $request->s3_bidang_ilmu,  
-                's3_tahun_masuk'                => $request->s3_tahun_masuk,  
-                's3_tahun_lulus'                => $request->s3_tahun_lulus,  
-                's3_judul'                      => $request->s3_judul,   
-                's3_pembimbing'                 => $request->s3_pembimbing,   
+            $data->update([ 
+                'kegiatan'              => $request->kegiatan,
+                'urutan'                => $request->urutan,
+                'indikator_capaian'     => $request->indikator_capaian,
+                'bulan'                 => $request->bulan,   
             ]);  
                 
         // ----------------------------------------------------------- Send
             if($data)
             {
+                # Jadwal_penelitian/Peneliti/1
                 return redirect()
                     ->route($content.'.index')
                     ->with(['Success' => 'Data successfully saved!']);
@@ -255,11 +208,10 @@ class PenelitianController extends Controller
         ///////////////////////////////////////////////////////////////
     }
 
-    public function show(Penelitian $Penelitian)
+    public function show(Jadwal_penelitian $Jadwal_penelitian)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
-            session(['id_penelitian' => $Penelitian->id]);
 
         // ----------------------------------------------------------- Agent
             $agent              = new Agent(); 
@@ -278,7 +230,7 @@ class PenelitianController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action  
-            $data = Penelitian::where('id', '=', $Penelitian->id)
+            $data = Jadwal_penelitian::where('id', '=', $Jadwal_penelitian->id)
                             ->get(); 
 
         // ----------------------------------------------------------- Send
@@ -292,14 +244,14 @@ class PenelitianController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'Penelitian',   
+                    'Jadwal_penelitian',   
                     'data',  
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
 
-    public function deletedata(Penelitian $Penelitian)
+    public function deletedata(Jadwal_penelitian $Jadwal_penelitian)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -333,7 +285,7 @@ class PenelitianController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'Penelitian',   
+                    'Jadwal_penelitian',   
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -345,14 +297,14 @@ class PenelitianController extends Controller
             $content        = $this->content;
 
         // ----------------------------------------------------------- Action  
-            $data = Penelitian::findOrFail($id);
+            $data = Jadwal_penelitian::findOrFail($id);
             $data->delete();
 
         // ----------------------------------------------------------- Send
             if($data)
             {
                 return redirect()
-                    ->route($content.'.index')
+                    ->route($content.'.Peneliti', $data->id_peneliti)
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else

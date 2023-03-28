@@ -85,7 +85,7 @@
                     Isi Proposal
                 </a> 
                 <a  
-                    href=" "
+                    href="{{ route('Jadwal_penelitian.index') }}"
                     class="btn btn-sm btn-secondary"> 
                     Jadwal Penelitian
                 </a> 
