@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Perguruan_tinggi; 
+use App\Models\Mata_kuliah; 
 use DB;
 
 class Peneliti extends Model
@@ -16,6 +17,12 @@ class Peneliti extends Model
     
     protected $softDelete = true;
     
+    public function mata_kuliah()
+    {         
+        return $this->hasMany(Mata_kuliah::class,'id_peneliti', 'id') 
+                    ->orderBy('judul') ;
+    }
+
     public function perguruan_tinggi()
     {         
         return $this->belongsTo(Perguruan_tinggi::class,'id_perguruan_tinggi', 'id')

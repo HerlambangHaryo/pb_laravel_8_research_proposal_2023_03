@@ -166,8 +166,10 @@
                             Mata Kuliah yang Diampu
                         </td>
                         <td>:</td>
-                        <td>
-                            {{ $Peneliti->nama }}
+                        <td>   
+                            @foreach($Peneliti->mata_kuliah as $row) 
+                                {{ $loop->iteration }}. {{ $row->judul }}<br/>
+                            @endforeach
                         </td>
                     </tr>
                 </tbody> 

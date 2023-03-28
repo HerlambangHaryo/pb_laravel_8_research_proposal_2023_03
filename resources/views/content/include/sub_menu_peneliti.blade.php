@@ -12,6 +12,15 @@
                 Biodata
             </a>      
             <a  
+                href="{{ route('Mata_kuliah.Peneliti', $Peneliti->id) }}"
+                class="btn btn-sm btn-secondary 
+                @if($content == 'Mata_kuliah')
+                    active
+                @endif 
+                "> 
+                Mata Kuliah
+            </a> 
+            <a  
                 href="{{ route('Pengalaman_penelitian.Peneliti', $Peneliti->id) }}"
                 class="btn btn-sm btn-secondary 
                 @if($content == 'Pengalaman_penelitian')

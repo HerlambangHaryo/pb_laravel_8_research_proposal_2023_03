@@ -80,6 +80,12 @@ use Illuminate\Support\Facades\Route;
         ->name('Jadwal_penelitian.deletedata');  
     Route::resource('Jadwal_penelitian', Jadwal_penelitianController::class); 
 //-----------------------------------------------------------  
+        Route::get('Mata_kuliah/Peneliti/{Peneliti}', 'Mata_kuliahController@Peneliti')
+        ->name('Mata_kuliah.Peneliti');  
+    Route::get('Mata_kuliah/{Mata_kuliah}/deletedata', 'Mata_kuliahController@deletedata')
+        ->name('Mata_kuliah.deletedata');  
+Route::resource('Mata_kuliah', Mata_kuliahController::class); 
+//-----------------------------------------------------------  
  
  
  
