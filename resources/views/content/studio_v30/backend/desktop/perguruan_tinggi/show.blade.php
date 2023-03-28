@@ -5,8 +5,8 @@
 @section('content')     
         <div class="card mb-4">
             <x-studio_v30.general-form-card-header 
-                view_file="{{ $view_file }}"  
-                panel_name="{{ $panel_name }}"/>  
+                view="{{ $view_file }}"  
+                panel="{{ $panel_name }}"/> 
             <div class="card-body pb-4">     
                 <div> 
                     <!-- Nama -->

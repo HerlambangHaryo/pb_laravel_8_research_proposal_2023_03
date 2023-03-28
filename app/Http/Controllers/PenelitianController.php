@@ -7,22 +7,21 @@ use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 use DB;
 
-use App\Models\Pengalaman_pengabdian;
+use App\Models\Penelitian;
 
-class Pengalaman_pengabdianController extends Controller
+class PenelitianController extends Controller
 {
     //
     public $template    = 'studio_v30';
     public $mode        = '';
     public $themecolor  = '';
-    public $content     = 'Pengalaman_pengabdian';
+    public $content     = 'Penelitian';
     public $type        = 'backend';
 
-    public function peneliti($id)
+    public function index()
     {
         // ----------------------------------------------------------- Auth
             // $user = auth()->user();   
-            session(['id_peneliti' => $id]);
 
         // ----------------------------------------------------------- Agent
             $agent              = new Agent(); 
@@ -41,8 +40,7 @@ class Pengalaman_pengabdianController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action 
-            $data           = Pengalaman_pengabdian::where('id_peneliti', '=', $id)
-                                ->get();
+            $data           = Penelitian::get();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -55,13 +53,12 @@ class Pengalaman_pengabdianController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'id', 
                     'data', 
                 )
             );
         ///////////////////////////////////////////////////////////////
     } 
-    
+ 
     public function create()
     {
         // ----------------------------------------------------------- Auth
@@ -84,6 +81,7 @@ class Pengalaman_pengabdianController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action  
+
         // ----------------------------------------------------------- Send
             return view($view,  
                 compact(
@@ -94,7 +92,7 @@ class Pengalaman_pengabdianController extends Controller
                     // 'user', 
                     'panel_name', 
                     'active_as',
-                    'view_file',  
+                    'view_file', 
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -106,24 +104,61 @@ class Pengalaman_pengabdianController extends Controller
             // $user = auth()->user();  
             
         // ----------------------------------------------------------- Initialize
-            $id_peneliti = $request->session()->get('id_peneliti');
-
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action    
-            $data = Pengalaman_pengabdian::create([ 
-                'id_peneliti'       => $id_peneliti,  
-                'judul'             => $request->judul,  
-                'tahun'             => $request->tahun,  
-                'sumber_pendanaan'  => $request->sumber_pendanaan,  
-                'jumlah_pendanaan'  => $request->jumlah_pendanaan,      
+        // ----------------------------------------------------------- Action   
+            $this->validate($request, [
+                'nama'     => 'required', 
+            ]);
+            
+            $data = Penelitian::create([ 
+                'nama'                          => $request->nama,  
+                'jenis_kelamin'                 => $request->jenis_kelamin,  
+                'jabatan_fungsional'            => $request->jabatan_fungsional,  
+                'nip_nik_lainnya'               => $request->nip_nik_lainnya,  
+                'nidn'                          => $request->nidn,  
+                'id_sinta_google_scholar'       => $request->id_sinta_google_scholar,  
+                'url'                           => $request->url,  
+                'id_scopus'                     => $request->id_scopus,  
+                'id_orchid'                     => $request->id_orchid,  
+                'tempat_lahir'                  => $request->tempat_lahir,  
+                'tanggal_lahir'                 => $request->tanggal_lahir,  
+                'email'                         => $request->email,  
+                'telepon'                       => $request->telepon,  
+                'alamat_kantor'                 => $request->alamat_kantor,  
+                'telepon_kantor'                => $request->telepon_kantor,  
+
+                'lulusan_s1'                    => $request->lulusan_s1,  
+                'lulusan_s2'                    => $request->lulusan_s2,  
+                'lulusan_s3'                    => $request->lulusan_s3,  
+
+                's1_perguruan_tinggi'           => $request->s1_perguruan_tinggi,  
+                's1_bidang_ilmu'                => $request->s1_bidang_ilmu,  
+                's1_tahun_masuk'                => $request->s1_tahun_masuk,  
+                's1_tahun_lulus'                => $request->s1_tahun_lulus,  
+                's1_judul'                      => $request->s1_judul,  
+                's1_pembimbing'                 => $request->s1_pembimbing,  
+
+                's2_perguruan_tinggi'           => $request->s2_perguruan_tinggi,  
+                's2_bidang_ilmu'                => $request->s2_bidang_ilmu,  
+                's2_tahun_masuk'                => $request->s2_tahun_masuk,  
+                's2_tahun_lulus'                => $request->s2_tahun_lulus,  
+                's2_judul'                      => $request->s2_judul,  
+                's2_pembimbing'                 => $request->s2_pembimbing,  
+
+                's3_perguruan_tinggi'           => $request->s3_perguruan_tinggi,  
+                's3_bidang_ilmu'                => $request->s3_bidang_ilmu,  
+                's3_tahun_masuk'                => $request->s3_tahun_masuk,  
+                's3_tahun_lulus'                => $request->s3_tahun_lulus,  
+                's3_judul'                      => $request->s3_judul,   
+                's3_pembimbing'                 => $request->s3_pembimbing,     
             ]);  
 
         // ----------------------------------------------------------- Send
             if($data)
             {
                 return redirect()
-                    ->route($content.'.Peneliti', $id_peneliti)
+                    ->route($content.'.index')
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else
@@ -135,7 +170,7 @@ class Pengalaman_pengabdianController extends Controller
         ///////////////////////////////////////////////////////////////
     }
 
-    public function edit(Pengalaman_pengabdian $Pengalaman_pengabdian)
+    public function edit(Penelitian $Penelitian)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -169,13 +204,13 @@ class Pengalaman_pengabdianController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'Pengalaman_pengabdian',   
+                    'Penelitian',   
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
 
-    public function update(Request $request, Pengalaman_pengabdian $Pengalaman_pengabdian)
+    public function update(Request $request, Penelitian $Penelitian)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -183,22 +218,61 @@ class Pengalaman_pengabdianController extends Controller
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
-            $data = Pengalaman_pengabdian::findOrFail($Pengalaman_pengabdian->id); 
+        // ----------------------------------------------------------- Action  
+            $this->validate($request, [
+                'nama'     => 'required', 
+            ]);
 
-            $data->update([ 
-                'judul'             => $request->judul,  
-                'tahun'             => $request->tahun,  
-                'sumber_pendanaan'  => $request->sumber_pendanaan,  
-                'jumlah_pendanaan'  => $request->jumlah_pendanaan,   
+            $data = Penelitian::findOrFail($Penelitian->id); 
+
+            $data->update([
+                'nama'                          => $request->nama,  
+                'jenis_kelamin'                 => $request->jenis_kelamin,  
+                'jabatan_fungsional'            => $request->jabatan_fungsional,  
+                'nip_nik_lainnya'               => $request->nip_nik_lainnya,  
+                'nidn'                          => $request->nidn,  
+                'id_sinta_google_scholar'       => $request->id_sinta_google_scholar,  
+                'url'                           => $request->url,  
+                'id_scopus'                     => $request->id_scopus,  
+                'id_orchid'                     => $request->id_orchid,  
+                'tempat_lahir'                  => $request->tempat_lahir,  
+                'tanggal_lahir'                 => $request->tanggal_lahir,  
+                'email'                         => $request->email,  
+                'telepon'                       => $request->telepon,  
+                'alamat_kantor'                 => $request->alamat_kantor,  
+                'telepon_kantor'                => $request->telepon_kantor,  
+                
+                'lulusan_s1'                    => $request->lulusan_s1,  
+                'lulusan_s2'                    => $request->lulusan_s2,  
+                'lulusan_s3'                    => $request->lulusan_s3,  
+
+                's1_perguruan_tinggi'           => $request->s1_perguruan_tinggi,  
+                's1_bidang_ilmu'                => $request->s1_bidang_ilmu,  
+                's1_tahun_masuk'                => $request->s1_tahun_masuk,  
+                's1_tahun_lulus'                => $request->s1_tahun_lulus,  
+                's1_judul'                      => $request->s1_judul,  
+                's1_pembimbing'                 => $request->s1_pembimbing,  
+
+                's2_perguruan_tinggi'           => $request->s2_perguruan_tinggi,  
+                's2_bidang_ilmu'                => $request->s2_bidang_ilmu,  
+                's2_tahun_masuk'                => $request->s2_tahun_masuk,  
+                's2_tahun_lulus'                => $request->s2_tahun_lulus,  
+                's2_judul'                      => $request->s2_judul,  
+                's2_pembimbing'                 => $request->s2_pembimbing,  
+
+                's3_perguruan_tinggi'           => $request->s3_perguruan_tinggi,  
+                's3_bidang_ilmu'                => $request->s3_bidang_ilmu,  
+                's3_tahun_masuk'                => $request->s3_tahun_masuk,  
+                's3_tahun_lulus'                => $request->s3_tahun_lulus,  
+                's3_judul'                      => $request->s3_judul,   
+                's3_pembimbing'                 => $request->s3_pembimbing,   
             ]);  
                 
         // ----------------------------------------------------------- Send
             if($data)
             {
-                # Pengalaman_pengabdian/Peneliti/1
                 return redirect()
-                    ->route($content.'.Peneliti', $data->id_peneliti)
+                    ->route($content.'.index')
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else
@@ -210,7 +284,7 @@ class Pengalaman_pengabdianController extends Controller
         ///////////////////////////////////////////////////////////////
     }
 
-    public function show(Pengalaman_pengabdian $Pengalaman_pengabdian)
+    public function show(Penelitian $Penelitian)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -232,7 +306,7 @@ class Pengalaman_pengabdianController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action  
-            $data = Pengalaman_pengabdian::where('id', '=', $Pengalaman_pengabdian->id)
+            $data = Penelitian::where('id', '=', $Penelitian->id)
                             ->get(); 
 
         // ----------------------------------------------------------- Send
@@ -246,14 +320,14 @@ class Pengalaman_pengabdianController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'Pengalaman_pengabdian',   
+                    'Penelitian',   
                     'data',  
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
 
-    public function deletedata(Pengalaman_pengabdian $Pengalaman_pengabdian)
+    public function deletedata(Penelitian $Penelitian)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -287,7 +361,7 @@ class Pengalaman_pengabdianController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'Pengalaman_pengabdian',   
+                    'Penelitian',   
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -299,14 +373,14 @@ class Pengalaman_pengabdianController extends Controller
             $content        = $this->content;
 
         // ----------------------------------------------------------- Action  
-            $data = Pengalaman_pengabdian::findOrFail($id);
+            $data = Penelitian::findOrFail($id);
             $data->delete();
 
         // ----------------------------------------------------------- Send
             if($data)
             {
                 return redirect()
-                    ->route($content.'.Peneliti', $data->id_peneliti)
+                    ->route($content.'.index')
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else

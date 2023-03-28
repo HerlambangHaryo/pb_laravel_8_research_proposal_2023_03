@@ -10,10 +10,11 @@
 
         <div class="card mb-4">
             <x-studio_v30.general-form-card-header 
-                view_file="{{ $view_file }}"  
-                panel_name="{{ $panel_name }}"/>  
-            <div class="card-body pb-4">     
-                <div>  
+                view="{{ $view_file }}"  
+                panel="{{ $panel_name }}"/> 
+            <div class="card-body pb-4">   
+                <div class="row justify-content-md-center">     
+                    <div class="col-11"> 
                     <!-- Judul -->
                         <div class="form-group row mb-3">
                             <label class="col-2 col-form-label">
@@ -58,7 +59,7 @@
                         </div> 
                     
                     <!-- Jumlah Pendanaan -->
-                    <div class="form-group row mb-3">
+                        <div class="form-group row mb-3">
                             <label class="col-2 col-form-label">
                                 Jumlah Pendanaan
                             </label>

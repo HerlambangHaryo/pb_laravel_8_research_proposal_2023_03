@@ -39,6 +39,17 @@
                 </a>
             </div>   
 
+            <div class="menu-item @if($title == 'Penelitian') active @endif">
+                <a href="{{ route('Penelitian.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="fas fa-book"></i>
+                    </span>
+                    <span class="menu-text">
+                        Penelitian 
+                    </span>
+                </a>
+            </div>  
+
             
 
         </div>

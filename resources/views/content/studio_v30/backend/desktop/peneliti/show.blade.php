@@ -6,15 +6,9 @@
 
     <div id="datatable" class="mb-5">
         <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-6">
-                        Biodata {{ $content }} 
-                    </div>
-                    <div class="col-6 text-end">   
-                    </div>
-                </div>
-            </div>
+            <x-studio_v30.general-form-card-header 
+                    view="{{ $view_file }}"  
+                    panel="{{ $panel_name }}"/>
             <div class="card-body pb-4">      
                 <div>
                     <table id="datatableDefault" class="table  ">

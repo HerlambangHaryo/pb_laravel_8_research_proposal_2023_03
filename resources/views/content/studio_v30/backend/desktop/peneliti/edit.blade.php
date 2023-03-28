@@ -9,19 +9,12 @@
         @method('PUT') 
 
         <div class="card mb-4">
-            <div class="card-header">
-                <div class="row mt-1 mb-2">
-                    <div class="col-6">
-                        <h4>    
-                            Form {{ ucfirst($view_file) }} - Biodata {{$panel_name}} 
-                        </h4>
-                    </div>
-                    <div class="col-6 text-right"> 
-                    </div> 
-                </div>
-            </div>
+            <x-studio_v30.general-form-card-header 
+                    view="{{ $view_file }}"  
+                    panel="{{ $panel_name }}"/>
             <div class="card-body pb-4">     
-                <div> 
+                <div class="row justify-content-md-center">     
+                    <div class="col-11"> 
                     <!-- Nama -->
                         <div class="form-group row mb-3">
                             <label class="col-2 col-form-label">

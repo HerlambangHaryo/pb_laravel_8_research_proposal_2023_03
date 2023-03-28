@@ -1,24 +1,22 @@
 <?php
 
-namespace App\View\Components\studio_v30;
+namespace App\View\Components\Studio_v30;
 
 use Illuminate\View\Component;
 
-class GeneralFormCardHeader extends Component
+class ButtonCreate extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $view;  
-    public $panel;  
+    public $content;  
 
-    public function __construct($view, $panel)
+    public function __construct($content)
     {
         //
-        $this->view = $view; 
-        $this->panel = $panel; 
+        $this->content = $content; 
     }
 
     /**
@@ -28,6 +26,6 @@ class GeneralFormCardHeader extends Component
      */
     public function render()
     {
-        return view('components.studio_v30.general-form-card-header');
+        return view('components.studio_v30.button-create');
     }
 }
