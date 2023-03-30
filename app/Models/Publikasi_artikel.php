@@ -22,8 +22,7 @@ class Publikasi_artikel extends Model
                         ->whereNull('penulis_publikasi_artikels.deleted_at');
     }
 
-    protected $fillable = [
-        'id_peneliti', 
+    protected $fillable = [ 
         'judul', 
         'jurnal', 
         'volume', 

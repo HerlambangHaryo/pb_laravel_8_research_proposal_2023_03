@@ -22,7 +22,7 @@
                     <table id="datatableDefault" class="table  ">
                         <thead class=" ">
                             <tr>               
-                                <x-html.th-content-width title="Urutan" width="10%" />
+                                <x-html.th-content-width title="Urutan" width="5%" />
                                 <x-html.th-content title="Judul" />  
                                 <x-html.th-content-width title="Bulan Pengerjaan" width="5%" /> 
                                 <x-html.th-content title="Indikator Capaian" />    

@@ -43,6 +43,8 @@ class Pengalaman_pengabdianController extends Controller
             
         // ----------------------------------------------------------- Action 
             $data           = Pengalaman_pengabdian::where('id_peneliti', '=', $id)
+                                ->orderBy('tahun')
+                                ->orderBy('judul')
                                 ->get();
 
             $Peneliti       = Peneliti::where('id', '=', $id)

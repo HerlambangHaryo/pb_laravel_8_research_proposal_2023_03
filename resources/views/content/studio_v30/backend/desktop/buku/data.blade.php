@@ -3,9 +3,6 @@
 @section('title', $panel_name)
 
 @section('content')   
-    @include('content.include.data_menu_peneliti')
-    @include('content.include.sub_menu_peneliti')
-    
     <div id="datatable" class="mb-5">
         <div class="card">
             <div class="card-header">
@@ -26,11 +23,8 @@
                         <thead class=" ">
                             <tr>               
                                 <x-html.th-content-width title="No." width="5%" />
-                                <x-html.th-content title="Judul" />  
-                                <x-html.th-content title="Jurnal" />   
-                                <x-html.th-content-width title="Tahun" width="5%" /> 
-                                <x-html.th-content-width title="Volume" width="5%" /> 
-                                <x-html.th-content-width title="Nomor" width="5%" /> 
+                                <x-html.th-content title="Judul" />    
+                                <x-html.th-content-width title="Author" width="30%" /> 
                                 <x-html.th-content-width title="Link" width="12%" /> 
                                 <x-html.th-content-width title="Action." width="10%" /> 
                             </tr>
@@ -44,19 +38,12 @@
                                     </td>  
                                     <td class="text-start"> 
                                         {{ $row->judul }}
-                                    </td>   
-                                    <td class="text-start"> 
-                                        {{ $row->jurnal }}
-                                    </td>   
-                                    <td class="text-start"> 
-                                        {{ $row->tahun }}
                                     </td>    
-                                    <td class="text-start"> 
-                                        {{ $row->volume }}
-                                    </td>   
-                                    <td class="text-start"> 
-                                        {{ $row->nomor }}
-                                    </td>  
+                                    <td class="text-start">   
+                                        @foreach($row->peneliti as $row2) 
+                                            {{ $loop->iteration }}. {{ $row2->nama }}<br/>
+                                        @endforeach
+                                    </td> 
                                     <td class="text-center"> 
                                         @if(!is_null($row->url))
                                             <a href="{{ $row->url }}" target="_blank">
@@ -64,8 +51,8 @@
                                                 <i class="fas fa-external-link-square-alt"></i>
                                             </a>  
                                         @endif
-                                    </td>   
-                                    <td class="text-start">  
+                                    </td>    
+                                    <td class="text-center">  
                                         <div class="menu">
                                             <div class="menu-item dropdown">
                                                 <a href="#" data-bs-toggle="dropdown" data-display="static" class="menu-link"> 
@@ -76,8 +63,8 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right me-lg-3"> 
                                                     <a class="dropdown-item d-flex align-items-center" 
-                                                        href="{{ route($content.'.show', $row->id) }}">
-                                                        Author 
+                                                        href="{{ route('Karya_buku.show', $row->id) }}">
+                                                        Show 
                                                         <i class="fa fa-eye fa-fw ms-auto text-dark text-opacity-50"></i>
                                                     </a>
                                                     <a class="dropdown-item d-flex align-items-center" 
@@ -93,7 +80,6 @@
                                                 </div>
                                             </div>
                                         </div> 
-                                        
                                     </td>
                                 </tr>
                                 @empty 

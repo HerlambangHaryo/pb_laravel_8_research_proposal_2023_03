@@ -9,6 +9,7 @@ use DB;
 
 use App\Models\Karya_buku;
 use App\Models\Peneliti;
+use App\Models\Penulis_karya_buku;
 
 class Karya_bukuController extends Controller
 {
@@ -42,8 +43,13 @@ class Karya_bukuController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action 
-            $data           = Karya_buku::where('id_peneliti', '=', $id)
-                                ->get();
+            $pre_data       = Penulis_karya_buku::select('id_karya_buku')
+                                ->where('id_peneliti', '=', $id);
+
+            $data           = Karya_buku::whereIn('id', $pre_data) 
+                                ->orderBy('tahun')
+                                ->orderBy('judul')
+                                ->get(); 
 
             $Peneliti       = Peneliti::where('id', '=', $id)
                                 ->first();
@@ -221,6 +227,8 @@ class Karya_bukuController extends Controller
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
 
+            session(['id_karya_buku' => $Karya_buku->id]);
+
         // ----------------------------------------------------------- Agent
             $agent              = new Agent(); 
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
@@ -241,6 +249,9 @@ class Karya_bukuController extends Controller
             $data = Karya_buku::where('id', '=', $Karya_buku->id)
                             ->get(); 
 
+            $data2 = Penulis_karya_buku::where('id_karya_buku', '=', $Karya_buku->id)
+                        ->get(); 
+
         // ----------------------------------------------------------- Send
             return view($view,  
                 compact(
@@ -253,7 +264,8 @@ class Karya_bukuController extends Controller
                     'active_as',
                     'view_file', 
                     'Karya_buku',   
-                    'data',  
+                    'data',    
+                    'data2',  
                 )
             );
         ///////////////////////////////////////////////////////////////

@@ -75,7 +75,4 @@
         </div> 
     </div>            
 </div> 
-    
-@include('content.studio_v30.backend.desktop.penulis_karya_buku.data')
-
 @endsection

@@ -3,9 +3,6 @@
 @section('title', $panel_name)
 
 @section('content')   
-    @include('content.include.data_menu_peneliti')
-    @include('content.include.sub_menu_peneliti')
-    
     <div id="datatable" class="mb-5">
         <div class="card">
             <div class="card-header">
@@ -25,28 +22,34 @@
                     <table id="datatableDefault" class="table  ">
                         <thead class=" ">
                             <tr>               
-                                <x-html.th-content-width title="No." width="5%" />
-                                <x-html.th-content title="Judul" />    
-                                <x-html.th-content-width title="Action." width="10%" /> 
+                                <x-html.th-content-width title="No." width="10%" />
+                                <x-html.th-content title="Nama" />  
+                                <x-html.th-content title="Jabatan" />  
+                                <x-html.th-content title="NIDN" />  
+                                <x-html.th-content title="Email" />   
                             </tr>
                         </thead>
                         <tbody>   
-
-                            @forelse ($data as $row)
+                                <?php
+                                    dd($Karya_buku->nama);
+                                ?>
                                 <tr>
                                     <td class="text-center"> 
-                                        {{ $loop->iteration }}
+                                        {{ $Karya_buku->id }}
                                     </td>  
                                     <td class="text-start"> 
-                                        {{ $row->judul }}
-                                    </td>    
-                                    <td class="text-start"> 
-                                        <x-studio_v30.menu-dropdown-data content="{{ $content }}" id="{{ $row->id }}" /> 
-                                    </td>
-                                </tr>
-                                @empty 
-                                    
-                            @endforelse     
+                                        {{ $Karya_buku->nama }}
+                                    </td>  
+                                    <td class="text-center"> 
+                                        {{ $Karya_buku->jabatan_fungsional }}
+                                    </td>  
+                                    <td class="text-center"> 
+                                        {{ $Karya_buku->nidn }}
+                                    </td>  
+                                    <td class="text-center"> 
+                                        {{ $Karya_buku->email }}
+                                    </td>   
+                                </tr> 
                         </tbody>
                     </table>   
                 </div>

@@ -22,7 +22,7 @@
                     <table id="datatableDefault" class="table  ">
                         <thead class=" ">
                             <tr>               
-                                <x-html.th-content-width title="No." width="10%" />
+                                <x-html.th-content-width title="No." width="5%" />
                                 <x-html.th-content title="Nama" />  
                                 <x-html.th-content title="Jabatan" />  
                                 <x-html.th-content title="NIDN" />  
@@ -35,7 +35,7 @@
                             @forelse ($data as $row)
                                 <tr>
                                     <td class="text-center"> 
-                                        {{ $row->id }}
+                                        {{ $loop->iteration }}
                                     </td>  
                                     <td class="text-start"> 
                                         {{ $row->nama }}

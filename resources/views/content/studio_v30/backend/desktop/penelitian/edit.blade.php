@@ -81,7 +81,12 @@
                                             Pilih Peneliti
                                         </option> 
                                         @foreach($peneliti as $row)
-                                            <option value="{{ $row->id }}">
+                                            <option value="{{ $row->id }}"
+                                                
+                                                @if($Penelitian->id_ketua == $row->id)
+                                                    selected
+                                                @endif    
+                                            >
                                                 {{ $row->nama }}
                                             </option> 
                                         @endforeach
@@ -100,7 +105,12 @@
                                             Pilih Peneliti
                                         </option> 
                                         @foreach($peneliti as $row)
-                                            <option value="{{ $row->id }}">
+                                            <option value="{{ $row->id }}"
+                                                
+                                                @if($Penelitian->id_anggota_1 == $row->id)
+                                                    selected
+                                                @endif    
+                                            >
                                                 {{ $row->nama }}
                                             </option> 
                                         @endforeach
@@ -119,7 +129,12 @@
                                             Pilih Peneliti
                                         </option> 
                                         @foreach($peneliti as $row)
-                                            <option value="{{ $row->id }}">
+                                            <option value="{{ $row->id }}"
+                                                
+                                                @if($Penelitian->id_anggota_2 == $row->id)
+                                                    selected
+                                                @endif    
+                                            >
                                                 {{ $row->nama }}
                                             </option> 
                                         @endforeach
@@ -138,7 +153,12 @@
                                             Pilih Peneliti
                                         </option> 
                                         @foreach($peneliti as $row)
-                                            <option value="{{ $row->id }}">
+                                            <option value="{{ $row->id }}"
+                                                
+                                                @if($Penelitian->id_mahasiswa_1 == $row->id)
+                                                    selected
+                                                @endif    
+                                            >
                                                 {{ $row->nama }}
                                             </option> 
                                         @endforeach
@@ -157,7 +177,12 @@
                                             Pilih Peneliti
                                         </option> 
                                         @foreach($peneliti as $row)
-                                            <option value="{{ $row->id }}">
+                                            <option value="{{ $row->id }}"
+                                                
+                                                @if($Penelitian->id_mahasiswa_2 == $row->id)
+                                                    selected
+                                                @endif    
+                                            >
                                                 {{ $row->nama }}
                                             </option> 
                                         @endforeach
@@ -189,7 +214,12 @@
                                             Pilih Peneliti
                                         </option> 
                                         @foreach($peneliti as $row)
-                                            <option value="{{ $row->id }}">
+                                            <option value="{{ $row->id }}"
+                                                
+                                                @if($Penelitian->id_ketua_pusat_studi == $row->id)
+                                                    selected
+                                                @endif    
+                                            >
                                                 {{ $row->nama }}
                                             </option> 
                                         @endforeach
@@ -208,7 +238,12 @@
                                             Pilih Peneliti
                                         </option> 
                                         @foreach($peneliti as $row)
-                                            <option value="{{ $row->id }}">
+                                            <option value="{{ $row->id }}"
+                                                
+                                                @if($Penelitian->id_dekan == $row->id)
+                                                    selected
+                                                @endif    
+                                            >
                                                 {{ $row->nama }}
                                             </option> 
                                         @endforeach

@@ -42,7 +42,7 @@
             <div class="menu-item @if($title == 'Penelitian') active @endif">
                 <a href="{{ route('Penelitian.index') }}" class="menu-link">
                     <span class="menu-icon">
-                        <i class="fas fa-book"></i>
+                        <i class="fas fa-atlas"></i>
                     </span>
                     <span class="menu-text">
                         Penelitian 
@@ -57,6 +57,17 @@
                     </span>
                     <span class="menu-text">
                         Publikasi 
+                    </span>
+                </a>
+            </div>  
+
+            <div class="menu-item @if($title == 'Buku') active @endif">
+                <a href="{{ route('Buku.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="fas fa-book"></i>
+                    </span>
+                    <span class="menu-text">
+                        Buku 
                     </span>
                 </a>
             </div>  

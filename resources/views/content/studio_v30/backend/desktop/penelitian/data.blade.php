@@ -35,7 +35,7 @@
                             @forelse ($data as $row)
                                 <tr>
                                     <td class="text-center"> 
-                                        {{ $row->id }}
+                                        {{ $loop->iteration }}
                                     </td>  
                                     <td class="text-start"> 
                                         {{ $row->judul }}

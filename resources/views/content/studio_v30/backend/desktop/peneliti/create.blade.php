@@ -183,32 +183,7 @@
                                     name="telepon"
                                 >
                             </div>
-                        </div>  
-                    <!-- Alamat Kantor -->
-                        <div class="form-group row mb-3">
-                            <label class="col-2 col-form-label">
-                                Alamat Kantor
-                            </label>
-                            <div class="col-6">
-                                <textarea 
-                                    class="form-control" 
-                                    name="alamat_kantor"  
-                                    rows="5"></textarea>  
-                            </div>
-                        </div>  
-                    <!-- Telepon Kantor -->
-                        <div class="form-group row mb-3">
-                            <label class="col-2 col-form-label">
-                                Telepon Kantor
-                            </label>
-                            <div class="col-6">
-                                <input 
-                                    type="text" 
-                                    class="form-control form-control-lg"  
-                                    name="telepon_kantor"
-                                >
-                            </div>
-                        </div>  
+                        </div>    
                     <!-- Lulusan yg dihasilkan -->
                         <div class="form-group row mb-3">
                             <label class="col-2 col-form-label">

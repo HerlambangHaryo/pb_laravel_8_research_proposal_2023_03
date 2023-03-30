@@ -44,6 +44,8 @@ class Pengalaman_penelitianController extends Controller
         // ----------------------------------------------------------- Action 
             $data           = Pengalaman_penelitian::where('id_peneliti', '=', $id)
                                 ->whereNull('deleted_at')
+                                ->orderBy('tahun')
+                                ->orderBy('judul')
                                 ->get();
 
             $Peneliti       = Peneliti::where('id', '=', $id)

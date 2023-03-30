@@ -94,6 +94,14 @@ use Illuminate\Support\Facades\Route;
                 ->name('Publikasi.deletedata');  
         Route::resource('Publikasi', PublikasiController::class); 
     //-----------------------------------------------------------  
+            Route::get('Penulis_karya_buku/{Penulis_karya_buku}/deletedata', 'Penulis_karya_bukuController@deletedata')
+            ->name('Penulis_karya_buku.deletedata');  
+        Route::resource('Penulis_karya_buku', Penulis_karya_bukuController::class); 
+    //-----------------------------------------------------------  
+            Route::get('Buku/{Buku}/deletedata', 'BukuController@deletedata')
+                ->name('Buku.deletedata');  
+        Route::resource('Buku', BukuController::class); 
+    //-----------------------------------------------------------  
     
  
  

@@ -1,5 +1,5 @@
 <?php
-    $content = 'Penulis_publikasi_artikel';
+    $content = 'Penulis_karya_buku';
     $panel_name = ucwords(str_replace("_"," ", $content));
 ?>
 <div id="datatable" class="mb-5">
