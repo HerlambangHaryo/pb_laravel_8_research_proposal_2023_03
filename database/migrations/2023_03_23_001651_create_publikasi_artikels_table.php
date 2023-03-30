@@ -14,8 +14,7 @@ class CreatePublikasiArtikelsTable extends Migration
     public function up()
     {
         Schema::create('publikasi_artikels', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_peneliti');
+            $table->id(); 
             $table->string('judul');
             $table->string('jurnal')->nullable();
             $table->string('volume')->nullable();

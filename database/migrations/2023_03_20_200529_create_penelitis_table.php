@@ -58,6 +58,9 @@ class CreatePenelitisTable extends Migration
             $table->string('s3_pembimbing')->nullable(); 
 
             $table->integer('id_perguruan_tinggi')->nullable(); 
+            
+            $table->string('screenshot_sister')->nullable(); 
+            $table->string('screenshot_sinta')->nullable(); 
 
             
 

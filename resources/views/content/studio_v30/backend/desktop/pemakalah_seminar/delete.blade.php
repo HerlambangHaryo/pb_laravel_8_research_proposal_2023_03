@@ -52,7 +52,7 @@
                                 </label>
                                 <div class="col-6">
                                     <input 
-                                        type="date" 
+                                        type="text" 
                                         class="form-control form-control-lg"  
                                         name="tanggal"
                                         value="{{ old('tanggal', $Pemakalah_seminar->tanggal) }}"

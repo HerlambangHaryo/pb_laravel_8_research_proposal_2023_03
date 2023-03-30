@@ -3,9 +3,10 @@
 @section('title', $panel_name)
 
 @section('content')    
-    <form class="col-12" action="{{ route($content.'.store' ) }}" 
+    <form class="col-12" action="{{ route($content.'.update', $Publikasi->id ) }}" 
         method="POST"  > 
         @csrf   
+        @method('PUT') 
 
         <div class="card mb-4">
             <x-studio_v30.general-form-card-header 
@@ -22,7 +23,7 @@
                                 <textarea 
                                     class="form-control" 
                                     name="judul"  
-                                    rows="5"></textarea>    
+                                    rows="5">{{ old('judul', $Publikasi->judul) }}</textarea>   
                             </div>
                         </div> 
                     <!-- Jurnal -->
@@ -34,7 +35,7 @@
                                 <textarea 
                                     class="form-control" 
                                     name="jurnal"  
-                                    rows="5"></textarea>     
+                                    rows="5">{{ old('jurnal', $Publikasi->jurnal) }}</textarea>    
                             </div>
                         </div> 
                     <!-- Volume -->
@@ -47,6 +48,7 @@
                                     type="text" 
                                     class="form-control form-control-lg"  
                                     name="volume"
+                                    value="{{ old('volume', $Publikasi->volume) }}"
                                 >
                             </div>
                         </div> 
@@ -60,6 +62,7 @@
                                     type="text" 
                                     class="form-control form-control-lg"  
                                     name="nomor"
+                                    value="{{ old('nomor', $Publikasi->nomor) }}"
                                 >
                             </div>
                         </div> 
@@ -73,6 +76,7 @@
                                     type="year" 
                                     class="form-control form-control-lg"  
                                     name="tahun"
+                                    value="{{ old('tahun', $Publikasi->tahun) }}"
                                 >
                             </div>
                         </div> 
@@ -87,13 +91,13 @@
                                 <textarea 
                                     class="form-control" 
                                     name="url"  
-                                    rows="5"></textarea> 
+                                    rows="5">{{ old('url', $Publikasi->url) }}</textarea> 
                             </div>
                         </div>  
                 </div> 
             </div>            
-        </div> 
- 
+        </div>  
+
         <x-studio_v30.button-submit />
     </form>
 @endsection

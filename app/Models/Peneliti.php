@@ -66,7 +66,10 @@ class Peneliti extends Model
         's3_tahun_lulus',
         's3_judul',
         's3_pembimbing', 
-        'id_perguruan_tinggi'
+        'id_perguruan_tinggi', 
+
+        'screenshot_sister', 
+        'screenshot_sinta'
     ];
 
     protected $hidden = ["deleted_at"];

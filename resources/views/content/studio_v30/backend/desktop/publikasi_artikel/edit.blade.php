@@ -32,12 +32,10 @@
                                 Jurnal
                             </label>
                             <div class="col-6">
-                                <input 
-                                    type="text" 
-                                    class="form-control form-control-lg"  
-                                    name="jurnal"
-                                    value="{{ old('jurnal', $Publikasi_artikel->jurnal) }}"
-                                >
+                                <textarea 
+                                    class="form-control" 
+                                    name="jurnal"  
+                                    rows="5">{{ old('jurnal', $Publikasi_artikel->jurnal) }}</textarea>    
                             </div>
                         </div> 
                     <!-- Volume -->
@@ -45,7 +43,7 @@
                             <label class="col-2 col-form-label">
                                 Volume
                             </label>
-                            <div class="col-6">
+                            <div class="col-4">
                                 <input 
                                     type="text" 
                                     class="form-control form-control-lg"  
@@ -59,7 +57,7 @@
                             <label class="col-2 col-form-label">
                                 Nomor
                             </label>
-                            <div class="col-6">
+                            <div class="col-4">
                                 <input 
                                     type="text" 
                                     class="form-control form-control-lg"  

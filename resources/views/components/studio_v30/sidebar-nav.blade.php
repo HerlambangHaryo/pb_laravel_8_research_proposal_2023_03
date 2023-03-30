@@ -50,7 +50,17 @@
                 </a>
             </div>  
 
-            
+            <div class="menu-item @if($title == 'Publikasi') active @endif">
+                <a href="{{ route('Publikasi.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="far fa-newspaper"></i>
+                    </span>
+                    <span class="menu-text">
+                        Publikasi 
+                    </span>
+                </a>
+            </div>  
+
 
         </div>
         <!-- END menu -->

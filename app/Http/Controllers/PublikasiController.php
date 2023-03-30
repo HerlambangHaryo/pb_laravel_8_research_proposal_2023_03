@@ -9,22 +9,21 @@ use DB;
 
 use App\Models\Publikasi_artikel;
 use App\Models\Peneliti;
-use App\Models\Penulis_publikasi_artikel;
+use App\Models\Penulis_Publikasi_artikel;
 
-class Publikasi_artikelController extends Controller
+class PublikasiController extends Controller
 {
     //
     public $template    = 'studio_v30';
     public $mode        = '';
     public $themecolor  = '';
-    public $content     = 'Publikasi_artikel';
+    public $content     = 'Publikasi';
     public $type        = 'backend';
-
-    public function peneliti($id)
+     
+    public function index()
     {
         // ----------------------------------------------------------- Auth
             // $user = auth()->user();   
-            session(['id_peneliti' => $id]);
 
         // ----------------------------------------------------------- Agent
             $agent              = new Agent(); 
@@ -43,15 +42,7 @@ class Publikasi_artikelController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action 
-            $pre_data       = Penulis_publikasi_artikel::select('id_publikasi_artikel')
-                                ->where('id_peneliti', '=', $id);
-
-            $data           = Publikasi_artikel::whereIn('id', $pre_data)
-                                ->whereRaw('tahun >= YEAR(DATE_SUB(CURDATE(), INTERVAL 5 YEAR))')
-                                ->get();
-                                     
-            $Peneliti       = Peneliti::where('id', '=', $id)
-                                ->first();
+            $data           = Publikasi_artikel::get();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -64,14 +55,12 @@ class Publikasi_artikelController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'id', 
                     'data', 
-                    'Peneliti', 
                 )
             );
         ///////////////////////////////////////////////////////////////
     } 
-    
+
     public function create()
     {
         // ----------------------------------------------------------- Auth
@@ -115,16 +104,14 @@ class Publikasi_artikelController extends Controller
         // ----------------------------------------------------------- Auth
             // $user = auth()->user();  
             
-        // ----------------------------------------------------------- Initialize
-            $id_peneliti = $request->session()->get('id_peneliti');
+        // ----------------------------------------------------------- Initialize 
 
             $content        = $this->content;
 
         // ----------------------------------------------------------- Action  
         
-            $data = Publikasi_artikel::create([ 
-                'id_peneliti'       => $id_peneliti,  
-                'judul'             => $request->judul,   
+            $data = Publikasi_artikel::create([  
+                'judul'             => ucwords($request->judul),   
                 'jurnal'            => $request->jurnal,
                 'volume'            => $request->volume,
                 'nomor'             => $request->nomor,
@@ -136,7 +123,7 @@ class Publikasi_artikelController extends Controller
             if($data)
             {
                 return redirect()
-                    ->route($content.'.Peneliti', $id_peneliti)
+                    ->route($content.'.index')
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else
@@ -148,7 +135,7 @@ class Publikasi_artikelController extends Controller
         ///////////////////////////////////////////////////////////////
     }
 
-    public function edit(Publikasi_artikel $Publikasi_artikel)
+    public function edit(Publikasi_artikel $Publikasi)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -182,13 +169,13 @@ class Publikasi_artikelController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'Publikasi_artikel',   
+                    'Publikasi',   
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
 
-    public function update(Request $request, Publikasi_artikel $Publikasi_artikel)
+    public function update(Request $request, Publikasi_artikel $Publikasi)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -197,23 +184,23 @@ class Publikasi_artikelController extends Controller
             $content        = $this->content;
 
         // ----------------------------------------------------------- Action   
-            $data = Publikasi_artikel::findOrFail($Publikasi_artikel->id); 
+            $data = Publikasi_artikel::findOrFail($Publikasi->id); 
 
             $data->update([ 
-                'judul'             => $request->judul,   
+                'judul'             => ucwords($request->judul),   
                 'jurnal'            => $request->jurnal,
                 'volume'            => $request->volume,
                 'nomor'             => $request->nomor,
                 'tahun'             => $request->tahun,  
-                'url'               => $request->url,      
+                'url'               => $request->url,    
             ]);  
                 
         // ----------------------------------------------------------- Send
             if($data)
             {
-                # Publikasi_artikel/Peneliti/1
+                # Publikasi/Peneliti/1
                 return redirect()
-                    ->route($content.'.Peneliti', $data->id_peneliti)
+                    ->route($content.'.index')
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else
@@ -225,12 +212,11 @@ class Publikasi_artikelController extends Controller
         ///////////////////////////////////////////////////////////////
     }
 
-    public function show(Publikasi_artikel $Publikasi_artikel)
+    public function show(Publikasi_artikel $Publikasi)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
-
-            session(['id_publikasi_artikel' => $Publikasi_artikel->id]);
+ 
         // ----------------------------------------------------------- Agent
             $agent              = new Agent(); 
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
@@ -248,10 +234,10 @@ class Publikasi_artikelController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action  
-            $data = Publikasi_artikel::where('id', '=', $Publikasi_artikel->id)
+            $data = Publikasi_artikel::where('id', '=', $Publikasi->id)
                             ->get(); 
 
-            $data2 = Penulis_publikasi_artikel::where('id_publikasi_artikel', '=', $Publikasi_artikel->id)
+            $data2 = Penulis_publikasi_artikel::where('id_publikasi_artikel', '=', $Publikasi->id)
                         ->get(); 
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -264,7 +250,7 @@ class Publikasi_artikelController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'Publikasi_artikel',   
+                    'Publikasi',   
                     'data',  
                     'data2',  
                 )
@@ -272,7 +258,7 @@ class Publikasi_artikelController extends Controller
         ///////////////////////////////////////////////////////////////
     }
 
-    public function deletedata(Publikasi_artikel $Publikasi_artikel)
+    public function deletedata(Publikasi $Publikasi)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -306,7 +292,7 @@ class Publikasi_artikelController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
-                    'Publikasi_artikel',   
+                    'Publikasi',   
                 )
             );
         ///////////////////////////////////////////////////////////////
