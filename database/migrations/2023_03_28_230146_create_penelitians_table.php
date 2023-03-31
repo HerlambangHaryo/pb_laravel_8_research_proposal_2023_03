@@ -22,7 +22,7 @@ class CreatePenelitiansTable extends Migration
             $table->integer('id_mahasiswa_2')->nullable();
             $table->string('judul');
             $table->string('skema')->nullable();
-            $table->year('tahun')->nullable();
+            $table->date('tanggal')->nullable();
             $table->integer('id_ketua_pusat_studi')->nullable();
             $table->integer('id_dekan')->nullable();  
             $table->timestamps();

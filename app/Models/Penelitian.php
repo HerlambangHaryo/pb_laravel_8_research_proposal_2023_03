@@ -40,6 +40,22 @@ class Penelitian extends Model
                 ]);
     }
 
+    public function mahasiswa_1()
+    {         
+        return $this->belongsTo(Peneliti::class,'id_mahasiswa_1', 'id')
+                ->withDefault([
+                    'nama' => '',
+                ]);
+    }
+    
+    public function mahasiswa_2()
+    {         
+        return $this->belongsTo(Peneliti::class,'id_mahasiswa_2', 'id')
+                ->withDefault([
+                    'nama' => '',
+                ]);
+    }
+
     protected $fillable = [
         'id_ketua', 
         'id_anggota_1', 
@@ -48,7 +64,7 @@ class Penelitian extends Model
         'id_mahasiswa_2', 
         'judul', 
         'skema', 
-        'tahun', 
+        'tanggal', 
         'id_ketua_pusat_studi', 
         'id_dekan',  
     ];

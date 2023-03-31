@@ -102,6 +102,50 @@ use Illuminate\Support\Facades\Route;
                 ->name('Buku.deletedata');  
         Route::resource('Buku', BukuController::class); 
     //-----------------------------------------------------------  
+        Route::resource('Print', PrintController::class); 
+    //-----------------------------------------------------------   
+            Route::get('Latar_belakang/Penelitian/{Penelitian}', 'Latar_belakangController@Penelitian')
+                ->name('Latar_belakang.Penelitian');  
+            Route::get('Latar_belakang/{Latar_belakang}/deletedata', 'Latar_belakangController@deletedata')
+                ->name('Latar_belakang.deletedata');  
+        Route::resource('Latar_belakang', Latar_belakangController::class); 
+    //-----------------------------------------------------------  
+            Route::get('Ringkasan/Penelitian/{Penelitian}', 'RingkasanController@Penelitian')
+                ->name('Ringkasan.Penelitian');  
+            Route::get('Ringkasan/{Ringkasan}/deletedata', 'RingkasanController@deletedata')
+                ->name('Ringkasan.deletedata');  
+        Route::resource('Ringkasan', RingkasanController::class); 
+    //-----------------------------------------------------------  
+Route::get('Tinjauan_pustaka/Penelitian/{Penelitian}', 'Tinjauan_pustakaController@Penelitian')
+->name('Tinjauan_pustaka.Penelitian');  
+Route::get('Tinjauan_pustaka/{Tinjauan_pustaka}/deletedata', 'Tinjauan_pustakaController@deletedata')
+->name('Tinjauan_pustaka.deletedata');  
+Route::resource('Tinjauan_pustaka', Tinjauan_pustakaController::class); 
+//-----------------------------------------------------------  
+Route::get('Metode_penelitian/Penelitian/{Penelitian}', 'Metode_penelitianController@Penelitian')
+->name('Metode_penelitian.Penelitian');  
+Route::get('Metode_penelitian/{Metode_penelitian}/deletedata', 'Metode_penelitianController@deletedata')
+->name('Metode_penelitian.deletedata');  
+Route::resource('Metode_penelitian', Metode_penelitianController::class); 
+//-----------------------------------------------------------  
+Route::get('Jadwal_penelitian/Penelitian/{Penelitian}', 'Jadwal_penelitianController@Penelitian')
+->name('Jadwal_penelitian.Penelitian');  
+Route::get('Jadwal_penelitian/{Jadwal_penelitian}/deletedata', 'Jadwal_penelitianController@deletedata')
+->name('Jadwal_penelitian.deletedata');  
+Route::resource('Jadwal_penelitian', Jadwal_penelitianController::class); 
+//-----------------------------------------------------------  
+Route::get('Anggaran_penelitian/Penelitian/{Penelitian}', 'Anggaran_penelitianController@Penelitian')
+->name('Anggaran_penelitian.Penelitian');  
+Route::get('Anggaran_penelitian/{Anggaran_penelitian}/deletedata', 'Anggaran_penelitianController@deletedata')
+->name('Anggaran_penelitian.deletedata');  
+Route::resource('Anggaran_penelitian', Anggaran_penelitianController::class); 
+//-----------------------------------------------------------  
+Route::get('Daftar_pustaka/Penelitian/{Penelitian}', 'Daftar_pustakaController@Penelitian')
+->name('Daftar_pustaka.Penelitian');  
+Route::get('Daftar_pustaka/{Daftar_pustaka}/deletedata', 'Daftar_pustakaController@deletedata')
+->name('Daftar_pustaka.deletedata');  
+Route::resource('Daftar_pustaka', Daftar_pustakaController::class); 
+//-----------------------------------------------------------  
     
  
  

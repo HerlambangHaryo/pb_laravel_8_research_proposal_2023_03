@@ -9,6 +9,7 @@ use DB;
 
 use App\Models\Peneliti;
 use App\Models\Perguruan_tinggi;
+use Illuminate\Support\Facades\Storage;
 
 class PenelitiController extends Controller
 {
@@ -291,6 +292,16 @@ class PenelitiController extends Controller
                     $ss_sister = $request->file('screenshot_sister');
                     $ss_sister->storeAs('public/peneliti', $ss_sister->hashName());
                 }
+                if($request->file('screenshot_sinta') != "")
+                {
+                    //hapus old image
+                    Storage::disk('local')->delete('public/peneliti/'.$data->screenshot_sinta);
+
+                    //upload new image
+                    $ss_sinta = $request->file('screenshot_sinta');
+                    $ss_sinta->storeAs('public/peneliti', $ss_sinta->hashName());
+                }
+ 
  
                 
                 $data->update([
@@ -334,6 +345,9 @@ class PenelitiController extends Controller
                     's3_pembimbing'                 => $request->s3_pembimbing,   
     
                     'id_perguruan_tinggi'           => $request->id_perguruan_tinggi, 
+
+                    'screenshot_sister'           => $ss_sister->hashName(), 
+                    'screenshot_sinta'           => $ss_sinta->hashName(), 
           
                 ]);  
 

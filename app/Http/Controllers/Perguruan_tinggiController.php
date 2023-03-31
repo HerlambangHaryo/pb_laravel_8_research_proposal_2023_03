@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
 
 use App\Models\Perguruan_tinggi;
+use Illuminate\Support\Facades\Storage;
 
 class Perguruan_tinggiController extends Controller
 {
@@ -111,17 +112,36 @@ class Perguruan_tinggiController extends Controller
                 'nama'     => 'required', 
             ]); 
 
-            $data = Perguruan_tinggi::create([ 
-                'nama'              => $request->nama,  
-                'alamat'            => $request->alamat,  
-                'kelurahan'         => $request->kelurahan,  
-                'kecamatan'         => $request->kecamatan,  
-                'kota'              => $request->kota,  
-                'provinsi'          => $request->provinsi,   
-                'kodepos'           => $request->kodepos,  
-                'telepon'           => $request->telepon,   
-                'fax'               => $request->fax,       
-            ]);  
+            if($request->file('logo') == "") {
+
+                $blog->update([
+                    'title'     => $request->title,
+                    'content'   => $request->content
+                ]);
+        
+            } else { 
+                        
+                //hapus old image
+                Storage::disk('local')->delete('public/penelitian/'.$blog->image);
+
+                //upload new image
+                $image = $request->file('image');
+                $image->storeAs('public/blogs', $image->hashName());
+                
+                $data = Perguruan_tinggi::create([ 
+                    'nama'              => $request->nama,  
+                    'alamat'            => $request->alamat,  
+                    'kelurahan'         => $request->kelurahan,  
+                    'kecamatan'         => $request->kecamatan,  
+                    'kota'              => $request->kota,  
+                    'provinsi'          => $request->provinsi,   
+                    'kodepos'           => $request->kodepos,  
+                    'telepon'           => $request->telepon,   
+                    'fax'               => $request->fax,       
+                    'kode'              => $request->kode,       
+                    'kode'              => $request->kode,      
+                ]);  
+            }
 
         // ----------------------------------------------------------- Send
             if($data)
@@ -194,17 +214,45 @@ class Perguruan_tinggiController extends Controller
 
             $data = Perguruan_tinggi::findOrFail($Perguruan_tinggi->id); 
 
-            $data->update([
-                'nama'              => $request->nama,  
-                'alamat'            => $request->alamat,  
-                'kelurahan'         => $request->kelurahan,  
-                'kecamatan'         => $request->kecamatan,  
-                'kota'              => $request->kota,  
-                'provinsi'          => $request->provinsi,   
-                'kodepos'           => $request->kodepos,  
-                'telepon'           => $request->telepon,  
-                'fax'               => $request->fax,        
-            ]);  
+            
+            if($request->file('logo') == "") {
+
+                $data->update([
+                    'nama'              => $request->nama,  
+                    'alamat'            => $request->alamat,  
+                    'kelurahan'         => $request->kelurahan,  
+                    'kecamatan'         => $request->kecamatan,  
+                    'kota'              => $request->kota,  
+                    'provinsi'          => $request->provinsi,   
+                    'kodepos'           => $request->kodepos,  
+                    'telepon'           => $request->telepon,  
+                    'fax'               => $request->fax,    
+                    'kode'               => $request->kode,         
+                ]);  
+        
+            } else { 
+                        
+                //hapus old image
+                Storage::disk('local')->delete('public/perguruan_tinggi/'.$data->logo);
+
+                //upload new image
+                $image = $request->file('logo');
+                $image->storeAs('public/perguruan_tinggi', $image->hashName());
+ 
+                $data->update([
+                    'nama'              => $request->nama,  
+                    'alamat'            => $request->alamat,  
+                    'kelurahan'         => $request->kelurahan,  
+                    'kecamatan'         => $request->kecamatan,  
+                    'kota'              => $request->kota,  
+                    'provinsi'          => $request->provinsi,   
+                    'kodepos'           => $request->kodepos,  
+                    'telepon'           => $request->telepon,  
+                    'fax'               => $request->fax,    
+                    'kode'               => $request->kode,    
+                    'logo'              => $image->hashName(),    
+                ]);  
+            }
                 
         // ----------------------------------------------------------- Send
             if($data)

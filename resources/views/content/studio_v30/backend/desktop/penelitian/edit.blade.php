@@ -4,6 +4,7 @@
 
 @section('content')    
     <form class="col-12" action="{{ route($content.'.update', $Penelitian->id ) }}" 
+        enctype="multipart/form-data"
         method="POST"  > 
         @csrf   
         @method('PUT') 
@@ -42,17 +43,17 @@
                                 >
                             </div>
                         </div>  
-                        <!-- Tahun -->
+                        <!-- Tanggal -->
                             <div class="form-group row mb-3">
                                 <label class="col-2 col-form-label">
-                                    Tahun
+                                    Tanggal
                                 </label>
                                 <div class="col-2">
                                     <input  
-                                        type="number" min="1900" max="2099"
+                                        type="date" 
                                         class="form-control form-control-lg"  
-                                        name="tahun"
-                                        value="{{ old('tahun', $Penelitian->tahun) }}"
+                                        name="tanggal"
+                                        value="{{ old('tanggal', $Penelitian->tanggal) }}"
                                     >
                                 </div>
                             </div>  

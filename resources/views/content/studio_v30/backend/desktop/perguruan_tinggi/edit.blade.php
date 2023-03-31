@@ -3,7 +3,8 @@
 @section('title', $panel_name)
 
 @section('content')    
-    <form class="col-12" action="{{ route($content.'.update', $Perguruan_tinggi->id ) }}" 
+    <form class="col-12" action="{{ route($content.'.update', $Perguruan_tinggi->id ) }}"
+        enctype="multipart/form-data" 
         method="POST"  > 
         @csrf   
         @method('PUT') 
@@ -137,6 +138,33 @@
                                     class="form-control form-control-lg"  
                                     name="fax"
                                     value="{{ old('fax', $Perguruan_tinggi->fax) }}"
+                                >
+                            </div>
+                        </div>  
+                    <!-- Kode -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                Kode
+                            </label>
+                            <div class="col-6">
+                                <input 
+                                    type="text" 
+                                    class="form-control form-control-lg"  
+                                    name="kode"
+                                    value="{{ old('kode', $Perguruan_tinggi->kode) }}"
+                                >
+                            </div>
+                        </div>  
+                    <!-- Logo -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                Logo
+                            </label>
+                            <div class="col-6">
+                                <input  
+                                    type="file"  
+                                    class="form-control form-control-lg"  
+                                    name="logo" 
                                 >
                             </div>
                         </div>  

@@ -4,6 +4,7 @@
 
 @section('content')    
     <form class="col-12" action="{{ route($content.'.update', $Peneliti->id ) }}" 
+        enctype="multipart/form-data" 
         method="POST"  > 
         @csrf   
         @method('PUT') 

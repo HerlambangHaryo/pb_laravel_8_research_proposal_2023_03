@@ -40,16 +40,16 @@
                                 >
                             </div>
                         </div>  
-                        <!-- Tahun -->
+                        <!-- Tanggal -->
                             <div class="form-group row mb-3">
                                 <label class="col-2 col-form-label">
-                                    Tahun
+                                    Tanggal
                                 </label>
                                 <div class="col-2">
                                     <input  
-                                        type="number" min="1900" max="2099"
+                                        type="date" 
                                         class="form-control form-control-lg"  
-                                        name="tahun"
+                                        name="tanggal"
                                     >
                                 </div>
                             </div>  

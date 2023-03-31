@@ -29,7 +29,12 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/HelpAgent.php"
+            "app/Helpers/HelpAgent.php",
+            "app/Helpers/HelpBiodataPengusul.php",
+            "app/Helpers/HelpDate.php",
+            "app/Helpers/HelpSurat.php",
+            "app/Helpers/HelpSuratPengusul.php",
+            "app/Helpers/HelpSuratPernyataanKesanggupan.php"
 
         ]
     },

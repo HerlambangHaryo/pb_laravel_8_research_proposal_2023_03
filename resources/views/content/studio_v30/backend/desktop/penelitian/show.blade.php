@@ -13,7 +13,12 @@
                         </h5>   
                     </div>
                     <div class="col-6 text-end">   
-                        <x-studio_v30.button-create content="{{ $content }}" />
+                        <a href="{{ route('Print.show', $Penelitian->id) }}" 
+                            class="btn btn-primary"
+                            target="_blank">
+                            <i class="fas fa-print"></i>
+                            Print
+                        </a> 
                     </div>
                 </div>
             </div>
@@ -70,36 +75,5 @@
     </div>
 
     
-      
-    <div class="row mb-4">
-        <div class="col-12 text-center">  
-            <div class="btn-group">  
-                <a  
-                    href=" "
-                    class="btn btn-sm btn-secondary"> 
-                    Penghargaan
-                </a>  
-                <a  
-                    href=" "
-                    class="btn btn-sm btn-secondary"> 
-                    Isi Proposal
-                </a> 
-                <a  
-                    href="{{ route('Jadwal_penelitian.index') }}"
-                    class="btn btn-sm btn-secondary"> 
-                    Jadwal Penelitian
-                </a> 
-                <a  
-                    href=" "
-                    class="btn btn-sm btn-secondary"> 
-                    Anggaran Penelitian
-                </a> 
-                <a  
-                    href=" "
-                    class="btn btn-sm btn-secondary"> 
-                    Daftar Pustaka
-                </a> 
-            </div>
-        </div>
-    </div>
+    @include('content.include.sub_menu_penelitian')
 @endsection

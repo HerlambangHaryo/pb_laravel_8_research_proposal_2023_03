@@ -25,6 +25,9 @@ class CreatePerguruan_tinggiTable extends Migration
             $table->string('telepon')->nullable();
             $table->string('fax')->nullable();
 
+            $table->string('kode')->nullable();
+            $table->text('logo')->nullable();
+
 
             $table->timestamps();
             $table->softDeletes();

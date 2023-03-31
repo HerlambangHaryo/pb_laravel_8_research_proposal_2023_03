@@ -118,7 +118,7 @@ class PenelitianController extends Controller
                 'id_mahasiswa_2'            => $request->id_mahasiswa_2,
                 'judul'                     => $request->judul,
                 'skema'                     => $request->skema,
-                'tahun'                     => $request->tahun,
+                'tanggal'                     => $request->tanggal,
                 'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
                 'id_dekan'                  => $request->id_dekan,     
             ]);  
@@ -201,7 +201,7 @@ class PenelitianController extends Controller
                 'id_mahasiswa_2'            => $request->id_mahasiswa_2,
                 'judul'                     => $request->judul,
                 'skema'                     => $request->skema,
-                'tahun'                     => $request->tahun,
+                'tanggal'                     => $request->tanggal,
                 'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
                 'id_dekan'                  => $request->id_dekan,     
             ]);  

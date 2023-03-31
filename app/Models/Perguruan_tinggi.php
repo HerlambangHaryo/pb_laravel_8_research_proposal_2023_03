@@ -23,6 +23,9 @@ class Perguruan_tinggi extends Model
         'kodepos', 
         'telepon',  
         'fax',  
+
+        'kode',  
+        'logo',  
     ];
 
     protected $hidden = ["deleted_at"];
