@@ -3,7 +3,7 @@
     <div class="col-12 text-center">  
         <div class="btn-group"> 
             <a  
-                href="{{ route('Ringkasan.show', $Penelitian->id) }}"
+                href="{{ route('Ringkasan.Penelitian', $Penelitian->id) }}"
                 class="btn btn-sm btn-secondary 
                 @if($content == 'Ringkasan')
                     active

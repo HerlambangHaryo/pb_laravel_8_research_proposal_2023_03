@@ -150,7 +150,10 @@
                         </td>
                         <td>:</td>
                         <td>
-                            S-1 = {{ $Peneliti->lulusan_s1 }} Orang
+                            @if(!is_null($Peneliti->lulusan_s1))
+                                <br/>
+                                S-1 = {{ $Peneliti->lulusan_s1 }} Orang
+                            @endif 
                             @if(!is_null($Peneliti->lulusan_s2))
                                 <br/>
                                 S-2 = {{ $Peneliti->lulusan_s2 }} Orang

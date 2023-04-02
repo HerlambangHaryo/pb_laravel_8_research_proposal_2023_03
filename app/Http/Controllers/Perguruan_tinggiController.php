@@ -114,11 +114,19 @@ class Perguruan_tinggiController extends Controller
 
             if($request->file('logo') == "") {
 
-                $blog->update([
-                    'title'     => $request->title,
-                    'content'   => $request->content
-                ]);
-        
+                $data = Perguruan_tinggi::create([ 
+                    'nama'              => $request->nama,  
+                    'alamat'            => $request->alamat,  
+                    'kelurahan'         => $request->kelurahan,  
+                    'kecamatan'         => $request->kecamatan,  
+                    'kota'              => $request->kota,  
+                    'provinsi'          => $request->provinsi,   
+                    'kodepos'           => $request->kodepos,  
+                    'telepon'           => $request->telepon,   
+                    'fax'               => $request->fax,       
+                    'kode'              => $request->kode,       
+                ]);  
+
             } else { 
                         
                 //hapus old image

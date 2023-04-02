@@ -67,6 +67,31 @@ class Penelitian extends Model
         'tanggal', 
         'id_ketua_pusat_studi', 
         'id_dekan',  
+
+        'ringkasan_latar_belakang',
+        'ringkasan_tujuan',
+        'ringkasan_tahapan_metode',
+        'ringkasan_target_luaran',
+        'ringkasan_capaian_iku',
+        'ringkasan_capaian_tkt',
+        
+        'latar_belakang_umum',
+        'latar_belakang_permasalahan',
+        'latar_belakang_tujuan',
+        'latar_belakang_urgensi',
+        'latar_belakang_terkait_dengan_skema',
+
+        'tinjauan_pustaka_state_of_the_art',
+        'tinjauan_pustaka_sebelum',
+        'tinjauan_pustaka_setelah',
+        'tinjauan_pustaka_umum',
+
+        'metode_uraian',
+        'metode_gambar',
+        'metode_detail',
+        'metode_luaran',
+        'metode_capaian',
+        'metode_tugas_pengusul',
     ];
 
     protected $hidden = ["deleted_at"];
