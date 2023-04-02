@@ -169,15 +169,40 @@
         <div class="uppercase bold heading_bp">
             Ringkasan
         </div>
+        {{ define_paragraf($Penelitian->ringkasan_latar_belakang) }}
+        {{ define_paragraf($Penelitian->ringkasan_tujuan) }}
+        {{ define_paragraf($Penelitian->ringkasan_tahapan_metode) }}
+        {{ define_paragraf($Penelitian->ringkasan_target_luaran) }}
+        {{ define_paragraf($Penelitian->ringkasan_capaian_iku) }}
+        {{ define_paragraf($Penelitian->ringkasan_capaian_tkt) }}
+
         <div class="uppercase bold">
             Latar Belakang
         </div>
+        {{ define_paragraf($Penelitian->latar_belakang_umum) }}
+        {{ define_paragraf($Penelitian->latar_belakang_permasalahan) }}
+        {{ define_paragraf($Penelitian->latar_belakang_tujuan) }}
+        {{ define_paragraf($Penelitian->latar_belakang_urgensi) }}
+        {{ define_paragraf($Penelitian->latar_belakang_terkait_dengan_skema) }}
+
         <div class="uppercase bold">
             TINJAUAN PUSTAKA
         </div>
+        {{ define_paragraf($Penelitian->tinjauan_pustaka_state_of_the_art) }}
+        {{ define_paragraf($Penelitian->tinjauan_pustaka_sebelum) }}
+        {{ define_paragraf($Penelitian->tinjauan_pustaka_setelah) }}
+        {{ define_paragraf($Penelitian->tinjauan_pustaka_umum) }}
+
         <div class="uppercase bold">
             METODE
         </div>
+        {{ define_paragraf($Penelitian->metode_uraian) }}
+        {{ define_paragraf($Penelitian->metode_gambar) }}
+        {{ define_paragraf($Penelitian->metode_detail) }}
+        {{ define_paragraf($Penelitian->metode_luaran) }}
+        {{ define_paragraf($Penelitian->metode_capaian) }}
+        {{ define_paragraf($Penelitian->metode_tugas_pengusul) }}
+        
         <div class="uppercase bold">
             Jadwal
         </div>
