@@ -133,6 +133,9 @@ table.border {
 .bold{
     font-weight: bold;
 }
+.italic{
+    font-style: italic;
+}
 
 .border-bottom-ridge-4{
     border-bottom: 4px black ridge;

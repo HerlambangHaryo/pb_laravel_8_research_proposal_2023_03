@@ -92,6 +92,12 @@ use App\Models\Penghargaan;
                 }
 
                 $isi .= ' ">';
+
+                if($Peneliti == 'Ketua')
+                {
+                    $isi .= '<br/>';
+                }
+
                     $isi .= 'Biodata '.$Peneliti;
                 $isi .= '</div>'; 
 

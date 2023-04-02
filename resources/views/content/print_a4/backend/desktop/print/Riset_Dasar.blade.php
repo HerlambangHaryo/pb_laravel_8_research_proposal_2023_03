@@ -137,7 +137,7 @@
             <br/>
             {{ $Penelitian->ketua->perguruan_tinggi->nama }}
             <br/>
-            {{ define_year($Penelitian->tanggal) !!}
+            {{ define_year($Penelitian->tanggal) }}
         </div>
 
         <div class="page_break_only_screen"></div>
@@ -218,6 +218,8 @@
         <div class="uppercase bold heading_bp">
             LAMPIRAN 1. JUSTIFIKASI ANGGARAN PENELITIAN
         </div>
+ 
+        {!! define_tabel_anggaran($Penelitian->anggaran_penelitian) !!}
 
         <div class="page_break_only_screen"></div>
 

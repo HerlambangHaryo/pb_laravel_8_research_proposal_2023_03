@@ -105,7 +105,7 @@
             // ----------------------------------------------------------- Initialize 
                 $isi = '<br/>';
             // ----------------------------------------------------------- Action
-                $isi .= '<div class="text-juxtify text-indent">';  
+                $isi .= '<div class="text-justify text-indent">';  
                     $isi .= $text;  
                 $isi .= '</div>'; 
 

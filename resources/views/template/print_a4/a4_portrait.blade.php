@@ -7,6 +7,7 @@
 
         <link href="{{ asset('/public/print') }}/css/general.css" rel="stylesheet" />
 
+        <link rel="icon" type="image/x-icon" href="{{ asset('/public/app/') }}/app.ico">
         </head>
         <body class="A4x portraitx"> 
                 @yield('content')  

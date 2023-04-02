@@ -41,7 +41,7 @@
                                         {{ $row->judul }}
                                     </td>  
                                     <td class="text-center"> 
-                                        {{ $row->tahun }}
+                                        {{ define_year($row->tanggal) }} 
                                     </td>  
                                     <td class="text-center"> 
                                         {{ $row->skema }}

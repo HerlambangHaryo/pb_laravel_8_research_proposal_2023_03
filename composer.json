@@ -30,6 +30,7 @@
         },
         "files": [
             "app/Helpers/HelpAgent.php",
+            "app/Helpers/HelpAnggaranPenelitian.php",
             "app/Helpers/HelpBiodataPengusul.php",
             "app/Helpers/HelpDate.php",
             "app/Helpers/HelpSurat.php",

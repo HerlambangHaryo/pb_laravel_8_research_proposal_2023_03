@@ -14,8 +14,13 @@ class Penelitian extends Model
     use HasFactory;
     use SoftDeletes;
     
-    protected $softDelete = true;
-    
+    protected $softDelete = true; 
+
+    public function anggaran_penelitian()
+    {         
+        return $this->hasMany(anggaran_penelitian::class,'id_penelitian', 'id') ;
+    }
+
     public function ketua()
     {         
         return $this->belongsTo(Peneliti::class,'id_ketua', 'id')
