@@ -588,51 +588,51 @@
             </div>            
         </div> 
 
-<div class="card mb-4">
-    <div class="card-header">
-        <div class="row mt-1 mb-2">
-            <div class="col-6">
-                <h4>    
-                    Form {{ ucfirst($view_file) }} - Latar belakang pendidikan S3 {{$panel_name}} 
-                </h4>
-            </div>
-            <div class="col-6 text-right"> 
-            </div> 
-        </div>
-    </div>
-    <div class="card-body pb-4">     
-        <div class="row justify-content-md-center">     
-            <div class="col-11">  
-                <!-- Screenshot Sister -->
-                    <div class="form-group row mb-3">
-                        <label class="col-2 col-form-label">
-                            Screenshot Sister
-                        </label>
-                        <div class="col-6">
-                            <input 
-                                type="file" 
-                                class="form-control form-control-lg"  
-                                name="screenshot_sister" 
-                            >
-                        </div>
-                    </div>   
-                <!-- Screenshot Sinta -->
-                    <div class="form-group row mb-3">
-                        <label class="col-2 col-form-label">
-                            Screenshot Sinta
-                        </label>
-                        <div class="col-6">
-                            <input 
-                                type="file" 
-                                class="form-control form-control-lg"  
-                                name="screenshot_sinta" 
-                            >
-                        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <div class="row mt-1 mb-2">
+                    <div class="col-6">
+                        <h4>    
+                            Form {{ ucfirst($view_file) }} - Latar belakang pendidikan S3 {{$panel_name}} 
+                        </h4>
+                    </div>
+                    <div class="col-6 text-right"> 
                     </div> 
+                </div>
             </div>
+            <div class="card-body pb-4">     
+                <div class="row justify-content-md-center">     
+                    <div class="col-11">  
+                        <!-- Screenshot Sister -->
+                            <div class="form-group row mb-3">
+                                <label class="col-2 col-form-label">
+                                    Screenshot Sister
+                                </label>
+                                <div class="col-6">
+                                    <input 
+                                        type="file" 
+                                        class="form-control form-control-lg"  
+                                        name="screenshot_sister" 
+                                    >
+                                </div>
+                            </div>   
+                        <!-- Screenshot Sinta -->
+                            <div class="form-group row mb-3">
+                                <label class="col-2 col-form-label">
+                                    Screenshot Sinta
+                                </label>
+                                <div class="col-6">
+                                    <input 
+                                        type="file" 
+                                        class="form-control form-control-lg"  
+                                        name="screenshot_sinta" 
+                                    >
+                                </div>
+                            </div> 
+                    </div>
+                </div> 
+            </div>            
         </div> 
-    </div>            
-</div> 
 
         <x-studio_v30.button-submit />
     </form>

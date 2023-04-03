@@ -100,11 +100,16 @@
 
     if(!function_exists('define_paragraf'))
     {
-        function define_paragraf($text)
+        function define_paragraf($text, $helper, $maks)
         {
             // ----------------------------------------------------------- Initialize 
                 $isi = '<br/>';
-            // ----------------------------------------------------------- Action
+                $count = str_word_count($text);
+            // ----------------------------------------------------------- Action 
+                $isi .= '<span class="paragraf-helper">';    
+                    $isi .= $helper . ' (' . $count .' / '. $maks.')'; 
+                $isi .= '</span>'; 
+            
                 $isi .= '<div class="text-justify text-indent">';  
                     $isi .= $text;  
                 $isi .= '</div>'; 

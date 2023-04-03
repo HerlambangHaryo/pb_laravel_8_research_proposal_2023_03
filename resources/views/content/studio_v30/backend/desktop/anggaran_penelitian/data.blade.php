@@ -99,6 +99,7 @@
                                         Rp.{{ number_format($total_harga,0,",",".") }}
                                     </h4>
                                 </td>
+                                <td></td>
                             </tr>
                         </tfoot>
                     </table>   

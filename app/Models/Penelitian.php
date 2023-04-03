@@ -97,6 +97,8 @@ class Penelitian extends Model
         'metode_luaran',
         'metode_capaian',
         'metode_tugas_pengusul',
+        
+        'lembar_pengesahan'
     ];
 
     protected $hidden = ["deleted_at"];

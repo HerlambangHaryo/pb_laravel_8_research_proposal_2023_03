@@ -9,6 +9,7 @@ use DB;
 
 use App\Models\Penelitian;
 use App\Models\Peneliti;
+use Illuminate\Support\Facades\Storage;
 
 class PenelitianController extends Controller
 {
@@ -193,18 +194,45 @@ class PenelitianController extends Controller
 
             $data = Penelitian::findOrFail($Penelitian->id); 
 
-            $data->update([
-                'id_ketua'                  => $request->id_ketua, 
-                'id_anggota_1'              => $request->id_anggota_1,
-                'id_anggota_2'              => $request->id_anggota_2,
-                'id_mahasiswa_1'            => $request->id_mahasiswa_1,
-                'id_mahasiswa_2'            => $request->id_mahasiswa_2,
-                'judul'                     => $request->judul,
-                'skema'                     => $request->skema,
-                'tanggal'                     => $request->tanggal,
-                'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
-                'id_dekan'                  => $request->id_dekan,     
-            ]);  
+            if($request->file('lembar_pengesahan') == "") {
+
+                $data->update([
+                    'id_ketua'                  => $request->id_ketua, 
+                    'id_anggota_1'              => $request->id_anggota_1,
+                    'id_anggota_2'              => $request->id_anggota_2,
+                    'id_mahasiswa_1'            => $request->id_mahasiswa_1,
+                    'id_mahasiswa_2'            => $request->id_mahasiswa_2,
+                    'judul'                     => $request->judul,
+                    'skema'                     => $request->skema,
+                    'tanggal'                   => $request->tanggal,
+                    'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
+                    'id_dekan'                  => $request->id_dekan,     
+                ]); 
+
+            } else { 
+                        
+                //hapus old image
+                Storage::disk('local')->delete('public/penelitian/'.$data->lembar_pengesahan);
+
+                //upload new image
+                $lembar_pengesahan = $request->file('lembar_pengesahan');
+                $lembar_pengesahan->storeAs('public/penelitian', $lembar_pengesahan->hashName());
+                
+                $data->update([
+                    'id_ketua'                  => $request->id_ketua, 
+                    'id_anggota_1'              => $request->id_anggota_1,
+                    'id_anggota_2'              => $request->id_anggota_2,
+                    'id_mahasiswa_1'            => $request->id_mahasiswa_1,
+                    'id_mahasiswa_2'            => $request->id_mahasiswa_2,
+                    'judul'                     => $request->judul,
+                    'skema'                     => $request->skema,
+                    'tanggal'                   => $request->tanggal,
+                    'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
+                    'id_dekan'                  => $request->id_dekan,   
+                    'lembar_pengesahan'         => $lembar_pengesahan->hashName(),   
+                ]); 
+            }
+             
                 
         // ----------------------------------------------------------- Send
             if($data)

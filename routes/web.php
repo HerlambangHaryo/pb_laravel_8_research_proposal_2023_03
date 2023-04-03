@@ -146,6 +146,12 @@ use Illuminate\Support\Facades\Route;
                 ->name('Daftar_pustaka.deletedata');  
         Route::resource('Daftar_pustaka', Daftar_pustakaController::class); 
     //-----------------------------------------------------------  
+            Route::get('Halaman_pengesahan/Penelitian/{Penelitian}', 'Halaman_pengesahanController@Penelitian')
+                ->name('Halaman_pengesahan.Penelitian');  
+            Route::get('Halaman_pengesahan/{Halaman_pengesahan}/deletedata', 'Halaman_pengesahanController@deletedata')
+                ->name('Halaman_pengesahan.deletedata');  
+        Route::resource('Halaman_pengesahan', Halaman_pengesahanController::class); 
+    //-----------------------------------------------------------  
     
  
  

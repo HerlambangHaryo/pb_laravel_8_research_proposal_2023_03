@@ -255,7 +255,32 @@
                 </div> 
             </div>            
         </div>
+ 
 
+        <div class="card mb-4"> 
+            <x-studio_v30.general-form-card-header 
+                    view="{{ $view_file }}"  
+                    panel="Lembar Pengesahan {{ $panel_name }}"/>
+            <div class="card-body pb-4">     
+                <div class="row justify-content-md-center">     
+                    <div class="col-11">  
+                        <!-- Lembar Pengesahan -->
+                            <div class="form-group row mb-3">
+                                <label class="col-2 col-form-label">
+                                    Lembar Pengesahan
+                                </label>
+                                <div class="col-6">
+                                    <input 
+                                        type="file" 
+                                        class="form-control form-control-lg"  
+                                        name="lembar_pengesahan" 
+                                    >
+                                </div>
+                            </div>    
+                    </div>
+                </div> 
+            </div>            
+        </div> 
         <x-studio_v30.button-submit />
     </form>
 @endsection

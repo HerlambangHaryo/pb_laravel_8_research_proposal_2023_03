@@ -25,7 +25,7 @@
     @page{
         size: A4;
         padding-top: 20mm;
-        padding-bottom: 25mm;
+        padding-bottom: 20mm;
     }
     
     .container{
@@ -35,28 +35,36 @@
         padding:20mm 25mm;
         font:"Times New Roman", Times, serif; 
         font-size:12pt;
-        line-height: 1.25;
-        border-right: 1px black solid;
-        border-left: 1px black solid; 
+        line-height: 1.25; 
         box-decoration-break: clone;
     }
  
     .page_break_only_screen{
         display: none;
     }
+    
+    .border-container{   
+        border: none !important;
+    }
+    .paragraf-helper{
+        display: none;
+    }
 }
 
 .container{
-	margin-left:auto;
-	margin-right:auto;
-	max-width:160mm; 
-	padding:20mm 25mm;
-	font:"Times New Roman", Times, serif; 
-	font-size:12pt;
-    line-height: 1.25;
-    border-right: 1px black solid;
-    border-left: 1px black solid; 
+    margin-left:auto;
+    margin-right:auto;
+    max-width:160mm; 
+    padding:20mm 25mm;
+    font:"Times New Roman", Times, serif; 
+    font-size:12pt;
+    line-height: 1.25; 
     box-decoration-break: clone;
+}
+
+.border-container{ 
+    border-right: 1px black solid;
+    border-left: 1px black solid;  
 }
 
 table tr td { 
@@ -162,4 +170,16 @@ table.border {
     height: 25px;
     margin-top: 25mm;
     margin-bottom: 25mm;
+}
+
+.color-black{
+    color: black;
+}
+ 
+
+.heading-1{
+    margin-top: 1em;
+}
+.paragraf-helper{
+    background-color: yellow;
 }

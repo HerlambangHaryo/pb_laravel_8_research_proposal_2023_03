@@ -61,33 +61,32 @@
                             </div> 
 
                         
-                    <!-- satuan -->
-                        <div class="form-group row mb-3">
-                            <label class="col-2 col-form-label">
-                                Kuantitas
-                            </label>
-                            <div class="col-2">
-                                <input 
-                                    type="number" 
-                                    class="form-control form-control-lg"  
-                                    name="kuantitas"
-                                > 
+                        <!-- satuan -->
+                            <div class="form-group row mb-3">
+                                <label class="col-2 col-form-label">
+                                    Kuantitas
+                                </label>
+                                <div class="col-2">
+                                    <input 
+                                        type="number" 
+                                        class="form-control form-control-lg"  
+                                        name="kuantitas"
+                                    > 
+                                </div> 
+                            </div>  
+                        <!-- Harga -->
+                            <div class="form-group row mb-3">
+                                <label class="col-2 col-form-label">
+                                    Harga
+                                </label>
+                                <div class="col-6">
+                                    <input 
+                                        type="number" 
+                                        class="form-control form-control-lg"  
+                                        name="harga"
+                                    > 
+                                </div> 
                             </div> 
-                        </div> 
-
-                    <!-- Harga -->
-                        <div class="form-group row mb-3">
-                            <label class="col-2 col-form-label">
-                                Harga
-                            </label>
-                            <div class="col-6">
-                                <input 
-                                    type="number" 
-                                    class="form-control form-control-lg"  
-                                    name="harga"
-                                > 
-                            </div> 
-                        </div> 
 
                     </div> 
                 </div> 

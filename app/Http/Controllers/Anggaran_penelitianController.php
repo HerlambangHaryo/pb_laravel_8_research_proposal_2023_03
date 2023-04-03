@@ -198,10 +198,11 @@ class Anggaran_penelitianController extends Controller
             $data = Anggaran_penelitian::findOrFail($Anggaran_penelitian->id); 
 
             $data->update([ 
+                'kategori'              => $request->kategori,
                 'kegiatan'              => $request->kegiatan,
-                'urutan'                => $request->urutan,
-                'indikator_capaian'     => $request->indikator_capaian,
-                'bulan'                 => $request->bulan,   
+                'justifikasi_anggaran'  => $request->justifikasi_anggaran,
+                'kuantitas'             => $request->kuantitas,       
+                'harga'                 => $request->harga,      
             ]);  
                 
         // ----------------------------------------------------------- Send
@@ -209,7 +210,7 @@ class Anggaran_penelitianController extends Controller
             {
                 # Anggaran_penelitian/Peneliti/1
                 return redirect()
-                    ->route($content.'.index')
+                    ->route($content.'.Penelitian', $Anggaran_penelitian->id_penelitian)
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else

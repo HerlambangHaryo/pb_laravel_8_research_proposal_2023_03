@@ -3,7 +3,7 @@
 @section('title', $panel_name)
 
 @section('content')    
-    <form class="col-12" action="{{ route($content.'.update', $Ringkasan->id ) }}"  
+    <form class="col-12" action="{{ route($content.'.update', $Anggaran_penelitian->id ) }}"  
         method="POST"  > 
         @csrf   
         @method('PUT') 
@@ -16,78 +16,82 @@
                 <div class="row justify-content-md-center">     
                     <div class="col-11"> 
                          
-                        <!-- Latar belakang -->
+                        <!-- Kategori -->
                             <div class="form-group row mb-3">
                                 <label class="col-2 col-form-label">
-                                    Latar belakang (83)
+                                    Kategori
                                 </label>
-                                <div class="col-8">
-                                    <textarea 
-                                        class="form-control" 
-                                        name="ringkasan_latar_belakang"  
-                                        rows="10">{{ old('ringkasan_latar_belakang', $Ringkasan->ringkasan_latar_belakang) }}</textarea>  
+                                <div class="col-6"> 
+                                    <select class="form-select"
+                                        name="kategori">
+                                        <option value="">
+                                            Pilih Kategori
+                                        </option>  
+                                        <option value="Honor" @if($Anggaran_penelitian->kategori == 'Honor') selected @endif>Honor</option>  
+                                        <option value="Peralatan Penunjang" @if($Anggaran_penelitian->kategori == 'Peralatan Penunjang') selected @endif>Peralatan Penunjang</option>  
+                                        <option value="Bahan Habis Pakai" @if($Anggaran_penelitian->kategori == 'Bahan Habis Pakai') selected @endif>Bahan Habis Pakai</option>  
+                                        <option value="Perjalanan" @if($Anggaran_penelitian->kategori == 'Perjalanan') selected @endif>Perjalanan</option>  
+                                        <option value="Lain-lain" @if($Anggaran_penelitian->kategori == 'Lain-lain') selected @endif>Lain-lain</option>  
+                                    </select> 
                                 </div>
                             </div>  
-                        <!-- Tujuan -->
+                        <!-- Kegiatan -->
                             <div class="form-group row mb-3">
                                 <label class="col-2 col-form-label">
-                                    Tujuan (83)
+                                    Kegiatan
                                 </label>
-                                <div class="col-8">
+                                <div class="col-6">
                                     <textarea 
                                         class="form-control" 
-                                        name="ringkasan_tujuan"  
-                                        rows="10">{{ old('ringkasan_tujuan', $Ringkasan->ringkasan_tujuan) }}</textarea>  
+                                        name="kegiatan"  
+                                        rows="5">{{ old('kegiatan', $Anggaran_penelitian->kegiatan) }}</textarea>  
                                 </div>
                             </div>  
-                        <!-- Tahapan metode -->
+                        <!-- Justifikasi Anggaran -->
                             <div class="form-group row mb-3">
                                 <label class="col-2 col-form-label">
-                                    Tahapan metode (83)
+                                    Justifikasi Anggaran
                                 </label>
-                                <div class="col-8">
-                                    <textarea 
-                                        class="form-control" 
-                                        name="ringkasan_tahapan_metode"  
-                                        rows="10">{{ old('ringkasan_tahapan_metode', $Ringkasan->ringkasan_tahapan_metode) }}</textarea>  
+                                <div class="col-6">
+                                    <input 
+                                        type="text" 
+                                        class="form-control form-control-lg"  
+                                        name="justifikasi_anggaran"
+                                        value="{{ old('justifikasi_anggaran', $Anggaran_penelitian->justifikasi_anggaran) }}"
+                                    >
                                 </div>
-                            </div>  
-                        <!-- 4.	Luaran yang ditargetkan (83) -->
+                            </div> 
+
+                        <!-- satuan -->
                             <div class="form-group row mb-3">
                                 <label class="col-2 col-form-label">
-                                    Luaran yang ditargetkan (83)
+                                    Kuantitas
                                 </label>
-                                <div class="col-8">
-                                    <textarea 
-                                        class="form-control" 
-                                        name="ringkasan_target_luaran"  
-                                        rows="10">{{ old('ringkasan_target_luaran', $Ringkasan->ringkasan_target_luaran) }}</textarea>  
-                                </div>
-                            </div>   
-                        <!-- 5.	Capaian IKU (83) -->
+                                <div class="col-2">
+                                    <input 
+                                        type="number" 
+                                        class="form-control form-control-lg"  
+                                        name="kuantitas"
+                                        value="{{ old('kuantitas', $Anggaran_penelitian->kuantitas) }}"
+                                    > 
+                                </div> 
+                            </div> 
+
+                        <!-- Harga -->
                             <div class="form-group row mb-3">
                                 <label class="col-2 col-form-label">
-                                    Capaian IKU (83)
+                                    Harga
                                 </label>
-                                <div class="col-8">
-                                    <textarea 
-                                        class="form-control" 
-                                        name="ringkasan_capaian_iku"  
-                                        rows="10">{{ old('ringkasan_capaian_iku', $Ringkasan->ringkasan_capaian_iku) }}</textarea>  
-                                </div>
-                            </div>   
-                        <!-- 6.	Capaian TKT (83) -->
-                            <div class="form-group row mb-3">
-                                <label class="col-2 col-form-label">
-                                    Capaian TKT (83)
-                                </label>
-                                <div class="col-8">
-                                    <textarea 
-                                        class="form-control" 
-                                        name="ringkasan_capaian_tkt"  
-                                        rows="10">{{ old('ringkasan_capaian_tkt', $Ringkasan->ringkasan_capaian_tkt) }}</textarea>  
-                                </div>
-                            </div>  
+                                <div class="col-6">
+                                    <input 
+                                        type="number" 
+                                        class="form-control form-control-lg"  
+                                        name="harga"
+                                        value="{{ old('harga', $Anggaran_penelitian->harga) }}"
+                                    > 
+                                </div> 
+                            </div> 
+
                     </div> 
                 </div> 
             </div>            

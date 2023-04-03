@@ -49,8 +49,10 @@ class CreatePenelitiansTable extends Migration
             $table->text('metode_detail')->nullable();  
             $table->text('metode_luaran')->nullable();  
             $table->text('metode_capaian')->nullable();  
-            $table->text('metode_tugas_pengusul')->nullable();  
-
+            $table->text('metode_tugas_pengusul')->nullable(); 
+            
+            $table->text('lembar_pengesahan')->nullable();  
+            
 
             $table->timestamps();
             $table->softDeletes();
