@@ -101,7 +101,9 @@ use Illuminate\Support\Facades\Route;
             Route::get('Buku/{Buku}/deletedata', 'BukuController@deletedata')
                 ->name('Buku.deletedata');  
         Route::resource('Buku', BukuController::class); 
-    //-----------------------------------------------------------  
+    //-----------------------------------------------------------   
+            Route::get('Print/Print_subbab_review/{Print}/{Review}', 'PrintController@Print_subbab_review')
+                ->name('Print.Print_subbab_review');  
         Route::resource('Print', PrintController::class); 
     //-----------------------------------------------------------   
             Route::get('Latar_belakang/Penelitian/{Penelitian}', 'Latar_belakangController@Penelitian')

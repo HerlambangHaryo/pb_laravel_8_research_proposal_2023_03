@@ -18,10 +18,21 @@
                     </div>
                     <div class="col-6 text-end">   
                         <a href="{{ route($content.'.edit', $Penelitian->id) }}" 
-                            class="btn btn-secondary"
+                            class="btn btn-sm btn-secondary"
                             target="_blank">
                             <i class="far fa-edit"></i> 
                             Edit
+                        </a> 
+                        <a href="{{ route('Print.Print_subbab_review', 
+                                [
+                                    'Print' => $Penelitian->id,
+                                    'Review' => 'ringkasan'
+                                ]
+                                ) }}" 
+                            class="btn btn-sm btn-secondary"
+                            target="_blank">
+                            <i class="fas fa-print"></i>
+                            Print subbab review
                         </a> 
                     </div>
                 </div>
