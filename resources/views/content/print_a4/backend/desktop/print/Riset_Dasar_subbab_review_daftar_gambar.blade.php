@@ -1,5 +1,3 @@
-<div class="page_break_only_screen"></div>
-
 <div class="uppercase bold heading_bp" id="daftar_gambar">
     Daftar Gambar
 </div>
