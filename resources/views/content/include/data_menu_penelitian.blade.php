@@ -57,7 +57,7 @@
                                     {{ $row->anggota_2->nama }}
                                 </td>   
                                 <td class="text-center">  
-                                    <x-studio_v30.menu-dropdown-data content="{{ $content }}" id="{{ $row->id }}" /> 
+                                    <x-studio_v30.menu-dropdown-data content="Penelitian" id="{{ $row->id }}" /> 
                                 </td>
                             </tr>
                             @empty 
