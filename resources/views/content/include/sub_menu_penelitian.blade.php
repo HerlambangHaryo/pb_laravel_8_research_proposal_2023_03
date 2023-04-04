@@ -3,6 +3,15 @@
     <div class="col-12 text-center">  
         <div class="btn-group"> 
             <a  
+                href="{{ route('Penelitian.show', $Penelitian->id) }}"
+                class="btn btn-sm btn-secondary 
+                @if($content == 'Penelitian')
+                    active
+                @endif
+                "> 
+                General
+            </a>  
+            <a  
                 href="{{ route('Halaman_pengesahan.Penelitian', $Penelitian->id) }}"
                 class="btn btn-sm btn-secondary 
                 @if($content == 'Halaman_pengesahan')

@@ -18,6 +18,17 @@
                     </div>
                     <div class="col-6 text-end">   
                         <x-studio_v30.button-create content="{{ $content }}" />
+                        <a href="{{ route('Print.Print_subbab_review', 
+                                [
+                                    'Print' => $Penelitian->id,
+                                    'Review' => 'justifikasi_anggaran_penelitian'
+                                ]
+                                ) }}" 
+                            class="btn btn-sm btn-secondary"
+                            target="_blank">
+                            <i class="fas fa-print"></i>
+                            Print subbab review
+                        </a> 
                     </div>
                 </div>
             </div>

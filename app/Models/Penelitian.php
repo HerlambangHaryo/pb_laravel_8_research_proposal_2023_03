@@ -16,6 +16,12 @@ class Penelitian extends Model
     
     protected $softDelete = true; 
 
+    public function jadwal_penelitian()
+    {         
+        return $this->hasMany(jadwal_penelitian::class,'id_penelitian', 'id')
+                ->orderBy('urutan') ;
+    }
+     
     public function anggaran_penelitian()
     {         
         return $this->hasMany(anggaran_penelitian::class,'id_penelitian', 'id') ;

@@ -57,6 +57,7 @@ class PrintController extends Controller
                     'active_as',
                     'view_file', 
                     'Penelitian', 
+                    'view', 
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -85,7 +86,7 @@ class PrintController extends Controller
             $Penelitian     = Penelitian::where('id', '=', $Print->id)
                                 ->first();
             
-            $view_file      = ucwords(str_replace(" ","_", $Penelitian->skema)).'_subbab_review_'.$Review;  
+            $view_file      = ucwords(str_replace(" ","_", $Penelitian->skema)).'_subbab_review_';  
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
                                     
@@ -101,6 +102,8 @@ class PrintController extends Controller
                     'active_as',
                     'view_file', 
                     'Penelitian', 
+                    'view', 
+                    'Review', 
                 )
             );
         ///////////////////////////////////////////////////////////////

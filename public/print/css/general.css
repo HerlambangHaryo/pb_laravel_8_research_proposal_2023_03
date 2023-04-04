@@ -37,6 +37,7 @@
         font-size:12pt;
         line-height: 1.25; 
         box-decoration-break: clone;
+        background-color: white;
     }
  
     .page_break_only_screen{
@@ -51,6 +52,10 @@
     }
 }
 
+body{
+    background-color: #2A2A2E;
+}
+
 .container{
     margin-left:auto;
     margin-right:auto;
@@ -60,6 +65,7 @@
     font-size:12pt;
     line-height: 1.25; 
     box-decoration-break: clone;
+    background-color: white;
 }
 
 .border-container{ 
@@ -166,10 +172,13 @@ table.border {
 
 
 .page_break_only_screen{
-    background-color: gray;
-    height: 25px;
+    background-color: #2A2A2E;
+    height: 15px;
     margin-top: 25mm;
     margin-bottom: 25mm;
+    width: 210mm;
+    left: -25mm;
+    position: relative;
 }
 
 .color-black{
@@ -182,4 +191,7 @@ table.border {
 }
 .paragraf-helper{
     background-color: yellow;
+}
+.biru-jadwal-penelitian{
+    background-color: #95B3D7;
 }

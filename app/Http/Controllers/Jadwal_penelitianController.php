@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
 
 use App\Models\Jadwal_penelitian;
+use App\Models\Penelitian;
 
 class Jadwal_penelitianController extends Controller
 {
@@ -17,11 +18,12 @@ class Jadwal_penelitianController extends Controller
     public $themecolor  = '';
     public $content     = 'Jadwal_penelitian';
     public $type        = 'backend';
-
-    public function index()
+    
+    public function Penelitian($id)
     {
         // ----------------------------------------------------------- Auth
             // $user = auth()->user();   
+            session(['id_penelitian' => $id]);
 
         // ----------------------------------------------------------- Agent
             $agent              = new Agent(); 
@@ -40,7 +42,14 @@ class Jadwal_penelitianController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action 
-            $data           = Jadwal_penelitian::get();
+            $data               = Penelitian::where('id', '=', $id)
+                                    ->get();
+
+            $Penelitian         = Penelitian::where('id', '=', $id)
+                                    ->first();
+
+            $Jadwal_penelitian  = Jadwal_penelitian::where('id_penelitian', '=', $id)
+                                    ->get();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -53,7 +62,10 @@ class Jadwal_penelitianController extends Controller
                     'panel_name', 
                     'active_as',
                     'view_file', 
+                    'id', 
                     'data', 
+                    'Penelitian', 
+                    'Jadwal_penelitian',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -196,7 +208,7 @@ class Jadwal_penelitianController extends Controller
             {
                 # Jadwal_penelitian/Peneliti/1
                 return redirect()
-                    ->route($content.'.index')
+                    ->route($content.'.Penelitian', $Jadwal_penelitian->id_penelitian)
                     ->with(['Success' => 'Data successfully saved!']);
             }
             else

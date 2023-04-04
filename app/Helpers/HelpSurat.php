@@ -121,4 +121,280 @@
             ///////////////////////////////////////////////////////////////
         }
     }
+
+    if(!function_exists('define_metode_penelitian'))
+    {
+        function define_metode_penelitian($Penelitian)
+        {
+            // ----------------------------------------------------------- Initialize 
+                $isi = '<br/>'; 
+            // ----------------------------------------------------------- Action  
+            
+                $isi .= '<div class="bold text-center mb-6px" id="table_jadwal_penelitian">'; 
+                    $isi .= 'Tabel 1. Jadwal Penelitian';
+                $isi .= '</div>';
+
+                $isi .= '<div class="">';
+                
+                    $isi .= '<table class="text-size-10pt lh-15 vertical-align-middle border" 
+                                width="100%">';   
+                        $isi .= '<tr class="text-center">';
+                            $isi .= '<td class="" rowspan="2">No.</td>';  
+                            $isi .= '<td class="" rowspan="2">Nama Kegiatan</td>'; 
+                            $isi .= '<td class="" colspan="12">Bulan</td>'; 
+                            $isi .= '<td class="" rowspan="2">Indikator Capaian</td>'; 
+                        $isi .= '</tr>';    
+                        $isi .= '<tr class="text-center">';
+                            $isi .= '<td class="">1</td>';  
+                            $isi .= '<td class="">2</td>';  
+                            $isi .= '<td class="">3</td>';  
+                            $isi .= '<td class="">4</td>';  
+                            $isi .= '<td class="">5</td>';  
+                            $isi .= '<td class="">6</td>';  
+                            $isi .= '<td class="">7</td>';  
+                            $isi .= '<td class="">8</td>';  
+                            $isi .= '<td class="">9</td>';  
+                            $isi .= '<td class="">10</td>';  
+                            $isi .= '<td class="">11</td>';  
+                            $isi .= '<td class="">12</td>';   
+                        $isi .= '</tr>'; 
+
+                        $counter = 0;
+
+                        foreach ($Penelitian as $row) 
+                        {   
+                            $isi .= '<tr class="">';
+                                $isi .= '<td class="text-center">';  
+                                    $counter += 1;
+                                    $isi .= $counter.'.';
+                                $isi .= '</td>';   
+                                $isi .= '<td class="">'; 
+                                    $isi .= $row->kegiatan;
+                                $isi .= '</td>';   
+                                
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '1;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '2;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '3;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '4;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '5;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '6;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '7;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '8;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '9;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '10;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '11;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '12;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="">'; 
+                                    $isi .= $row->indikator_capaian;
+                                $isi .= '</td>';   
+                            $isi .= '</tr>';    
+                        }
+                    $isi .= '</table>';  
+                $isi .= '</div>'; 
+
+            // ----------------------------------------------------------- Send
+                $word = $isi;
+                return $word;
+
+            ///////////////////////////////////////////////////////////////
+        }
+    }
+
+    if(!function_exists('define_jadwal_penelitian'))
+    {
+        function define_jadwal_penelitian($Penelitian)
+        {
+            // ----------------------------------------------------------- Initialize 
+                $isi = '<br/>'; 
+            // ----------------------------------------------------------- Action  
+            
+                $isi .= '<div class="bold text-center mb-6px" id="table_jadwal_penelitian">'; 
+                    $isi .= 'Tabel 1. Jadwal Penelitian';
+                $isi .= '</div>';
+
+                $isi .= '<div class="">';
+                
+                    $isi .= '<table class="text-size-10pt lh-15 vertical-align-middle border" 
+                                width="100%">';   
+                        $isi .= '<tr class="text-center">';
+                            $isi .= '<td class="" rowspan="2">No.</td>';  
+                            $isi .= '<td class="" rowspan="2">Nama Kegiatan</td>'; 
+                            $isi .= '<td class="" colspan="12">Bulan</td>'; 
+                            $isi .= '<td class="" rowspan="2">Indikator Capaian</td>'; 
+                        $isi .= '</tr>';    
+                        $isi .= '<tr class="text-center">';
+                            $isi .= '<td class="">1</td>';  
+                            $isi .= '<td class="">2</td>';  
+                            $isi .= '<td class="">3</td>';  
+                            $isi .= '<td class="">4</td>';  
+                            $isi .= '<td class="">5</td>';  
+                            $isi .= '<td class="">6</td>';  
+                            $isi .= '<td class="">7</td>';  
+                            $isi .= '<td class="">8</td>';  
+                            $isi .= '<td class="">9</td>';  
+                            $isi .= '<td class="">10</td>';  
+                            $isi .= '<td class="">11</td>';  
+                            $isi .= '<td class="">12</td>';   
+                        $isi .= '</tr>'; 
+
+                        $counter = 0;
+
+                        foreach ($Penelitian as $row) 
+                        {   
+                            $isi .= '<tr class="">';
+                                $isi .= '<td class="text-center">';  
+                                    $counter += 1;
+                                    $isi .= $counter.'.';
+                                $isi .= '</td>';   
+                                $isi .= '<td class="">'; 
+                                    $isi .= $row->kegiatan;
+                                $isi .= '</td>';   
+                                
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '1;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '2;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '3;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '4;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '5;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '6;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '7;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '8;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '9;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '10;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '11;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="';
+                                    if(str_contains($row->bulan, '12;'))
+                                    {
+                                        $isi .= ' biru-jadwal-penelitian ';  
+                                    }    
+                                $isi .= '"></td>';  
+                                $isi .= '<td class="">'; 
+                                    $isi .= $row->indikator_capaian;
+                                $isi .= '</td>';   
+                            $isi .= '</tr>';    
+                        }
+                    $isi .= '</table>';  
+                $isi .= '</div>'; 
+
+            // ----------------------------------------------------------- Send
+                $word = $isi;
+                return $word;
+
+            ///////////////////////////////////////////////////////////////
+        }
+    }
  

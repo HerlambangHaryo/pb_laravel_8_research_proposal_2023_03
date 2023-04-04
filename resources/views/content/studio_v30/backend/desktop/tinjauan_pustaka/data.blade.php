@@ -23,6 +23,17 @@
                             <i class="far fa-edit"></i> 
                             Edit
                         </a> 
+                        <a href="{{ route('Print.Print_subbab_review', 
+                                [
+                                    'Print' => $Penelitian->id,
+                                    'Review' => 'tinjauan_pustaka'
+                                ]
+                                ) }}" 
+                            class="btn btn-sm btn-secondary"
+                            target="_blank">
+                            <i class="fas fa-print"></i>
+                            Print subbab review
+                        </a> 
                     </div>
                 </div>
             </div>
