@@ -82,7 +82,16 @@
                 @endif 
                 ">  
                 Daftar Pustaka
-            </a>      
+            </a>  
+            <a  
+                href="{{ route('Screenshot.Penelitian', $Penelitian->id) }}"
+                class="btn btn-sm btn-secondary 
+                @if($content == 'Screenshot')
+                    active
+                @endif
+                "> 
+                Screenshot
+            </a>     
         </div>
     </div>
 </div>
