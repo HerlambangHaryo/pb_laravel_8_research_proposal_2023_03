@@ -14,10 +14,11 @@
                 src="{{ asset('/public/storage/penelitian/').'/'.$Penelitian->lembar_pengesahan }}" alt="">
         
                 <!-- card-img-overlay -->
-                <div class="card-img-overlay d-flex flex-column bg-gray-900 bg-opacity-70 rounded">
+                <div class="card-img-overlay d-flex flex-column bg-gray-900 bg-opacity-50 rounded">
                     <!-- top content -->
                     <div class="flex-fill">
                         <div class="d-flex align-items-center"> 
+                            <h6>Halaman Pengesahan</h6>
                             <div class="dropdown ms-auto">
                                 <a href="#" class="text-white" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right"> 

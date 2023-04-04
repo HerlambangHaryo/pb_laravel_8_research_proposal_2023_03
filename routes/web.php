@@ -154,6 +154,12 @@ use Illuminate\Support\Facades\Route;
                 ->name('Halaman_pengesahan.deletedata');  
         Route::resource('Halaman_pengesahan', Halaman_pengesahanController::class); 
     //-----------------------------------------------------------  
+            Route::get('Screenshot/Penelitian/{Penelitian}', 'ScreenshotController@Penelitian')
+                ->name('Screenshot.Penelitian');  
+            Route::get('Screenshot/{Screenshot}/deletedata', 'ScreenshotController@deletedata')
+                ->name('Screenshot.deletedata');  
+        Route::resource('Screenshot', ScreenshotController::class); 
+    //-----------------------------------------------------------  
     
  
  
