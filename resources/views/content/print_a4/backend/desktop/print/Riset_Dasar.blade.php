@@ -4,8 +4,8 @@
 
 @section('content')  
 
-     
-    <section class="container " > 
+    
+    <section class="container "  id="content"> 
         
         @include($view.'_subbab_review_cover')
         <div class="page_break_only_screen"></div>

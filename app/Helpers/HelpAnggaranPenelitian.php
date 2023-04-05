@@ -40,10 +40,10 @@
 
                 $isi .= '<tr class="">';
                     $isi .= '<td class="text-center" rowspan="2">Honor</td>'; 
-                    $isi .= '<td class="text-center" rowspan="2">Honor/Jam<br/>(Rp.)</td>'; 
-                    $isi .= '<td class="text-center">Waktu<br/>(Jam/Minggu)</td>'; 
-                    $isi .= '<td class="text-center">Minggu</td>'; 
-                    $isi .= '<td class="text-center">Honor Pertahun</td>'; 
+                    $isi .= '<td class="text-center" rowspan="2" width="20%">Honor/Jam<br/>(Rp.)</td>'; 
+                    $isi .= '<td class="text-center" width="15%">Waktu<br/>(Jam/Minggu)</td>'; 
+                    $isi .= '<td class="text-center" width="15%">Minggu</td>'; 
+                    $isi .= '<td class="text-center" width="17%">Honor Pertahun</td>'; 
                 $isi .= '</tr>'; 
                 $isi .= '<tr class="">';
                     $isi .= '<td class="text-center">Tahun I</td>';  

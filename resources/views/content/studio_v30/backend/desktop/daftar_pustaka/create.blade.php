@@ -10,65 +10,86 @@
         <div class="card mb-4">
             <x-studio_v30.general-form-card-header 
                 view="{{ $view_file }}"  
-                panel="{{ $panel_name }}"/>  
-            <div class="card-body pb-4">      
-                <div class="row justify-content-md-center">     
-                    <div class="col-11"> 
-                        <!-- Kegiatan -->
-                            <div class="form-group row mb-3">
-                                <label class="col-2 col-form-label">
-                                    Kegiatan
-                                </label>
-                                <div class="col-6">
-                                    <textarea 
-                                        class="form-control" 
-                                        name="kegiatan"  
-                                        rows="5"></textarea>  
-                                </div>
-                            </div> 
-                        <!-- urutan -->
-                            <div class="form-group row mb-3">
-                                <label class="col-2 col-form-label">
-                                    Urutan
-                                </label>
-                                <div class="col-2">
-                                    <input 
-                                        type="number" 
-                                        class="form-control form-control-lg"  
-                                        name="urutan"
-                                    >
-                                </div>
-                            </div>  
-                        <!-- Bulan Pengerjaan -->
+                panel="{{ $panel_name }}"/> 
+            <div class="card-body pb-4">     
+                <div>  
+                    <!-- Judul -->
                         <div class="form-group row mb-3">
                             <label class="col-2 col-form-label">
-                                Bulan Pengerjaan
+                                Judul
+                            </label>
+                            <div class="col-6">
+                                <textarea 
+                                    class="form-control" 
+                                    name="judul"  
+                                    rows="5"></textarea>    
+                            </div>
+                        </div> 
+                    <!-- Jurnal -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                Jurnal
+                            </label>
+                            <div class="col-6">
+                                <textarea 
+                                    class="form-control" 
+                                    name="jurnal"  
+                                    rows="5"></textarea>     
+                            </div>
+                        </div> 
+                    <!-- Volume -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                Volume
                             </label>
                             <div class="col-4">
                                 <input 
                                     type="text" 
                                     class="form-control form-control-lg"  
-                                    name="bulan"
+                                    name="volume"
+                                >
+                            </div>
+                        </div> 
+                    <!-- Nomor -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                Nomor
+                            </label>
+                            <div class="col-4">
+                                <input 
+                                    type="text" 
+                                    class="form-control form-control-lg"  
+                                    name="nomor"
+                                >
+                            </div>
+                        </div> 
+                    <!-- Tahun -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                Tahun
+                            </label>
+                            <div class="col-2">
+                                <input 
+                                    type="year" 
+                                    class="form-control form-control-lg"  
+                                    name="tahun"
                                 >
                             </div>
                         </div> 
 
-                        
-                    <!-- Indikator Capaian -->
+                         
+                    <!-- Link -->
                         <div class="form-group row mb-3">
                             <label class="col-2 col-form-label">
-                                Indikator Capaian
+                                Link
                             </label>
                             <div class="col-6">
                                 <textarea 
                                     class="form-control" 
-                                    name="indikator_capaian"  
-                                    rows="5"></textarea>   
-                            </div> 
-                        </div> 
-
-
-                    </div> 
+                                    name="url"  
+                                    rows="5"></textarea> 
+                            </div>
+                        </div>  
                 </div> 
             </div>            
         </div> 

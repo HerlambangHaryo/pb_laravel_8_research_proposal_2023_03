@@ -9,6 +9,7 @@ use DB;
 
 use App\Models\Publikasi_artikel;
 use App\Models\Penelitian;
+use App\Models\Daftar_pustaka;
 
 class Daftar_pustakaController extends Controller
 {
@@ -120,12 +121,18 @@ class Daftar_pustakaController extends Controller
 
         // ----------------------------------------------------------- Action  
         
-            $data = Daftar_pustaka::create([ 
-                'id_penelitian'         => $id_penelitian,  
-                'kegiatan'              => $request->kegiatan,
-                'urutan'                => $request->urutan,
-                'indikator_capaian'     => $request->indikator_capaian,
-                'bulan'                 => $request->bulan,       
+            $data = Publikasi_artikel::create([  
+                'judul'             => $request->judul,   
+                'jurnal'            => $request->jurnal,
+                'volume'            => $request->volume,
+                'nomor'             => $request->nomor,
+                'tahun'             => $request->tahun,  
+                'url'               => $request->url,        
+            ]);  
+
+            $data2 = Daftar_pustaka::create([  
+                'id_publikasi_artikel'      => $data->id,   
+                'id_penelitian'             => $id_penelitian,  
             ]);  
 
         // ----------------------------------------------------------- Send
@@ -193,7 +200,7 @@ class Daftar_pustakaController extends Controller
             $content        = $this->content;
 
         // ----------------------------------------------------------- Action   
-            $data = Daftar_pustaka::findOrFail($Daftar_pustaka->id); 
+            $data = Publikasi_artikel::findOrFail($Daftar_pustaka->id); 
 
             $data->update([ 
                 'kegiatan'              => $request->kegiatan,
@@ -241,7 +248,7 @@ class Daftar_pustakaController extends Controller
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
             
         // ----------------------------------------------------------- Action  
-            $data = Daftar_pustaka::where('id', '=', $Daftar_pustaka->id)
+            $data = Publikasi_artikel::where('id', '=', $Daftar_pustaka->id)
                             ->get(); 
 
         // ----------------------------------------------------------- Send
@@ -308,7 +315,7 @@ class Daftar_pustakaController extends Controller
             $content        = $this->content;
 
         // ----------------------------------------------------------- Action  
-            $data = Daftar_pustaka::findOrFail($id);
+            $data = Publikasi_artikel::findOrFail($id);
             $data->delete();
 
         // ----------------------------------------------------------- Send
