@@ -104,7 +104,13 @@ class Penelitian extends Model
         'metode_capaian',
         'metode_tugas_pengusul',
         
-        'lembar_pengesahan'
+        'lembar_pengesahan',
+
+        'kata_kunci_1',
+        'kata_kunci_2',
+        'kata_kunci_3',
+        'kata_kunci_4',
+        'kata_kunci_5',
     ];
 
     protected $hidden = ["deleted_at"];

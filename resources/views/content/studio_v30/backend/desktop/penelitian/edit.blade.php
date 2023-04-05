@@ -256,7 +256,6 @@
             </div>            
         </div>
  
-
         <div class="card mb-4"> 
             <x-studio_v30.general-form-card-header 
                     view="{{ $view_file }}"  
@@ -281,6 +280,86 @@
                 </div> 
             </div>            
         </div> 
+ 
+        <div class="card mb-4"> 
+            <x-studio_v30.general-form-card-header 
+                    view="{{ $view_file }}"  
+                    panel="Kata Kunci {{ $panel_name }}"/>
+            <div class="card-body pb-4">     
+                <div class="row justify-content-md-center">     
+                    <div class="col-11">  
+                        <!-- kata_kunci_1 -->
+                            <div class="form-group row mb-3">
+                                <label class="col-2 col-form-label">
+                                    Kata Kunci 1
+                                </label>
+                                <div class="col-6">
+                                    <input 
+                                        type="text" 
+                                        class="form-control form-control-lg"  
+                                        name="kata_kunci_1" 
+                                    >
+                                </div>
+                            </div>    
+                        <!-- kata_kunci_2 -->
+                            <div class="form-group row mb-3">
+                                <label class="col-2 col-form-label">
+                                    Kata Kunci 2
+                                </label>
+                                <div class="col-6">
+                                    <input 
+                                        type="text" 
+                                        class="form-control form-control-lg"  
+                                        name="kata_kunci_2" 
+                                    >
+                                </div>
+                            </div>    
+                        <!-- kata_kunci_3 -->
+                            <div class="form-group row mb-3">
+                                <label class="col-2 col-form-label">
+                                    Kata Kunci 3
+                                </label>
+                                <div class="col-6">
+                                    <input 
+                                        type="text" 
+                                        class="form-control form-control-lg"  
+                                        name="kata_kunci_3" 
+                                    >
+                                </div>
+                            </div>    
+                        <!-- kata_kunci_4 -->
+                            <div class="form-group row mb-3">
+                                <label class="col-2 col-form-label">
+                                    Kata Kunci 4
+                                </label>
+                                <div class="col-6">
+                                    <input 
+                                        type="text" 
+                                        class="form-control form-control-lg"  
+                                        name="kata_kunci_4" 
+                                    >
+                                </div>
+                            </div>    
+                        <!-- kata_kunci_5 -->
+                            <div class="form-group row mb-3">
+                                <label class="col-2 col-form-label">
+                                    Kata Kunci 5
+                                </label>
+                                <div class="col-6">
+                                    <input 
+                                        type="text" 
+                                        class="form-control form-control-lg"  
+                                        name="kata_kunci_5" 
+                                    >
+                                </div>
+                            </div>    
+                    </div>
+                </div> 
+            </div>            
+        </div> 
+
+
+
         <x-studio_v30.button-submit />
     </form>
 @endsection

@@ -111,19 +111,60 @@ class PenelitianController extends Controller
             $content        = $this->content;
 
         // ----------------------------------------------------------- Action   
-            $data = Penelitian::create([ 
-                'id_ketua'                  => $request->id_ketua, 
-                'id_anggota_1'              => $request->id_anggota_1,
-                'id_anggota_2'              => $request->id_anggota_2,
-                'id_mahasiswa_1'            => $request->id_mahasiswa_1,
-                'id_mahasiswa_2'            => $request->id_mahasiswa_2,
-                'judul'                     => $request->judul,
-                'skema'                     => $request->skema,
-                'tanggal'                     => $request->tanggal,
-                'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
-                'id_dekan'                  => $request->id_dekan,     
-            ]);  
 
+        
+            if($request->file('lembar_pengesahan') == "") {
+
+                $data = Penelitian::create([ 
+                    'id_ketua'                  => $request->id_ketua, 
+                    'id_anggota_1'              => $request->id_anggota_1,
+                    'id_anggota_2'              => $request->id_anggota_2,
+                    'id_mahasiswa_1'            => $request->id_mahasiswa_1,
+                    'id_mahasiswa_2'            => $request->id_mahasiswa_2,
+                    'judul'                     => $request->judul,
+                    'skema'                     => $request->skema,
+                    'tanggal'                   => $request->tanggal,
+                    'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
+                    'id_dekan'                  => $request->id_dekan,      
+
+                    'kata_kunci_1'                  => $request->kata_kunci_1,   
+                    'kata_kunci_2'                  => $request->kata_kunci_2,   
+                    'kata_kunci_3'                  => $request->kata_kunci_3,   
+                    'kata_kunci_4'                  => $request->kata_kunci_4,   
+                    'kata_kunci_5'                  => $request->kata_kunci_5,   
+                ]); 
+
+            } else { 
+                        
+                //hapus old image
+                Storage::disk('local')->delete('public/penelitian/'.$data->lembar_pengesahan);
+
+                //upload new image
+                $lembar_pengesahan = $request->file('lembar_pengesahan');
+                $lembar_pengesahan->storeAs('public/penelitian', $lembar_pengesahan->hashName());
+                
+                $data = Penelitian::create([ 
+                    'id_ketua'                  => $request->id_ketua, 
+                    'id_anggota_1'              => $request->id_anggota_1,
+                    'id_anggota_2'              => $request->id_anggota_2,
+                    'id_mahasiswa_1'            => $request->id_mahasiswa_1,
+                    'id_mahasiswa_2'            => $request->id_mahasiswa_2,
+                    'judul'                     => $request->judul,
+                    'skema'                     => $request->skema,
+                    'tanggal'                   => $request->tanggal,
+                    'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
+                    'id_dekan'                  => $request->id_dekan,   
+                    'lembar_pengesahan'         => $lembar_pengesahan->hashName(),   
+
+                    'kata_kunci_1'                  => $request->kata_kunci_1,   
+                    'kata_kunci_2'                  => $request->kata_kunci_2,   
+                    'kata_kunci_3'                  => $request->kata_kunci_3,   
+                    'kata_kunci_4'                  => $request->kata_kunci_4,   
+                    'kata_kunci_5'                  => $request->kata_kunci_5,   
+                ]); 
+            }
+
+ 
         // ----------------------------------------------------------- Send
             if($data)
             {
@@ -206,7 +247,13 @@ class PenelitianController extends Controller
                     'skema'                     => $request->skema,
                     'tanggal'                   => $request->tanggal,
                     'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
-                    'id_dekan'                  => $request->id_dekan,     
+                    'id_dekan'                  => $request->id_dekan,      
+
+                    'kata_kunci_1'                  => $request->kata_kunci_1,   
+                    'kata_kunci_2'                  => $request->kata_kunci_2,   
+                    'kata_kunci_3'                  => $request->kata_kunci_3,   
+                    'kata_kunci_4'                  => $request->kata_kunci_4,   
+                    'kata_kunci_5'                  => $request->kata_kunci_5,   
                 ]); 
 
             } else { 
@@ -230,6 +277,12 @@ class PenelitianController extends Controller
                     'id_ketua_pusat_studi'      => $request->id_ketua_pusat_studi,
                     'id_dekan'                  => $request->id_dekan,   
                     'lembar_pengesahan'         => $lembar_pengesahan->hashName(),   
+
+                    'kata_kunci_1'                  => $request->kata_kunci_1,   
+                    'kata_kunci_2'                  => $request->kata_kunci_2,   
+                    'kata_kunci_3'                  => $request->kata_kunci_3,   
+                    'kata_kunci_4'                  => $request->kata_kunci_4,   
+                    'kata_kunci_5'                  => $request->kata_kunci_5,   
                 ]); 
             }
              
