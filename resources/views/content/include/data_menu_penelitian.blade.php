@@ -17,6 +17,16 @@
                     </a> 
                 </div>
             </div>
+            <div class="row mb-4"> 
+                Kata Kunci : 
+                <span>
+                    {{ $Penelitian->kata_kunci_1 }}, 
+                    {{ $Penelitian->kata_kunci_2 }}, 
+                    {{ $Penelitian->kata_kunci_3 }}, 
+                    {{ $Penelitian->kata_kunci_4 }}, 
+                    {{ $Penelitian->kata_kunci_5 }}
+                </span>
+            </div>
         </div>
         <div class="card-body pb-4">      
             <div>
@@ -63,17 +73,7 @@
                             @empty 
                                 
                         @endforelse     
-                    </tbody>
-                    <tfoot>
-                        Kata Kunci : 
-                        <span>
-                            {{ $Penelitian->kata_kunci_1 }}, 
-                            {{ $Penelitian->kata_kunci_2 }}, 
-                            {{ $Penelitian->kata_kunci_3 }}, 
-                            {{ $Penelitian->kata_kunci_4 }}, 
-                            {{ $Penelitian->kata_kunci_5 }}
-                        </span>
-                    </tfoot>
+                    </tbody> 
                 </table>   
             </div>
         </div>            
