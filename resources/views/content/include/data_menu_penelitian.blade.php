@@ -64,6 +64,16 @@
                                 
                         @endforelse     
                     </tbody>
+                    <tfoot>
+                        Kata Kunci : 
+                        <span>
+                            {{ $Penelitian->kata_kunci_1 }}, 
+                            {{ $Penelitian->kata_kunci_2 }}, 
+                            {{ $Penelitian->kata_kunci_3 }}, 
+                            {{ $Penelitian->kata_kunci_4 }}, 
+                            {{ $Penelitian->kata_kunci_5 }}
+                        </span>
+                    </tfoot>
                 </table>   
             </div>
         </div>            
