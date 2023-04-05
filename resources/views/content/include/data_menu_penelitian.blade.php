@@ -2,7 +2,7 @@
 <div id="datatable" class="mb-5">
     <div class="card">
         <div class="card-header">
-            <div class="row mb-4">
+            <div class="row">
                 <div class="col-6">
                     <h5>    
                         Data - {{ $panel_name }} 
@@ -18,14 +18,12 @@
                 </div>
             </div>
             <div class="row mb-4"> 
-                Kata Kunci : 
-                <span>
+                Kata Kunci :  
                     {{ $Penelitian->kata_kunci_1 }}, 
                     {{ $Penelitian->kata_kunci_2 }}, 
                     {{ $Penelitian->kata_kunci_3 }}, 
                     {{ $Penelitian->kata_kunci_4 }}, 
-                    {{ $Penelitian->kata_kunci_5 }}
-                </span>
+                    {{ $Penelitian->kata_kunci_5 }} 
             </div>
         </div>
         <div class="card-body pb-4">      
