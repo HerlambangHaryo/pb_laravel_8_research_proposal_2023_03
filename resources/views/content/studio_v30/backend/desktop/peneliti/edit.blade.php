@@ -634,6 +634,39 @@
             </div>            
         </div> 
 
+        <div class="card mb-4">
+            <div class="card-header">
+                <div class="row mt-1 mb-2">
+                    <div class="col-6">
+                        <h4>    
+                            Form {{ ucfirst($view_file) }} - Mahasiswa {{$panel_name}} 
+                        </h4>
+                    </div>
+                    <div class="col-6 text-right"> 
+                    </div> 
+                </div>
+            </div>
+            <div class="card-body pb-4">     
+                <div> 
+                    <!-- NPM -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                NPM
+                            </label>
+                            <div class="col-6">
+                                <input 
+                                    type="text" 
+                                    class="form-control form-control-lg"  
+                                    name="npm"
+                                    value="{{ old('npm', $Peneliti->npm) }}"
+                                    
+                                >
+                            </div>
+                        </div>   
+                </div> 
+            </div>            
+        </div> 
+
         <x-studio_v30.button-submit />
     </form>
 @endsection

@@ -46,6 +46,7 @@
                                 <x-html.th-content-width title="Sub" width="15%" />
                                 <x-html.th-content title="Paragraf" />   
                                 <x-html.th-content-width title="Count" width="10%" /> 
+                                <x-html.th-content title="catatan" />   
                             </tr>
                         </thead>
                         <tbody>    
@@ -68,6 +69,9 @@
                                     ?>
                                     {{ $count }} / 83
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->ringkasan_latar_belakang_catatan }}
+                                </td>    
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -86,6 +90,9 @@
                                     ?>
                                     {{ $count }} / 83
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->ringkasan_tujuan_catatan }}
+                                </td>    
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -104,6 +111,9 @@
                                     ?>
                                     {{ $count }} / 83
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->ringkasan_tahapan_metode_catatan }}
+                                </td>    
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -121,7 +131,10 @@
                                         $total_count += $count ;
                                     ?>
                                     {{ $count }} / 83
-                                </td>  
+                                </td> 
+                                <td class="text-left">  
+                                    {{ $Penelitian->ringkasan_target_luaran_catatan }}
+                                </td>    
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -140,6 +153,9 @@
                                     ?>
                                     {{ $count }} / 83
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->ringkasan_capaian_iku_catatan }}
+                                </td>    
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -158,6 +174,9 @@
                                     ?>
                                     {{ $count }} / 83
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->ringkasan_capaian_tkt_catatan }}
+                                </td>   
                             </tr>   
                         </tbody>
                         <tfoot>
@@ -170,6 +189,7 @@
                                         {{ $total_count }}
                                     </h4>
                                 </td>
+                                <td></td>
                             </tr>
                         </tfoot>
                     </table>   

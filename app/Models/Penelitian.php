@@ -15,6 +15,12 @@ class Penelitian extends Model
     use SoftDeletes;
     
     protected $softDelete = true; 
+ 
+    public function publikasi_artikel()
+    {
+        return $this->belongsToMany(publikasi_artikel::class, 'daftar_pustakas', 'id_penelitian', 'id_publikasi_artikel')
+                    ->orderBy('publikasi_artikels.daftar_pustaka');
+    }
 
     public function jadwal_penelitian()
     {         
@@ -91,6 +97,8 @@ class Penelitian extends Model
         'latar_belakang_tujuan',
         'latar_belakang_urgensi',
         'latar_belakang_terkait_dengan_skema',
+        
+        'tinjauan_pustaka_roadmap',
 
         'tinjauan_pustaka_state_of_the_art',
         'tinjauan_pustaka_sebelum',
@@ -103,6 +111,33 @@ class Penelitian extends Model
         'metode_luaran',
         'metode_capaian',
         'metode_tugas_pengusul',
+
+        
+
+        'ringkasan_latar_belakang_catatan', 
+        'ringkasan_tujuan_catatan', 
+        'ringkasan_tahapan_metode_catatan', 
+        'ringkasan_target_luaran_catatan', 
+        'ringkasan_capaian_iku_catatan', 
+        'ringkasan_capaian_tkt_catatan', 
+        
+        'latar_belakang_umum_catatan', 
+        'latar_belakang_permasalahan_catatan', 
+        'latar_belakang_tujuan_catatan', 
+        'latar_belakang_urgensi_catatan', 
+        'latar_belakang_terkait_dengan_skema_catatan', 
+        
+        'tinjauan_pustaka_state_of_the_art_catatan', 
+        'tinjauan_pustaka_sebelum_catatan', 
+        'tinjauan_pustaka_setelah_catatan', 
+        'tinjauan_pustaka_umum_catatan', 
+
+        'metode_uraian_catatan', 
+        'metode_gambar_catatan', 
+        'metode_detail_catatan', 
+        'metode_luaran_catatan', 
+        'metode_capaian_catatan', 
+        'metode_tugas_pengusul_catatan',
         
         'lembar_pengesahan',
 

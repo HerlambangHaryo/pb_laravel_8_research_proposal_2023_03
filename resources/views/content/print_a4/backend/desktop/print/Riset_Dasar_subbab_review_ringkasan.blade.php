@@ -18,19 +18,20 @@
 {!! define_paragraf($Penelitian->ringkasan_capaian_iku, 'ringkasan_capaian_iku', 83) !!}
 {!! define_paragraf($Penelitian->ringkasan_capaian_tkt, 'ringkasan_capaian_tkt', 83) !!}
 
-<div class="">
+<br/>
 
-{{ $Penelitian->kata_kunci_1 }}; 
-@if($Penelitian->kata_kunci_2 != '')
-    {{ $Penelitian->kata_kunci_2 }};  
-@endif 
-@if($Penelitian->kata_kunci_3 != '')
-    {{ $Penelitian->kata_kunci_3 }};  
-@endif 
-@if($Penelitian->kata_kunci_4 != '')
-    {{ $Penelitian->kata_kunci_4 }};  
-@endif 
-@if($Penelitian->kata_kunci_5 != '')
-    {{ $Penelitian->kata_kunci_5 }};  
-@endif 
+<div class=""> 
+    {{ $Penelitian->kata_kunci_1 }}; 
+    @if($Penelitian->kata_kunci_2 != '')
+        {{ $Penelitian->kata_kunci_2 }};  
+    @endif 
+    @if($Penelitian->kata_kunci_3 != '')
+        {{ $Penelitian->kata_kunci_3 }};  
+    @endif 
+    @if($Penelitian->kata_kunci_4 != '')
+        {{ $Penelitian->kata_kunci_4 }};  
+    @endif 
+    @if($Penelitian->kata_kunci_5 != '')
+        {{ $Penelitian->kata_kunci_5 }};  
+    @endif 
 </div>

@@ -26,7 +26,7 @@
         @include($view.'_subbab_review_metode_penelitian') 
  
         @include($view.'_subbab_review_jadwal_penelitian') 
-
+        <div class="page_break_only_screen"></div>
         @include($view.'_subbab_review_daftar_pustaka') 
         <div class="page_break_only_screen"></div>
         @include($view.'_subbab_review_justifikasi_anggaran_penelitian') 

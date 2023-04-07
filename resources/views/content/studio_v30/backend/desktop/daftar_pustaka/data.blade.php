@@ -21,7 +21,7 @@
                         <a href="{{ route('Print.Print_subbab_review', 
                                 [
                                     'Print' => $Penelitian->id,
-                                    'Review' => 'jadwal_penelitian'
+                                    'Review' => 'daftar_pustaka'
                                 ]
                                 ) }}" 
                             class="btn btn-sm btn-secondary"
@@ -37,36 +37,73 @@
                     <table id="datatableDefault" class="table  ">
                         <thead class=" ">
                             <tr>               
-                                <x-html.th-content-width title="Urutan" width="5%" />
+                                <x-html.th-content-width title="No." width="5%" />
                                 <x-html.th-content title="Judul" />  
-                                <x-html.th-content title="Bulan Pengerjaan" /> 
-                                <x-html.th-content title="Indikator Capaian" />    
+                                <x-html.th-content title="Jurnal" />   
+                                <x-html.th-content-width title="Tahun" width="5%" />  
+                                <x-html.th-content-width title="Link" width="12%" /> 
                                 <x-html.th-content-width title="Action." width="10%" /> 
                             </tr>
                         </thead>
                         <tbody>   
 
-                            @forelse ($Daftar_pustaka as $row)
+
+                        @forelse ($Daftar_pustaka as $row)
                                 <tr>
                                     <td class="text-center"> 
-                                        {{ $row->urutan }}
+                                        {{ $loop->iteration }}
                                     </td>  
                                     <td class="text-start"> 
-                                        {{ $row->kegiatan }}
-                                    </td>   
-                                    <td class="text-center"> 
-                                        {{ $row->bulan }}
+                                        {{ $row->judul }}
                                     </td>   
                                     <td class="text-start"> 
-                                        {{ $row->indikator_capaian }}
+                                        {{ $row->jurnal }}
+                                    </td>   
+                                    <td class="text-start"> 
+                                        {{ $row->tahun }}
                                     </td>     
-                                    <td class="text-start"> 
-                                        <x-studio_v30.menu-dropdown-data content="{{ $content }}" id="{{ $row->id }}" /> 
+                                    <td class="text-center"> 
+                                        @if(!is_null($row->url))
+                                            <a href="{{ $row->url }}" target="_blank">
+                                                Publikasi_{{ $row->id }}
+                                                <i class="fas fa-external-link-square-alt"></i>
+                                            </a>  
+                                        @endif
+                                    </td>   
+                                    <td class="text-start">  
+                                        <div class="menu">
+                                            <div class="menu-item dropdown">
+                                                <a href="#" data-bs-toggle="dropdown" data-display="static" class="menu-link"> 
+                                                    <div class="menu-text btn btn-sm btn-secondary">
+                                                        Actions 
+                                                        <i class="fa-solid fa-caret-down fa-fw ms-auto text-dark text-opacity-50"></i>
+                                                    </div>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right me-lg-3"> 
+                                                    <a class="dropdown-item d-flex align-items-center" 
+                                                        href="{{ route($content.'.show', $row->id) }}">
+                                                        Author 
+                                                        <i class="fa fa-eye fa-fw ms-auto text-dark text-opacity-50"></i>
+                                                    </a>
+                                                    <a class="dropdown-item d-flex align-items-center" 
+                                                        href="{{ route($content.'.edit', $row->id) }}">
+                                                        Edit 
+                                                        <i class="far fa-edit fa-fw ms-auto text-dark text-opacity-50"></i>
+                                                    </a>
+                                                    <a class="dropdown-item d-flex align-items-center" 
+                                                        href="{{ route($content.'.deletedata', $row->id) }}">
+                                                        Delete 
+                                                        <i class="fas fa-trash-alt fa-fw ms-auto text-dark text-opacity-50"></i>
+                                                    </a> 
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        
                                     </td>
                                 </tr>
                                 @empty 
                                     
-                            @endforelse     
+                            @endforelse      
                         </tbody>
                     </table>   
                 </div>

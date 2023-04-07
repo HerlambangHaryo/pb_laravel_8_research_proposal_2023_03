@@ -125,6 +125,13 @@ class RingkasanController extends Controller
                 'ringkasan_target_luaran'       => $request->ringkasan_target_luaran,
                 'ringkasan_capaian_iku'         => $request->ringkasan_capaian_iku,
                 'ringkasan_capaian_tkt'         => $request->ringkasan_capaian_tkt, 
+
+                'ringkasan_latar_belakang_catatan'      => $request->ringkasan_latar_belakang_catatan, 
+                'ringkasan_tujuan_catatan'              => $request->ringkasan_tujuan_catatan,
+                'ringkasan_tahapan_metode_catatan'      => $request->ringkasan_tahapan_metode_catatan,
+                'ringkasan_target_luaran_catatan'       => $request->ringkasan_target_luaran_catatan,
+                'ringkasan_capaian_iku_catatan'         => $request->ringkasan_capaian_iku_catatan,
+                'ringkasan_capaian_tkt_catatan'         => $request->ringkasan_capaian_tkt_catatan, 
             ]);  
                 
         // ----------------------------------------------------------- Send

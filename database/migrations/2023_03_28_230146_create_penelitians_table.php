@@ -39,6 +39,8 @@ class CreatePenelitiansTable extends Migration
             $table->text('latar_belakang_urgensi')->nullable();  
             $table->text('latar_belakang_terkait_dengan_skema')->nullable();  
             
+            $table->text('tinjauan_pustaka_roadmap')->nullable();  
+
             $table->text('tinjauan_pustaka_state_of_the_art')->nullable();  
             $table->text('tinjauan_pustaka_sebelum')->nullable();  
             $table->text('tinjauan_pustaka_setelah')->nullable();  
@@ -50,6 +52,31 @@ class CreatePenelitiansTable extends Migration
             $table->text('metode_luaran')->nullable();  
             $table->text('metode_capaian')->nullable();  
             $table->text('metode_tugas_pengusul')->nullable(); 
+            
+            $table->text('ringkasan_latar_belakang_catatan')->nullable();  
+            $table->text('ringkasan_tujuan_catatan')->nullable();  
+            $table->text('ringkasan_tahapan_metode_catatan')->nullable();  
+            $table->text('ringkasan_target_luaran_catatan')->nullable();  
+            $table->text('ringkasan_capaian_iku_catatan')->nullable();  
+            $table->text('ringkasan_capaian_tkt_catatan')->nullable();  
+            
+            $table->text('latar_belakang_umum_catatan')->nullable();  
+            $table->text('latar_belakang_permasalahan_catatan')->nullable();  
+            $table->text('latar_belakang_tujuan_catatan')->nullable();  
+            $table->text('latar_belakang_urgensi_catatan')->nullable();  
+            $table->text('latar_belakang_terkait_dengan_skema_catatan')->nullable();  
+            
+            $table->text('tinjauan_pustaka_state_of_the_art_catatan')->nullable();  
+            $table->text('tinjauan_pustaka_sebelum_catatan')->nullable();  
+            $table->text('tinjauan_pustaka_setelah_catatan')->nullable();  
+            $table->text('tinjauan_pustaka_umum_catatan')->nullable();  
+
+            $table->text('metode_uraian_catatan')->nullable();  
+            $table->text('metode_gambar_catatan')->nullable();  
+            $table->text('metode_detail_catatan')->nullable();  
+            $table->text('metode_luaran_catatan')->nullable();  
+            $table->text('metode_capaian_catatan')->nullable();  
+            $table->text('metode_tugas_pengusul_catatan')->nullable(); 
             
             $table->text('lembar_pengesahan')->nullable();  
 

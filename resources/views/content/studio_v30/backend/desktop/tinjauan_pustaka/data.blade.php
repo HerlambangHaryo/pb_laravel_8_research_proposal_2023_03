@@ -13,7 +13,7 @@
                 <div class="row mb-4">
                     <div class="col-6">
                         <h5>    
-                            Data - {{ $panel_name }} - (500)
+                            Data - {{ $panel_name }} - (1000 )
                         </h5>   
                     </div>
                     <div class="col-6 text-end">   
@@ -46,6 +46,7 @@
                                 <x-html.th-content-width title="Sub" width="15%" />
                                 <x-html.th-content title="Paragraf" />   
                                 <x-html.th-content-width title="Count" width="10%" /> 
+                                <x-html.th-content title="catatan" />   
                             </tr>
                         </thead>
                         <tbody>    
@@ -68,6 +69,9 @@
                                     ?>
                                     {{ $count }} / 250
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->tinjauan_pustaka_state_of_the_art_catatan }}
+                                </td>    
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -86,6 +90,9 @@
                                     ?>
                                     {{ $count }} / 250
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->tinjauan_pustaka_sebelum_catatan }}
+                                </td> 
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -104,6 +111,9 @@
                                     ?>
                                     {{ $count }} / 250
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->tinjauan_pustaka_setelah_catatan }}
+                                </td>    
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -122,6 +132,9 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->tinjauan_pustaka_umum_catatan }}
+                                </td>    
                             </tr> 
                         </tbody>
                         <tfoot>
@@ -134,6 +147,7 @@
                                         {{ $total_count }}
                                     </h4>
                                 </td>
+                                <td></td>
                             </tr>
                         </tfoot>
                     </table>   

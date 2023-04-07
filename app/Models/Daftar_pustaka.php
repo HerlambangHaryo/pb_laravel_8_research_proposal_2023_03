@@ -11,7 +11,8 @@ class Daftar_pustaka extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+     
+
     protected $softDelete = true;
     
     protected $fillable = [

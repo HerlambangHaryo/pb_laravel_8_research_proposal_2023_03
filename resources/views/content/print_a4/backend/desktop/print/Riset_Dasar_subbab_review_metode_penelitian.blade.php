@@ -11,8 +11,13 @@
         </tr>
     </table>
 </div>
-{!! define_paragraf($Penelitian->metode_uraian, 'metode_uraian', 100) !!}
-{!! define_paragraf($Penelitian->metode_gambar, 'metode_gambar', 0) !!}
+{!! define_paragraf($Penelitian->metode_uraian, 'metode_uraian', 100) !!} 
+
+<div class="text-center">
+    <img width="400px"
+        src="{{ asset('/public/storage/metode_penelitian/').'/'.$Penelitian->metode_gambar }}" alt="">
+</div>
+
 {!! define_paragraf($Penelitian->metode_detail, 'metode_detail', 100) !!} 
 {!! define_paragraf($Penelitian->metode_luaran, 'metode_luaran', 100) !!}
 {!! define_paragraf($Penelitian->metode_capaian, 'metode_capaian', 100) !!}

@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
  
 use App\Models\Penelitian;
+use Illuminate\Support\Facades\Storage;
 
 class Tinjauan_pustakaController extends Controller
 {
@@ -117,12 +118,47 @@ class Tinjauan_pustakaController extends Controller
         // ----------------------------------------------------------- Action   
             $data = Penelitian::findOrFail($Tinjauan_pustaka->id); 
             
-            $data->update([
-                'tinjauan_pustaka_state_of_the_art'     => $request->tinjauan_pustaka_state_of_the_art, 
-                'tinjauan_pustaka_sebelum'              => $request->tinjauan_pustaka_sebelum,
-                'tinjauan_pustaka_setelah'              => $request->tinjauan_pustaka_setelah,
-                'tinjauan_pustaka_umum'                 => $request->tinjauan_pustaka_umum,  
-            ]);  
+
+            
+            if($request->file('tinjauan_pustaka_roadmap') == "") {
+
+                $data->update([
+                    'tinjauan_pustaka_state_of_the_art'     => $request->tinjauan_pustaka_state_of_the_art, 
+                    'tinjauan_pustaka_sebelum'              => $request->tinjauan_pustaka_sebelum,
+                    'tinjauan_pustaka_setelah'              => $request->tinjauan_pustaka_setelah,
+                    'tinjauan_pustaka_umum'                 => $request->tinjauan_pustaka_umum,  
+    
+                    'tinjauan_pustaka_state_of_the_art_catatan'     => $request->tinjauan_pustaka_state_of_the_art_catatan, 
+                    'tinjauan_pustaka_sebelum_catatan'              => $request->tinjauan_pustaka_sebelum_catatan,
+                    'tinjauan_pustaka_setelah_catatan'              => $request->tinjauan_pustaka_setelah_catatan,
+                    'tinjauan_pustaka_umum_catatan'                 => $request->tinjauan_pustaka_umum_catatan, 
+                ]); 
+
+            } else { 
+                        
+                //hapus old image
+                Storage::disk('local')->delete('public/tinjauan_pustaka/'.$data->tinjauan_pustaka_roadmap);
+
+                //upload new image
+                $tinjauan_pustaka_roadmap = $request->file('tinjauan_pustaka_roadmap');
+                $tinjauan_pustaka_roadmap->storeAs('public/tinjauan_pustaka', $tinjauan_pustaka_roadmap->hashName());
+                
+                $data->update([
+                    'tinjauan_pustaka_state_of_the_art'     => $request->tinjauan_pustaka_state_of_the_art, 
+                    'tinjauan_pustaka_sebelum'              => $request->tinjauan_pustaka_sebelum,
+                    'tinjauan_pustaka_setelah'              => $request->tinjauan_pustaka_setelah,
+                    'tinjauan_pustaka_umum'                 => $request->tinjauan_pustaka_umum,  
+    
+                    'tinjauan_pustaka_state_of_the_art_catatan'     => $request->tinjauan_pustaka_state_of_the_art_catatan, 
+                    'tinjauan_pustaka_sebelum_catatan'              => $request->tinjauan_pustaka_sebelum_catatan,
+                    'tinjauan_pustaka_setelah_catatan'              => $request->tinjauan_pustaka_setelah_catatan,
+                    'tinjauan_pustaka_umum_catatan'                 => $request->tinjauan_pustaka_umum_catatan, 
+
+                    
+                    'tinjauan_pustaka_roadmap'         => $tinjauan_pustaka_roadmap->hashName(),   
+                ]); 
+            }
+ 
                 
         // ----------------------------------------------------------- Send
             if($data)

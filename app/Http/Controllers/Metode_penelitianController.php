@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use DB;
  
 use App\Models\Penelitian;
+use Illuminate\Support\Facades\Storage;
 
 class Metode_penelitianController extends Controller
 {
@@ -117,14 +118,50 @@ class Metode_penelitianController extends Controller
         // ----------------------------------------------------------- Action   
             $data = Penelitian::findOrFail($Metode_penelitian->id); 
    
-            $data->update([
-                'metode_uraian'             => $request->metode_uraian, 
-                'metode_gambar'             => $request->metode_gambar,
-                'metode_detail'             => $request->metode_detail,
-                'metode_luaran'             => $request->metode_luaran,
-                'metode_capaian'            => $request->metode_capaian,
-                'metode_tugas_pengusul'     => $request->metode_tugas_pengusul, 
-            ]);  
+            if($request->file('metode_gambar') == "") {
+
+                $data->update([
+                    'metode_uraian'             => $request->metode_uraian,  
+                    'metode_detail'             => $request->metode_detail,
+                    'metode_luaran'             => $request->metode_luaran,
+                    'metode_capaian'            => $request->metode_capaian,
+                    'metode_tugas_pengusul'     => $request->metode_tugas_pengusul, 
+    
+                    'metode_uraian_catatan'             => $request->metode_uraian_catatan,  
+                    'metode_detail_catatan'             => $request->metode_detail_catatan,
+                    'metode_luaran_catatan'             => $request->metode_luaran_catatan,
+                    'metode_capaian_catatan'            => $request->metode_capaian_catatan,
+                    'metode_tugas_pengusul_catatan'     => $request->metode_tugas_pengusul_catatan, 
+                ]); 
+
+            } else { 
+                        
+                //hapus old image
+                Storage::disk('local')->delete('public/penelitian/'.$data->metode_gambar);
+
+                //upload new image
+                $metode_gambar = $request->file('metode_gambar');
+                $metode_gambar->storeAs('public/metode_penelitian', $metode_gambar->hashName());
+                
+                $data->update([
+                    'metode_uraian'             => $request->metode_uraian,  
+                    'metode_detail'             => $request->metode_detail,
+                    'metode_luaran'             => $request->metode_luaran,
+                    'metode_capaian'            => $request->metode_capaian,
+                    'metode_tugas_pengusul'     => $request->metode_tugas_pengusul, 
+    
+                    'metode_uraian_catatan'             => $request->metode_uraian_catatan,  
+                    'metode_detail_catatan'             => $request->metode_detail_catatan,
+                    'metode_luaran_catatan'             => $request->metode_luaran_catatan,
+                    'metode_capaian_catatan'            => $request->metode_capaian_catatan,
+                    'metode_tugas_pengusul_catatan'     => $request->metode_tugas_pengusul_catatan, 
+
+                    
+                    'metode_gambar'         => $metode_gambar->hashName(),   
+                ]); 
+            }
+
+ 
                 
         // ----------------------------------------------------------- Send
             if($data)

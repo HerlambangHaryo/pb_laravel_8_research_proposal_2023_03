@@ -97,7 +97,7 @@
                 {{ $Penelitian->mahasiswa_1->nama }}
             </td>
             <td>
-                {{ $Penelitian->mahasiswa_1->nidn }}
+                {{ $Penelitian->mahasiswa_1->npm }}
             </td>
             <td>
                 {{ $Penelitian->mahasiswa_1->perguruan_tinggi->kode }}
@@ -111,7 +111,7 @@
                 {{ $Penelitian->mahasiswa_2->nama }}
             </td>
             <td>
-                {{ $Penelitian->mahasiswa_2->nidn }}
+                {{ $Penelitian->mahasiswa_2->npm }}
             </td>
             <td>
                 {{ $Penelitian->mahasiswa_2->perguruan_tinggi->kode }}

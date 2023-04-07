@@ -90,6 +90,34 @@
                                     rows="5"></textarea> 
                             </div>
                         </div>  
+
+                        
+                          
+                    <!-- Sitasi -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                Sitasi
+                            </label>
+                            <div class="col-6">
+                                <input 
+                                    type="text" 
+                                    class="form-control form-control-lg"  
+                                    name="sitasi" 
+                                >
+                            </div>
+                        </div> 
+                    <!-- Daftar Pustaka -->
+                        <div class="form-group row mb-3">
+                            <label class="col-2 col-form-label">
+                                Daftar Pustaka
+                            </label>
+                            <div class="col-6">
+                                <textarea 
+                                    class="form-control" 
+                                    name="daftar_pustaka"  
+                                    rows="5"></textarea> 
+                            </div>
+                        </div> 
                 </div> 
             </div>            
         </div> 

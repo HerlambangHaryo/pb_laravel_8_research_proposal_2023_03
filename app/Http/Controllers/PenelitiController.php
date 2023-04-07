@@ -159,7 +159,9 @@ class PenelitiController extends Controller
                 'id_perguruan_tinggi'           => $request->id_perguruan_tinggi, 
 
                 'screenshot_sister'             => $request->screenshot_sister, 
-                'screenshot_sinta'              => $request->screenshot_sinta,     
+                'screenshot_sinta'              => $request->screenshot_sinta,  
+
+                'npm'                           => $request->npm,     
             ]);  
 
         // ----------------------------------------------------------- Send
@@ -279,6 +281,8 @@ class PenelitiController extends Controller
                     's3_pembimbing'                 => $request->s3_pembimbing,   
     
                     'id_perguruan_tinggi'           => $request->id_perguruan_tinggi,  
+
+                    'npm'                           => $request->npm,     
                 ]);   
             } 
             else 

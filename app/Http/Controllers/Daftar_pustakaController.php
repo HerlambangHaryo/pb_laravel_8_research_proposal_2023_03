@@ -48,8 +48,15 @@ class Daftar_pustakaController extends Controller
 
             $Penelitian         = Penelitian::where('id', '=', $id)
                                     ->first();
+ 
+ 
+            $pre_data           = Daftar_pustaka::select('id_publikasi_artikel')
+                                    ->where('id_penelitian', '=', $id);
 
-            $Daftar_pustaka     = array();
+            $Daftar_pustaka     = Publikasi_artikel::whereIn('id', $pre_data)
+                                    ->orderBy('tahun')
+                                    ->orderBy('judul') 
+                                    ->get();
                                     
         // ----------------------------------------------------------- Send
             return view($view,  
@@ -127,7 +134,11 @@ class Daftar_pustakaController extends Controller
                 'volume'            => $request->volume,
                 'nomor'             => $request->nomor,
                 'tahun'             => $request->tahun,  
-                'url'               => $request->url,        
+                'url'               => $request->url,      
+
+                'sitasi'            => $request->sitasi,   
+                'tag_url'           => str_replace(" ", "_", $request->judul),   
+                'daftar_pustaka'    => $request->daftar_pustaka,      
             ]);  
 
             $data2 = Daftar_pustaka::create([  
@@ -151,7 +162,7 @@ class Daftar_pustakaController extends Controller
         ///////////////////////////////////////////////////////////////
     }
 
-    public function edit(Daftar_pustaka $Daftar_pustaka)
+    public function edit(Publikasi_artikel $Daftar_pustaka)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -191,7 +202,7 @@ class Daftar_pustakaController extends Controller
         ///////////////////////////////////////////////////////////////
     }
 
-    public function update(Request $request, Daftar_pustaka $Daftar_pustaka)
+    public function update(Request $request, Publikasi_artikel $Daftar_pustaka)
     {
         // ----------------------------------------------------------- Auth
             $user = auth()->user();  
@@ -201,12 +212,19 @@ class Daftar_pustakaController extends Controller
 
         // ----------------------------------------------------------- Action   
             $data = Publikasi_artikel::findOrFail($Daftar_pustaka->id); 
+ 
 
-            $data->update([ 
-                'kegiatan'              => $request->kegiatan,
-                'urutan'                => $request->urutan,
-                'indikator_capaian'     => $request->indikator_capaian,
-                'bulan'                 => $request->bulan,   
+            $data->update([  
+                'judul'             => ucwords($request->judul),   
+                'jurnal'            => $request->jurnal,
+                'volume'            => $request->volume,
+                'nomor'             => $request->nomor,
+                'tahun'             => $request->tahun,  
+                'url'               => $request->url,    
+
+                'sitasi'            => $request->sitasi,   
+                'tag_url'           => str_replace(" ", "_", $request->judul),   
+                'daftar_pustaka'    => $request->daftar_pustaka,    
             ]);  
                 
         // ----------------------------------------------------------- Send

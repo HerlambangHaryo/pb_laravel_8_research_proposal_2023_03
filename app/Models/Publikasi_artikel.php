@@ -29,6 +29,9 @@ class Publikasi_artikel extends Model
         'nomor', 
         'tahun', 
         'url', 
+        'sitasi', 
+        'tag_link', 
+        'daftar_pustaka', 
     ];
 
     protected $hidden = ["deleted_at"];

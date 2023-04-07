@@ -69,7 +69,9 @@ class Peneliti extends Model
         'id_perguruan_tinggi', 
 
         'screenshot_sister', 
-        'screenshot_sinta'
+        'screenshot_sinta', 
+
+        'npm'
     ];
 
     protected $hidden = ["deleted_at"];

@@ -298,6 +298,7 @@
                                         type="text" 
                                         class="form-control form-control-lg"  
                                         name="kata_kunci_1" 
+                                        value="{{ old('kata_kunci_1', $Penelitian->kata_kunci_1) }}"
                                     >
                                 </div>
                             </div>    
@@ -311,6 +312,7 @@
                                         type="text" 
                                         class="form-control form-control-lg"  
                                         name="kata_kunci_2" 
+                                        value="{{ old('kata_kunci_2', $Penelitian->kata_kunci_2) }}"
                                     >
                                 </div>
                             </div>    
@@ -324,6 +326,7 @@
                                         type="text" 
                                         class="form-control form-control-lg"  
                                         name="kata_kunci_3" 
+                                        value="{{ old('kata_kunci_3', $Penelitian->kata_kunci_3) }}"
                                     >
                                 </div>
                             </div>    
@@ -337,6 +340,7 @@
                                         type="text" 
                                         class="form-control form-control-lg"  
                                         name="kata_kunci_4" 
+                                        value="{{ old('kata_kunci_4', $Penelitian->kata_kunci_4) }}"
                                     >
                                 </div>
                             </div>    
@@ -350,6 +354,7 @@
                                         type="text" 
                                         class="form-control form-control-lg"  
                                         name="kata_kunci_5" 
+                                        value="{{ old('kata_kunci_5', $Penelitian->kata_kunci_5) }}"
                                     >
                                 </div>
                             </div>    

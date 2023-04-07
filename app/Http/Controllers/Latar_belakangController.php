@@ -124,6 +124,13 @@ class Latar_belakangController extends Controller
                 'latar_belakang_target_luaran'          => $request->latar_belakang_target_luaran,
                 'latar_belakang_urgensi'                => $request->latar_belakang_urgensi,
                 'latar_belakang_terkait_dengan_skema'   => $request->latar_belakang_terkait_dengan_skema, 
+
+                'latar_belakang_umum_catatan'                   => $request->latar_belakang_umum_catatan, 
+                'latar_belakang_permasalahan_catatan'           => $request->latar_belakang_permasalahan_catatan,
+                'latar_belakang_tujuan_catatan'                 => $request->latar_belakang_tujuan_catatan,
+                'latar_belakang_target_luaran_catatan'          => $request->latar_belakang_target_luaran_catatan,
+                'latar_belakang_urgensi_catatan'                => $request->latar_belakang_urgensi_catatan,
+                'latar_belakang_terkait_dengan_skema_catatan'   => $request->latar_belakang_terkait_dengan_skema_catatan, 
             ]);  
                 
         // ----------------------------------------------------------- Send

@@ -46,13 +46,29 @@
                                 <x-html.th-content-width title="Sub" width="20%" />
                                 <x-html.th-content title="Paragraf" />   
                                 <x-html.th-content-width title="Count" width="10%" /> 
+                                <x-html.th-content title="catatan" />   
                             </tr>
                         </thead>
                         <tbody>    
-                            
+                             
                             <tr>
                                 <td class="text-center"> 
                                     1.
+                                </td>  
+                                <td class="text-center"> 
+                                    Gambar Metode
+                                </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->metode_gambar }}
+                                </td>    
+                                <td class="text-center">  
+                                </td>  
+                                <td class="text-center">  
+                                </td>  
+                            </tr> 
+                            <tr>
+                                <td class="text-center"> 
+                                    2.
                                 </td>  
                                 <td class="text-center"> 
                                     Uraian diagram alir (100) 
@@ -68,20 +84,10 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
-                            </tr>   
-                            <tr>
-                                <td class="text-center"> 
-                                    2.
-                                </td>  
-                                <td class="text-center"> 
-                                    Gambar Metode
-                                </td>  
                                 <td class="text-left">  
-                                    {{ $Penelitian->metode_gambar }}
-                                </td>    
-                                <td class="text-center">  
-                                </td>  
-                            </tr>   
+                                    {{ $Penelitian->metode_uraian_catatan }}
+                                </td>   
+                            </tr>    
                             <tr>
                                 <td class="text-center"> 
                                     3.
@@ -99,6 +105,9 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->metode_detail_catatan }}
+                                </td> 
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -117,6 +126,9 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->metode_luaran_catatan }}
+                                </td>    
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -135,6 +147,9 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->metode_capaian_catatan }}
+                                </td>    
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -153,6 +168,9 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->metode_tugas_pengusul_catatan }}
+                                </td>  
                             </tr>  
                         </tbody>
                         <tfoot>
@@ -165,6 +183,7 @@
                                         {{ $total_count }}
                                     </h4>
                                 </td>
+                                <td></td>
                             </tr>
                         </tfoot>
                     </table>   

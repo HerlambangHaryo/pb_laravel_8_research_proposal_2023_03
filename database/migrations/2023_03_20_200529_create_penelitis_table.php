@@ -25,8 +25,7 @@ class CreatePenelitisTable extends Migration
             $table->text('url')->nullable();
             $table->string('id_scopus')->nullable();
             $table->string('id_orchid')->nullable();
-
-
+ 
             $table->string('tempat_lahir')->nullable();
             $table->string('tanggal_lahir')->nullable();
             $table->string('email')->nullable();
@@ -61,6 +60,8 @@ class CreatePenelitisTable extends Migration
             
             $table->string('screenshot_sister')->nullable(); 
             $table->string('screenshot_sinta')->nullable(); 
+            
+            $table->string('npm')->nullable();
 
             
 

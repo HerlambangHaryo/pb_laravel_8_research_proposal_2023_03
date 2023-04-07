@@ -46,6 +46,7 @@
                                 <x-html.th-content-width title="Sub" width="15%" />
                                 <x-html.th-content title="Paragraf" />   
                                 <x-html.th-content-width title="Count" width="10%" /> 
+                                <x-html.th-content title="catatan" />   
                             </tr>
                         </thead>
                         <tbody>    
@@ -68,6 +69,9 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->latar_belakang_umum_catatan }}
+                                </td>   
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -86,6 +90,9 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->latar_belakang_permasalahan_catatan }}
+                                </td>   
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -104,6 +111,9 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->latar_belakang_tujuan_catatan }}
+                                </td>   
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -122,6 +132,9 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->latar_belakang_urgensi_catatan }}
+                                </td>    
                             </tr>   
                             <tr>
                                 <td class="text-center"> 
@@ -140,6 +153,9 @@
                                     ?>
                                     {{ $count }} / 100
                                 </td>  
+                                <td class="text-left">  
+                                    {{ $Penelitian->latar_belakang_terkait_dengan_skema_catatan }}
+                                </td>   
                             </tr>  
                         </tbody>
                         <tfoot>
@@ -152,6 +168,7 @@
                                         {{ $total_count }}
                                     </h4>
                                 </td>
+                                <td></td>
                             </tr>
                         </tfoot>
                     </table>   
