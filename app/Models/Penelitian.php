@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Peneliti; 
+use App\Models\Publikasi_artikel; 
+use App\Models\Jadwal_penelitian; 
+use App\Models\Anggaran_penelitian; 
 use DB;
 
 class Penelitian extends Model
@@ -18,7 +21,7 @@ class Penelitian extends Model
  
     public function publikasi_artikel()
     {
-        return $this->belongsToMany(publikasi_artikel::class, 'daftar_pustakas', 'id_penelitian', 'id_publikasi_artikel')
+        return $this->belongsToMany(Publikasi_artikel::class, 'daftar_pustakas', 'id_penelitian', 'id_publikasi_artikel')
                     ->orderBy('publikasi_artikels.daftar_pustaka');
     }
 
