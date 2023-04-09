@@ -22,7 +22,11 @@ class CreatePenelitiansTable extends Migration
             $table->integer('id_mahasiswa_2')->nullable();
             $table->string('judul');
             $table->string('skema')->nullable();
-            $table->date('tanggal')->nullable();
+
+            $table->date('tanggal_pelaksanaan')->nullable();
+            $table->tinyInteger('waktu_pelaksanaan')->nullable();
+            $table->date('tanggal_usulan')->nullable();
+
             $table->integer('id_ketua_pusat_studi')->nullable();
             $table->integer('id_dekan')->nullable();  
 
@@ -78,6 +82,8 @@ class CreatePenelitiansTable extends Migration
             $table->text('metode_capaian_catatan')->nullable();  
             $table->text('metode_tugas_pengusul_catatan')->nullable(); 
             
+            $table->text('paragraf_jadwal_penelitian')->nullable();  
+
             $table->text('lembar_pengesahan')->nullable();  
 
             $table->string('kata_kunci_1')->nullable();
@@ -86,6 +92,17 @@ class CreatePenelitiansTable extends Migration
             $table->string('kata_kunci_4')->nullable();
             $table->string('kata_kunci_5')->nullable();
             
+            $table->text('uraian_tugas_ketua')->nullable();  
+            $table->text('uraian_tugas_anggota_1')->nullable();  
+            $table->text('uraian_tugas_anggota_2')->nullable();  
+            $table->text('uraian_tugas_mahasiswa_1')->nullable();  
+            $table->text('uraian_tugas_mahasiswa_2')->nullable();   
+            
+            $table->text('surat_pernyataan_ketua')->nullable();  
+            $table->text('surat_pernyataan_anggota_1')->nullable();  
+            $table->text('surat_pernyataan_anggota_2')->nullable();  
+            $table->text('surat_pernyataan_mahasiswa_1')->nullable();  
+            $table->text('surat_pernyataan_mahasiswa_2')->nullable();   
 
             $table->timestamps();
             $table->softDeletes();

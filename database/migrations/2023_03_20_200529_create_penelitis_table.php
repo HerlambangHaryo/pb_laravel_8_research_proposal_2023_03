@@ -31,6 +31,8 @@ class CreatePenelitisTable extends Migration
             $table->string('email')->nullable();
             $table->string('telepon')->nullable(); 
 
+            $table->string('prodi_fakultas')->nullable(); 
+             
             $table->string('lulusan_s1')->nullable();
             $table->string('lulusan_s2')->nullable();
             $table->string('lulusan_s3')->nullable(); 

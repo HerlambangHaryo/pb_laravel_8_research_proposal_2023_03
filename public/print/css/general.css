@@ -138,6 +138,10 @@ table.border {
 .text-indent{
     text-indent: 1cm;
 }
+.text-indent-reverse{
+    margin-left: 1cm;
+    text-indent: -1cm;
+}
 
 .uppercase{
     text-transform: uppercase;

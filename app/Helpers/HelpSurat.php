@@ -61,7 +61,7 @@
             // ----------------------------------------------------------- Action
                 $isi .= '<div class="  ">'; 
  
-                    $isi .= '<table class="" width="100%">'; 
+                    $isi .= '<table class="text-center" width="100%">'; 
                         $isi .= '<tr>';
                             $isi .= '<td width="50%">';  
                             $isi .= '</td>';  
@@ -76,7 +76,7 @@
                                 $isi .= '<br/>'; 
                                 $isi .= '<br/>'; 
                                 $isi .= '<br/>';  
-                                $isi .= '<span = "underline">'; 
+                                $isi .= '<span class = "underline">'; 
                                     $isi .= $nama; 
                                 $isi .= '</span>'; 
                                 $isi .= '<br/>'; 

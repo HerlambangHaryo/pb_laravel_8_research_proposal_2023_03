@@ -45,6 +45,7 @@ class Peneliti extends Model
         'tanggal_lahir',
         'email',
         'telepon', 
+        'prodi_fakultas',
         'lulusan_s1',
         'lulusan_s2',
         'lulusan_s3',

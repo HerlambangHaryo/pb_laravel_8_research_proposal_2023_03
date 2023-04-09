@@ -84,7 +84,11 @@ class Penelitian extends Model
         'id_mahasiswa_2', 
         'judul', 
         'skema', 
-        'tanggal', 
+
+        'tanggal_pelaksanaan', 
+        'waktu_pelaksanaan', 
+        'tanggal_usulan', 
+
         'id_ketua_pusat_studi', 
         'id_dekan',  
 
@@ -149,6 +153,18 @@ class Penelitian extends Model
         'kata_kunci_3',
         'kata_kunci_4',
         'kata_kunci_5',
+ 
+        'uraian_tugas_ketua', 
+        'uraian_tugas_anggota_1', 
+        'uraian_tugas_anggota_2', 
+        'uraian_tugas_mahasiswa_1', 
+        'uraian_tugas_mahasiswa_2',  
+                    
+        'surat_pernyataan_ketua', 
+        'surat_pernyataan_anggota_1', 
+        'surat_pernyataan_anggota_2', 
+        'surat_pernyataan_mahasiswa_1', 
+        'surat_pernyataan_mahasiswa_2',
     ];
 
     protected $hidden = ["deleted_at"];

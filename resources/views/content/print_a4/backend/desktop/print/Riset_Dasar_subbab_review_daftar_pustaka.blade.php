@@ -2,10 +2,10 @@
     Daftar Pustaka
 </div>
 
-<div class=""> 
-    <ol>
+<br/>
+
+<div class="">  
     @foreach($Penelitian->publikasi_artikel()->get() as $row) 
-        <li>{{ $row->daftar_pustaka  }}</li>
-    @endforeach
-    </ol>
+        <div class="text-indent-reverse lh-15">{{ $row->daftar_pustaka  }}</div>
+    @endforeach 
 </div>
