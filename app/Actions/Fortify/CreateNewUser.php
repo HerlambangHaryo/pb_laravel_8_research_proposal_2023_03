@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 
+use Illuminate\Support\Str;
+
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
@@ -26,10 +28,12 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
-
+ 
         return User::create([
+            'id' => Str::uuid()->toString(),
             'name' => $input['name'],
             'email' => $input['email'],
+            'current_team_id' => define_aboutapp_team(),
             'password' => Hash::make($input['password']),
         ]);
     }

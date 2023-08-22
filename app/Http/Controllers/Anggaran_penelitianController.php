@@ -22,16 +22,16 @@ class Anggaran_penelitianController extends Controller
     public function Penelitian($id)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
             session(['id_penelitian' => $id]);
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -40,50 +40,50 @@ class Anggaran_penelitianController extends Controller
 
             $view_file      = 'data';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $data           = Penelitian::where('id', '=', $id)
                                 ->get();
 
             $Penelitian       = Penelitian::where('id', '=', $id)
                                 ->first();
 
-                                
+
             $Anggaran_penelitian       = Anggaran_penelitian::where('id_penelitian', '=', $id)
                                             ->get();
-                                    
-        // ----------------------------------------------------------- Send 
-            return view($view,  
+
+        // ----------------------------------------------------------- Send
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'id', 
-                    'data', 
-                    'Penelitian', 
-                    'Anggaran_penelitian', 
+                    'view_file',
+                    'id',
+                    'data',
+                    'Penelitian',
+                    'Anggaran_penelitian',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    } 
-    
+    }
+
     public function create()
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -92,19 +92,19 @@ class Anggaran_penelitianController extends Controller
 
             $view_file      = 'create';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file',  
+                    'view_file',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -113,22 +113,22 @@ class Anggaran_penelitianController extends Controller
     public function store(Request $request)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
-            
+            $user = auth()->user();
+
         // ----------------------------------------------------------- Initialize
             $id_penelitian = $request->session()->get('id_penelitian');
 
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
-            $data = Anggaran_penelitian::create([ 
-                'id_penelitian'         => $id_penelitian,  
+        // ----------------------------------------------------------- Action
+            $data = Anggaran_penelitian::create([
+                'id_penelitian'         => $id_penelitian,
                 'kategori'              => $request->kategori,
                 'kegiatan'              => $request->kegiatan,
                 'justifikasi_anggaran'  => $request->justifikasi_anggaran,
-                'kuantitas'             => $request->kuantitas,       
-                'harga'                 => $request->harga,       
-            ]);  
+                'kuantitas'             => $request->kuantitas,
+                'harga'                 => $request->harga,
+            ]);
 
         // ----------------------------------------------------------- Send
             if($data)
@@ -149,15 +149,15 @@ class Anggaran_penelitianController extends Controller
     public function edit(Anggaran_penelitian $Anggaran_penelitian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -166,21 +166,21 @@ class Anggaran_penelitianController extends Controller
 
             $view_file      = 'edit';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Anggaran_penelitian',   
+                    'view_file',
+                    'Anggaran_penelitian',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -189,22 +189,22 @@ class Anggaran_penelitianController extends Controller
     public function update(Request $request, Anggaran_penelitian $Anggaran_penelitian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
-            $data = Anggaran_penelitian::findOrFail($Anggaran_penelitian->id); 
+        // ----------------------------------------------------------- Action
+            $data = Anggaran_penelitian::findOrFail($Anggaran_penelitian->id);
 
-            $data->update([ 
+            $data->update([
                 'kategori'              => $request->kategori,
                 'kegiatan'              => $request->kegiatan,
                 'justifikasi_anggaran'  => $request->justifikasi_anggaran,
-                'kuantitas'             => $request->kuantitas,       
-                'harga'                 => $request->harga,      
-            ]);  
-                
+                'kuantitas'             => $request->kuantitas,
+                'harga'                 => $request->harga,
+            ]);
+
         // ----------------------------------------------------------- Send
             if($data)
             {
@@ -225,15 +225,15 @@ class Anggaran_penelitianController extends Controller
     public function show(Anggaran_penelitian $Anggaran_penelitian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -242,24 +242,24 @@ class Anggaran_penelitianController extends Controller
 
             $view_file      = 'show';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
             $data = Anggaran_penelitian::where('id', '=', $Anggaran_penelitian->id)
-                            ->get(); 
+                            ->get();
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Anggaran_penelitian',   
-                    'data',  
+                    'view_file',
+                    'Anggaran_penelitian',
+                    'data',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -268,15 +268,15 @@ class Anggaran_penelitianController extends Controller
     public function deletedata(Anggaran_penelitian $Anggaran_penelitian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -285,32 +285,32 @@ class Anggaran_penelitianController extends Controller
 
             $view_file      = 'delete';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Anggaran_penelitian',   
+                    'view_file',
+                    'Anggaran_penelitian',
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
-    
+
     public function destroy($id)
     {
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
+        // ----------------------------------------------------------- Action
             $data = Anggaran_penelitian::findOrFail($id);
             $data->delete();
 
@@ -327,6 +327,6 @@ class Anggaran_penelitianController extends Controller
                     ->route($content.'.index')
                     ->with(['Error' => 'Data Gagal Disimpan!']);
             }
-        /////////////////////////////////////////////////////////////// 
+        ///////////////////////////////////////////////////////////////
     }
 }

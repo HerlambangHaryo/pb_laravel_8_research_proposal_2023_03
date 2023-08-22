@@ -1,1 +1,0 @@
-help me write commit message for adding model and migration's peneliti as conventional commit's format

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Jenssegers\Agent\Agent;
 use DB;
- 
+
 use App\Models\Penelitian;
 
 class RingkasanController extends Controller
@@ -21,16 +21,16 @@ class RingkasanController extends Controller
     public function Penelitian($id)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
             session(['id_penelitian' => $id]);
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -39,45 +39,45 @@ class RingkasanController extends Controller
 
             $view_file      = 'data';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $data           = Penelitian::where('id', '=', $id)
                                 ->get();
 
             $Penelitian       = Penelitian::where('id', '=', $id)
                                 ->first();
-                                    
+
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'id', 
-                    'data', 
-                    'Penelitian', 
+                    'view_file',
+                    'id',
+                    'data',
+                    'Penelitian',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    } 
-    
+    }
+
     public function edit(Penelitian $Ringkasan)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -86,21 +86,21 @@ class RingkasanController extends Controller
 
             $view_file      = 'edit';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Ringkasan',   
+                    'view_file',
+                    'Ringkasan',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -109,31 +109,31 @@ class RingkasanController extends Controller
     public function update(Request $request, Penelitian $Ringkasan)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
-            $data = Penelitian::findOrFail($Ringkasan->id); 
+        // ----------------------------------------------------------- Action
+            $data = Penelitian::findOrFail($Ringkasan->id);
 
-            
+
             $data->update([
-                'ringkasan_latar_belakang'      => $request->ringkasan_latar_belakang, 
+                'ringkasan_latar_belakang'      => $request->ringkasan_latar_belakang,
                 'ringkasan_tujuan'              => $request->ringkasan_tujuan,
                 'ringkasan_tahapan_metode'      => $request->ringkasan_tahapan_metode,
                 'ringkasan_target_luaran'       => $request->ringkasan_target_luaran,
                 'ringkasan_capaian_iku'         => $request->ringkasan_capaian_iku,
-                'ringkasan_capaian_tkt'         => $request->ringkasan_capaian_tkt, 
+                'ringkasan_capaian_tkt'         => $request->ringkasan_capaian_tkt,
 
-                'ringkasan_latar_belakang_catatan'      => $request->ringkasan_latar_belakang_catatan, 
+                'ringkasan_latar_belakang_catatan'      => $request->ringkasan_latar_belakang_catatan,
                 'ringkasan_tujuan_catatan'              => $request->ringkasan_tujuan_catatan,
                 'ringkasan_tahapan_metode_catatan'      => $request->ringkasan_tahapan_metode_catatan,
                 'ringkasan_target_luaran_catatan'       => $request->ringkasan_target_luaran_catatan,
                 'ringkasan_capaian_iku_catatan'         => $request->ringkasan_capaian_iku_catatan,
-                'ringkasan_capaian_tkt_catatan'         => $request->ringkasan_capaian_tkt_catatan, 
-            ]);  
-                
+                'ringkasan_capaian_tkt_catatan'         => $request->ringkasan_capaian_tkt_catatan,
+            ]);
+
         // ----------------------------------------------------------- Send
             if($data)
             {
@@ -149,5 +149,5 @@ class RingkasanController extends Controller
                     ->with(['Error' => 'Data Gagal Disimpan!']);
             }
         ///////////////////////////////////////////////////////////////
-    } 
+    }
 }

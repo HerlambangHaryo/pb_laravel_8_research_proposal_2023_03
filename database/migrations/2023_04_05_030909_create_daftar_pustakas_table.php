@@ -15,8 +15,7 @@ class CreateDaftarPustakasTable extends Migration
     {
         Schema::create('daftar_pustakas', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_penelitian');
-            $table->integer('id_publikasi_artikel'); 
+            $table->integer('id_penelitian'); 
             $table->timestamps();
             $table->softDeletes();
         });

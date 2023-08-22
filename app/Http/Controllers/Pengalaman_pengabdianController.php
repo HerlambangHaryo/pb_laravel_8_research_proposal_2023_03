@@ -22,16 +22,16 @@ class Pengalaman_pengabdianController extends Controller
     public function peneliti($id)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
             session(['id_peneliti' => $id]);
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -40,8 +40,8 @@ class Pengalaman_pengabdianController extends Controller
 
             $view_file      = 'data';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $data           = Pengalaman_pengabdian::where('id_peneliti', '=', $id)
                                 ->orderBy('tahun')
                                 ->orderBy('judul')
@@ -49,38 +49,38 @@ class Pengalaman_pengabdianController extends Controller
 
             $Peneliti       = Peneliti::where('id', '=', $id)
                                 ->first();
-                                    
+
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'id', 
-                    'data', 
-                    'Peneliti', 
+                    'view_file',
+                    'id',
+                    'data',
+                    'Peneliti',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    } 
-    
+    }
+
     public function create()
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -89,19 +89,19 @@ class Pengalaman_pengabdianController extends Controller
 
             $view_file      = 'create';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file',  
+                    'view_file',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -110,21 +110,21 @@ class Pengalaman_pengabdianController extends Controller
     public function store(Request $request)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
-            
+            $user = auth()->user();
+
         // ----------------------------------------------------------- Initialize
             $id_peneliti = $request->session()->get('id_peneliti');
 
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action    
-            $data = Pengalaman_pengabdian::create([ 
-                'id_peneliti'       => $id_peneliti,  
-                'judul'             => $request->judul,  
-                'tahun'             => $request->tahun,  
-                'sumber_pendanaan'  => $request->sumber_pendanaan,  
-                'jumlah_pendanaan'  => $request->jumlah_pendanaan,      
-            ]);  
+        // ----------------------------------------------------------- Action
+            $data = Pengalaman_pengabdian::create([
+                'id_peneliti'       => $id_peneliti,
+                'judul'             => $request->judul,
+                'tahun'             => $request->tahun,
+                'sumber_pendanaan'  => $request->sumber_pendanaan,
+                'jumlah_pendanaan'  => $request->jumlah_pendanaan,
+            ]);
 
         // ----------------------------------------------------------- Send
             if($data)
@@ -145,15 +145,15 @@ class Pengalaman_pengabdianController extends Controller
     public function edit(Pengalaman_pengabdian $Pengalaman_pengabdian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -162,21 +162,21 @@ class Pengalaman_pengabdianController extends Controller
 
             $view_file      = 'edit';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Pengalaman_pengabdian',   
+                    'view_file',
+                    'Pengalaman_pengabdian',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -185,21 +185,21 @@ class Pengalaman_pengabdianController extends Controller
     public function update(Request $request, Pengalaman_pengabdian $Pengalaman_pengabdian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
-            $data = Pengalaman_pengabdian::findOrFail($Pengalaman_pengabdian->id); 
+        // ----------------------------------------------------------- Action
+            $data = Pengalaman_pengabdian::findOrFail($Pengalaman_pengabdian->id);
 
-            $data->update([ 
-                'judul'             => $request->judul,  
-                'tahun'             => $request->tahun,  
-                'sumber_pendanaan'  => $request->sumber_pendanaan,  
-                'jumlah_pendanaan'  => $request->jumlah_pendanaan,   
-            ]);  
-                
+            $data->update([
+                'judul'             => $request->judul,
+                'tahun'             => $request->tahun,
+                'sumber_pendanaan'  => $request->sumber_pendanaan,
+                'jumlah_pendanaan'  => $request->jumlah_pendanaan,
+            ]);
+
         // ----------------------------------------------------------- Send
             if($data)
             {
@@ -220,15 +220,15 @@ class Pengalaman_pengabdianController extends Controller
     public function show(Pengalaman_pengabdian $Pengalaman_pengabdian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -237,24 +237,24 @@ class Pengalaman_pengabdianController extends Controller
 
             $view_file      = 'show';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
             $data = Pengalaman_pengabdian::where('id', '=', $Pengalaman_pengabdian->id)
-                            ->get(); 
+                            ->get();
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Pengalaman_pengabdian',   
-                    'data',  
+                    'view_file',
+                    'Pengalaman_pengabdian',
+                    'data',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -263,15 +263,15 @@ class Pengalaman_pengabdianController extends Controller
     public function deletedata(Pengalaman_pengabdian $Pengalaman_pengabdian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -280,32 +280,32 @@ class Pengalaman_pengabdianController extends Controller
 
             $view_file      = 'delete';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Pengalaman_pengabdian',   
+                    'view_file',
+                    'Pengalaman_pengabdian',
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
-    
+
     public function destroy($id)
     {
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
+        // ----------------------------------------------------------- Action
             $data = Pengalaman_pengabdian::findOrFail($id);
             $data->delete();
 
@@ -322,6 +322,6 @@ class Pengalaman_pengabdianController extends Controller
                     ->route($content.'.index')
                     ->with(['Error' => 'Data Gagal Disimpan!']);
             }
-        /////////////////////////////////////////////////////////////// 
+        ///////////////////////////////////////////////////////////////
     }
 }

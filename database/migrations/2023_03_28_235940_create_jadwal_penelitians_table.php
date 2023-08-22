@@ -20,6 +20,9 @@ class CreateJadwalPenelitiansTable extends Migration
             $table->string('kegiatan');
             $table->string('bulan')->nullable();
             $table->string('indikator_capaian')->nullable();  
+            $table->string('penjelasan')->nullable();  
+
+            
             $table->timestamps();
             $table->softDeletes();
         });

@@ -18,20 +18,20 @@ class Jadwal_penelitianController extends Controller
     public $themecolor  = '';
     public $content     = 'Jadwal_penelitian';
     public $type        = 'backend';
-    
+
     public function Penelitian($id)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
             session(['id_penelitian' => $id]);
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -40,8 +40,8 @@ class Jadwal_penelitianController extends Controller
 
             $view_file      = 'data';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $data               = Penelitian::where('id', '=', $id)
                                     ->get();
 
@@ -50,39 +50,39 @@ class Jadwal_penelitianController extends Controller
 
             $Jadwal_penelitian  = Jadwal_penelitian::where('id_penelitian', '=', $id)
                                     ->get();
-                                    
+
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'id', 
-                    'data', 
-                    'Penelitian', 
+                    'view_file',
+                    'id',
+                    'data',
+                    'Penelitian',
                     'Jadwal_penelitian',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    } 
-    
+    }
+
     public function create()
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -91,19 +91,19 @@ class Jadwal_penelitianController extends Controller
 
             $view_file      = 'create';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file',  
+                    'view_file',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -112,22 +112,23 @@ class Jadwal_penelitianController extends Controller
     public function store(Request $request)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
-            
+            $user = auth()->user();
+
         // ----------------------------------------------------------- Initialize
             $id_penelitian = $request->session()->get('id_penelitian');
 
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
-        
-            $data = Jadwal_penelitian::create([ 
-                'id_penelitian'         => $id_penelitian,  
+        // ----------------------------------------------------------- Action
+
+            $data = Jadwal_penelitian::create([
+                'id_penelitian'         => $id_penelitian,
                 'kegiatan'              => $request->kegiatan,
                 'urutan'                => $request->urutan,
                 'indikator_capaian'     => $request->indikator_capaian,
-                'bulan'                 => $request->bulan,       
-            ]);  
+                'bulan'                 => $request->bulan,
+                'penjelasan'            => $request->penjelasan,
+            ]);
 
         // ----------------------------------------------------------- Send
             if($data)
@@ -148,15 +149,15 @@ class Jadwal_penelitianController extends Controller
     public function edit(Jadwal_penelitian $Jadwal_penelitian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -165,21 +166,21 @@ class Jadwal_penelitianController extends Controller
 
             $view_file      = 'edit';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Jadwal_penelitian',   
+                    'view_file',
+                    'Jadwal_penelitian',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -188,21 +189,23 @@ class Jadwal_penelitianController extends Controller
     public function update(Request $request, Jadwal_penelitian $Jadwal_penelitian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
-            $data = Jadwal_penelitian::findOrFail($Jadwal_penelitian->id); 
+        // ----------------------------------------------------------- Action
+            $data = Jadwal_penelitian::findOrFail($Jadwal_penelitian->id);
 
-            $data->update([ 
+            $data->update([
                 'kegiatan'              => $request->kegiatan,
                 'urutan'                => $request->urutan,
                 'indikator_capaian'     => $request->indikator_capaian,
-                'bulan'                 => $request->bulan,   
-            ]);  
-                
+                'bulan'                 => $request->bulan,
+                'penjelasan'            => $request->penjelasan,
+                'nomor_halaman'            => $request->nomor_halaman,
+            ]);
+
         // ----------------------------------------------------------- Send
             if($data)
             {
@@ -223,15 +226,15 @@ class Jadwal_penelitianController extends Controller
     public function show(Jadwal_penelitian $Jadwal_penelitian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -240,24 +243,24 @@ class Jadwal_penelitianController extends Controller
 
             $view_file      = 'show';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
             $data = Jadwal_penelitian::where('id', '=', $Jadwal_penelitian->id)
-                            ->get(); 
+                            ->get();
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Jadwal_penelitian',   
-                    'data',  
+                    'view_file',
+                    'Jadwal_penelitian',
+                    'data',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -266,15 +269,15 @@ class Jadwal_penelitianController extends Controller
     public function deletedata(Jadwal_penelitian $Jadwal_penelitian)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -283,32 +286,32 @@ class Jadwal_penelitianController extends Controller
 
             $view_file      = 'delete';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Jadwal_penelitian',   
+                    'view_file',
+                    'Jadwal_penelitian',
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
-    
+
     public function destroy($id)
     {
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
+        // ----------------------------------------------------------- Action
             $data = Jadwal_penelitian::findOrFail($id);
             $data->delete();
 
@@ -325,6 +328,6 @@ class Jadwal_penelitianController extends Controller
                     ->route($content.'.index')
                     ->with(['Error' => 'Data Gagal Disimpan!']);
             }
-        /////////////////////////////////////////////////////////////// 
+        ///////////////////////////////////////////////////////////////
     }
 }

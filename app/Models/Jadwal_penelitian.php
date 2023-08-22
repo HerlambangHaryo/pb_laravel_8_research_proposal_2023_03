@@ -19,6 +19,8 @@ class Jadwal_penelitian extends Model
         'indikator_capaian', 
         'urutan', 
         'bulan', 
+        'penjelasan', 
+        'nomor_halaman'
     ];
 
     protected $hidden = ["deleted_at"];

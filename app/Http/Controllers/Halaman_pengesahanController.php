@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Jenssegers\Agent\Agent;
 use DB;
- 
+
 use App\Models\Penelitian;
 
 class Halaman_pengesahanController extends Controller
@@ -21,16 +21,16 @@ class Halaman_pengesahanController extends Controller
     public function Penelitian($id)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
             session(['id_penelitian' => $id]);
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -39,30 +39,30 @@ class Halaman_pengesahanController extends Controller
 
             $view_file      = 'data';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $data           = Penelitian::where('id', '=', $id)
                                 ->get();
 
             $Penelitian     = Penelitian::where('id', '=', $id)
                                 ->first();
-                                    
+
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'id', 
-                    'data', 
-                    'Penelitian', 
+                    'view_file',
+                    'id',
+                    'data',
+                    'Penelitian',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    }  
+    }
 }

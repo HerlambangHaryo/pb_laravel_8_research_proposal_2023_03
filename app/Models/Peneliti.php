@@ -71,6 +71,7 @@ class Peneliti extends Model
 
         'screenshot_sister', 
         'screenshot_sinta', 
+        'tanda_tangan',
 
         'npm'
     ];

@@ -1,18 +1,18 @@
-@extends('template.studio_v30.middleware')
+@extends('templates.studio_v30.middleware')
 
 @section('title', 'Login')
 
-@section('content')  
- 
+@section('content')
+
 
     <div class="login-content">
-        
+
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
                 {{ session('status') }}
             </div>
-        @endif 
- 
+        @endif
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
@@ -24,11 +24,11 @@
                 <label class="form-label">
                     Email Address
                 </label>
-                <input 
-                    class="form-control form-control-lg fs-15px" 
-                    type="text" 
-                    name="email" 
-                    placeholder="username@address.com" 
+                <input
+                    class="form-control form-control-lg fs-15px"
+                    type="text"
+                    name="email"
+                    placeholder="username@address.com"
                     required="required" />
             </div>
             <div class="mb-3">
@@ -40,12 +40,12 @@
                         {{ __('Lupa Password?') }}
                     </a>
                 </div>
-                <input 
-                    class="form-control form-control-lg fs-15px" 
-                    type="password" 
-                    name="password" 
-                    placeholder="Enter your password" 
-                    required="required" 
+                <input
+                    class="form-control form-control-lg fs-15px"
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required="required"
                     autocomplete="current-password"/>
             </div>
             <div class="mb-3">

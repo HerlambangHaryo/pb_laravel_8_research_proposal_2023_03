@@ -22,15 +22,15 @@ class Perguruan_tinggiController extends Controller
     public function index()
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -39,39 +39,39 @@ class Perguruan_tinggiController extends Controller
 
             $view_file      = 'data';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $data           = Perguruan_tinggi::get();
-                                    
+
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'data', 
+                    'view_file',
+                    'data',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    } 
- 
+    }
+
     public function create()
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -80,20 +80,20 @@ class Perguruan_tinggiController extends Controller
 
             $view_file      = 'create';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
+                    'view_file',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -102,53 +102,53 @@ class Perguruan_tinggiController extends Controller
     public function store(Request $request)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
-            
+            $user = auth()->user();
+
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
+        // ----------------------------------------------------------- Action
             $this->validate($request, [
-                'nama'     => 'required', 
-            ]); 
+                'nama'     => 'required',
+            ]);
 
             if($request->file('logo') == "") {
 
-                $data = Perguruan_tinggi::create([ 
-                    'nama'              => $request->nama,  
-                    'alamat'            => $request->alamat,  
-                    'kelurahan'         => $request->kelurahan,  
-                    'kecamatan'         => $request->kecamatan,  
-                    'kota'              => $request->kota,  
-                    'provinsi'          => $request->provinsi,   
-                    'kodepos'           => $request->kodepos,  
-                    'telepon'           => $request->telepon,   
-                    'fax'               => $request->fax,       
-                    'kode'              => $request->kode,       
-                ]);  
+                $data = Perguruan_tinggi::create([
+                    'nama'              => $request->nama,
+                    'alamat'            => $request->alamat,
+                    'kelurahan'         => $request->kelurahan,
+                    'kecamatan'         => $request->kecamatan,
+                    'kota'              => $request->kota,
+                    'provinsi'          => $request->provinsi,
+                    'kodepos'           => $request->kodepos,
+                    'telepon'           => $request->telepon,
+                    'fax'               => $request->fax,
+                    'kode'              => $request->kode,
+                ]);
 
-            } else { 
-                        
+            } else {
+
                 //hapus old image
                 Storage::disk('local')->delete('public/penelitian/'.$blog->image);
 
                 //upload new image
                 $image = $request->file('image');
                 $image->storeAs('public/blogs', $image->hashName());
-                
-                $data = Perguruan_tinggi::create([ 
-                    'nama'              => $request->nama,  
-                    'alamat'            => $request->alamat,  
-                    'kelurahan'         => $request->kelurahan,  
-                    'kecamatan'         => $request->kecamatan,  
-                    'kota'              => $request->kota,  
-                    'provinsi'          => $request->provinsi,   
-                    'kodepos'           => $request->kodepos,  
-                    'telepon'           => $request->telepon,   
-                    'fax'               => $request->fax,       
-                    'kode'              => $request->kode,       
-                    'kode'              => $request->kode,      
-                ]);  
+
+                $data = Perguruan_tinggi::create([
+                    'nama'              => $request->nama,
+                    'alamat'            => $request->alamat,
+                    'kelurahan'         => $request->kelurahan,
+                    'kecamatan'         => $request->kecamatan,
+                    'kota'              => $request->kota,
+                    'provinsi'          => $request->provinsi,
+                    'kodepos'           => $request->kodepos,
+                    'telepon'           => $request->telepon,
+                    'fax'               => $request->fax,
+                    'kode'              => $request->kode,
+                    'kode'              => $request->kode,
+                ]);
             }
 
         // ----------------------------------------------------------- Send
@@ -170,15 +170,15 @@ class Perguruan_tinggiController extends Controller
     public function edit(Perguruan_tinggi $Perguruan_tinggi)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -187,21 +187,21 @@ class Perguruan_tinggiController extends Controller
 
             $view_file      = 'edit';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Perguruan_tinggi',   
+                    'view_file',
+                    'Perguruan_tinggi',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -210,58 +210,58 @@ class Perguruan_tinggiController extends Controller
     public function update(Request $request, Perguruan_tinggi $Perguruan_tinggi)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
+        // ----------------------------------------------------------- Action
             $this->validate($request, [
-                'nama'     => 'required', 
+                'nama'     => 'required',
             ]);
 
-            $data = Perguruan_tinggi::findOrFail($Perguruan_tinggi->id); 
+            $data = Perguruan_tinggi::findOrFail($Perguruan_tinggi->id);
 
-            
+
             if($request->file('logo') == "") {
 
                 $data->update([
-                    'nama'              => $request->nama,  
-                    'alamat'            => $request->alamat,  
-                    'kelurahan'         => $request->kelurahan,  
-                    'kecamatan'         => $request->kecamatan,  
-                    'kota'              => $request->kota,  
-                    'provinsi'          => $request->provinsi,   
-                    'kodepos'           => $request->kodepos,  
-                    'telepon'           => $request->telepon,  
-                    'fax'               => $request->fax,    
-                    'kode'               => $request->kode,         
-                ]);  
-        
-            } else { 
-                        
+                    'nama'              => $request->nama,
+                    'alamat'            => $request->alamat,
+                    'kelurahan'         => $request->kelurahan,
+                    'kecamatan'         => $request->kecamatan,
+                    'kota'              => $request->kota,
+                    'provinsi'          => $request->provinsi,
+                    'kodepos'           => $request->kodepos,
+                    'telepon'           => $request->telepon,
+                    'fax'               => $request->fax,
+                    'kode'               => $request->kode,
+                ]);
+
+            } else {
+
                 //hapus old image
                 Storage::disk('local')->delete('public/perguruan_tinggi/'.$data->logo);
 
                 //upload new image
                 $image = $request->file('logo');
                 $image->storeAs('public/perguruan_tinggi', $image->hashName());
- 
+
                 $data->update([
-                    'nama'              => $request->nama,  
-                    'alamat'            => $request->alamat,  
-                    'kelurahan'         => $request->kelurahan,  
-                    'kecamatan'         => $request->kecamatan,  
-                    'kota'              => $request->kota,  
-                    'provinsi'          => $request->provinsi,   
-                    'kodepos'           => $request->kodepos,  
-                    'telepon'           => $request->telepon,  
-                    'fax'               => $request->fax,    
-                    'kode'               => $request->kode,    
-                    'logo'              => $image->hashName(),    
-                ]);  
+                    'nama'              => $request->nama,
+                    'alamat'            => $request->alamat,
+                    'kelurahan'         => $request->kelurahan,
+                    'kecamatan'         => $request->kecamatan,
+                    'kota'              => $request->kota,
+                    'provinsi'          => $request->provinsi,
+                    'kodepos'           => $request->kodepos,
+                    'telepon'           => $request->telepon,
+                    'fax'               => $request->fax,
+                    'kode'               => $request->kode,
+                    'logo'              => $image->hashName(),
+                ]);
             }
-                
+
         // ----------------------------------------------------------- Send
             if($data)
             {
@@ -281,15 +281,15 @@ class Perguruan_tinggiController extends Controller
     public function show(Perguruan_tinggi $Perguruan_tinggi)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -298,21 +298,21 @@ class Perguruan_tinggiController extends Controller
 
             $view_file      = 'show';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Perguruan_tinggi',   
+                    'view_file',
+                    'Perguruan_tinggi',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -321,15 +321,15 @@ class Perguruan_tinggiController extends Controller
     public function deletedata(Perguruan_tinggi $Perguruan_tinggi)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -338,32 +338,32 @@ class Perguruan_tinggiController extends Controller
 
             $view_file      = 'delete';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Perguruan_tinggi',   
+                    'view_file',
+                    'Perguruan_tinggi',
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
-    
+
     public function destroy($id)
     {
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
+        // ----------------------------------------------------------- Action
             $data = Perguruan_tinggi::findOrFail($id);
             $data->delete();
 
@@ -380,6 +380,6 @@ class Perguruan_tinggiController extends Controller
                     ->route($content.'.index')
                     ->with(['Error' => 'Data Gagal Disimpan!']);
             }
-        /////////////////////////////////////////////////////////////// 
+        ///////////////////////////////////////////////////////////////
     }
 }

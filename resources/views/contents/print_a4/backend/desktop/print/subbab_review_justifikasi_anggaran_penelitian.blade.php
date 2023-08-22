@@ -1,0 +1,1 @@
+{!! define_tabel_anggaran($Penelitian->anggaran_penelitian) !!}

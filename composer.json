@@ -8,19 +8,21 @@
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.75",
-        "laravel/jetstream": "^2.7",
+        "laravel/framework": "^8.54",
+        "laravel/jetstream": "^2.9",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "nesbot/carbon": "^2.68",
+        "ramsey/uuid": "^4.7"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3.3"
     },
     "autoload": {
         "psr-4": {
@@ -29,14 +31,14 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
+            "app/Helpers/HelpAboutApp.php",
             "app/Helpers/HelpAgent.php",
-            "app/Helpers/HelpAnggaranPenelitian.php",
-            "app/Helpers/HelpBiodataPengusul.php",
+            "app/Helpers/HelpAuth.php",
             "app/Helpers/HelpDate.php",
-            "app/Helpers/HelpSurat.php",
-            "app/Helpers/HelpSuratPengusul.php",
-            "app/Helpers/HelpSuratPernyataanKesanggupan.php"
-
+            "app/Helpers/HelpJadwalbimbingan.php",
+            "app/Helpers/HelpMessage.php",
+            "app/Helpers/HelpStatusbimbingan.php",
+            "app/Helpers/HelpUser.php"
         ]
     },
     "autoload-dev": {
@@ -50,7 +52,7 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

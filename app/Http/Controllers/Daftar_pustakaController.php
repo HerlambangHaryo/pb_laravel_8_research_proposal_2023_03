@@ -19,20 +19,20 @@ class Daftar_pustakaController extends Controller
     public $themecolor  = '';
     public $content     = 'Daftar_pustaka';
     public $type        = 'backend';
-    
+
     public function Penelitian($id)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
             session(['id_penelitian' => $id]);
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -41,55 +41,55 @@ class Daftar_pustakaController extends Controller
 
             $view_file      = 'data';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $data               = Penelitian::where('id', '=', $id)
                                     ->get();
 
             $Penelitian         = Penelitian::where('id', '=', $id)
                                     ->first();
- 
- 
+
+
             $pre_data           = Daftar_pustaka::select('id_publikasi_artikel')
                                     ->where('id_penelitian', '=', $id);
 
             $Daftar_pustaka     = Publikasi_artikel::whereIn('id', $pre_data)
                                     ->orderBy('tahun')
-                                    ->orderBy('judul') 
+                                    ->orderBy('judul')
                                     ->get();
-                                    
+
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'id', 
-                    'data', 
-                    'Penelitian', 
+                    'view_file',
+                    'id',
+                    'data',
+                    'Penelitian',
                     'Daftar_pustaka',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    } 
-    
+    }
+
     public function create()
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -98,19 +98,19 @@ class Daftar_pustakaController extends Controller
 
             $view_file      = 'create';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file',  
+                    'view_file',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -119,32 +119,32 @@ class Daftar_pustakaController extends Controller
     public function store(Request $request)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
-            
+            $user = auth()->user();
+
         // ----------------------------------------------------------- Initialize
             $id_penelitian = $request->session()->get('id_penelitian');
 
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
-        
-            $data = Publikasi_artikel::create([  
-                'judul'             => $request->judul,   
+        // ----------------------------------------------------------- Action
+
+            $data = Publikasi_artikel::create([
+                'judul'             => $request->judul,
                 'jurnal'            => $request->jurnal,
                 'volume'            => $request->volume,
                 'nomor'             => $request->nomor,
-                'tahun'             => $request->tahun,  
-                'url'               => $request->url,      
+                'tahun'             => $request->tahun,
+                'url'               => $request->url,
 
-                'sitasi'            => $request->sitasi,   
-                'tag_url'           => str_replace(" ", "_", $request->judul),   
-                'daftar_pustaka'    => $request->daftar_pustaka,      
-            ]);  
+                'sitasi'            => $request->sitasi,
+                'tag_url'           => str_replace(" ", "_", $request->judul),
+                'daftar_pustaka'    => $request->daftar_pustaka,
+            ]);
 
-            $data2 = Daftar_pustaka::create([  
-                'id_publikasi_artikel'      => $data->id,   
-                'id_penelitian'             => $id_penelitian,  
-            ]);  
+            $data2 = Daftar_pustaka::create([
+                'id_publikasi_artikel'      => $data->id,
+                'id_penelitian'             => $id_penelitian,
+            ]);
 
         // ----------------------------------------------------------- Send
             if($data)
@@ -165,15 +165,15 @@ class Daftar_pustakaController extends Controller
     public function edit(Publikasi_artikel $Daftar_pustaka)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -182,21 +182,21 @@ class Daftar_pustakaController extends Controller
 
             $view_file      = 'edit';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Daftar_pustaka',   
+                    'view_file',
+                    'Daftar_pustaka',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -205,28 +205,28 @@ class Daftar_pustakaController extends Controller
     public function update(Request $request, Publikasi_artikel $Daftar_pustaka)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
-            $data = Publikasi_artikel::findOrFail($Daftar_pustaka->id); 
- 
+        // ----------------------------------------------------------- Action
+            $data = Publikasi_artikel::findOrFail($Daftar_pustaka->id);
 
-            $data->update([  
-                'judul'             => ucwords($request->judul),   
+
+            $data->update([
+                'judul'             => ucwords($request->judul),
                 'jurnal'            => $request->jurnal,
                 'volume'            => $request->volume,
                 'nomor'             => $request->nomor,
-                'tahun'             => $request->tahun,  
-                'url'               => $request->url,    
+                'tahun'             => $request->tahun,
+                'url'               => $request->url,
 
-                'sitasi'            => $request->sitasi,   
-                'tag_url'           => str_replace(" ", "_", $request->judul),   
-                'daftar_pustaka'    => $request->daftar_pustaka,    
-            ]);  
-                
+                'sitasi'            => $request->sitasi,
+                'tag_url'           => str_replace(" ", "_", $request->judul),
+                'daftar_pustaka'    => $request->daftar_pustaka,
+            ]);
+
         // ----------------------------------------------------------- Send
             if($data)
             {
@@ -247,15 +247,15 @@ class Daftar_pustakaController extends Controller
     public function show(Daftar_pustaka $Daftar_pustaka)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -264,24 +264,24 @@ class Daftar_pustakaController extends Controller
 
             $view_file      = 'show';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
             $data = Publikasi_artikel::where('id', '=', $Daftar_pustaka->id)
-                            ->get(); 
+                            ->get();
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Daftar_pustaka',   
-                    'data',  
+                    'view_file',
+                    'Daftar_pustaka',
+                    'data',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -290,15 +290,15 @@ class Daftar_pustakaController extends Controller
     public function deletedata(Daftar_pustaka $Daftar_pustaka)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -307,32 +307,32 @@ class Daftar_pustakaController extends Controller
 
             $view_file      = 'delete';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Daftar_pustaka',   
+                    'view_file',
+                    'Daftar_pustaka',
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
-    
+
     public function destroy($id)
     {
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
+        // ----------------------------------------------------------- Action
             $data = Publikasi_artikel::findOrFail($id);
             $data->delete();
 
@@ -349,6 +349,6 @@ class Daftar_pustakaController extends Controller
                     ->route($content.'.index')
                     ->with(['Error' => 'Data Gagal Disimpan!']);
             }
-        /////////////////////////////////////////////////////////////// 
+        ///////////////////////////////////////////////////////////////
     }
 }

@@ -5,19 +5,26 @@
         function define_additionalview($isDesktop, $isMobile, $isTablet)
         {
             // ----------------------------------------------------------- Initialize 
+                $isi = 'desktop';
 
             // ----------------------------------------------------------- Action   
-                if($isDesktop == 1)
-                {
-                    $isi = 'desktop';
-                }
-                elseif($isTablet == 1)
-                {
-                    $isi = 'tablet';
+                if($isTablet == 1)
+                { 
+                    $uiux_ready = define_aboutapp('tablet');
+
+                    if($uiux_ready == 1)
+                    {
+                        $isi = 'tablet';
+                    }
                 } 
                 elseif($isMobile == 1)
-                {
-                    $isi = 'mobile';
+                { 
+                    $uiux_ready = define_aboutapp('mobile');
+
+                    if($uiux_ready == 1)
+                    {
+                        $isi = 'mobile';
+                    }
                 }  
 
             // ----------------------------------------------------------- Send
@@ -35,7 +42,7 @@
             // ----------------------------------------------------------- Initialize 
 
             // ----------------------------------------------------------- Action   
-                $isi = 'content.'.$template.'.'.$type.'.'.$additional_view.'.'.strtolower($content).'.'.$view_file;
+                $isi = 'contents.'.$template.'.'.$type.'.'.$additional_view.'.'.strtolower($content).'.'.$view_file;
 
             // ----------------------------------------------------------- Send
                 $word = $isi;

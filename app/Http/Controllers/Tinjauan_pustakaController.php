@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Jenssegers\Agent\Agent;
 use DB;
- 
+
 use App\Models\Penelitian;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,16 +22,16 @@ class Tinjauan_pustakaController extends Controller
     public function Penelitian($id)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
             session(['id_penelitian' => $id]);
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -40,45 +40,45 @@ class Tinjauan_pustakaController extends Controller
 
             $view_file      = 'data';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $data           = Penelitian::where('id', '=', $id)
                                 ->get();
 
             $Penelitian     = Penelitian::where('id', '=', $id)
                                 ->first();
-                                    
+
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'id', 
-                    'data', 
-                    'Penelitian', 
+                    'view_file',
+                    'id',
+                    'data',
+                    'Penelitian',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    } 
-    
+    }
+
     public function edit(Penelitian $Tinjauan_pustaka)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -87,21 +87,21 @@ class Tinjauan_pustakaController extends Controller
 
             $view_file      = 'edit';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Tinjauan_pustaka',   
+                    'view_file',
+                    'Tinjauan_pustaka',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -110,56 +110,56 @@ class Tinjauan_pustakaController extends Controller
     public function update(Request $request, Penelitian $Tinjauan_pustaka)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
-            $data = Penelitian::findOrFail($Tinjauan_pustaka->id); 
-            
+        // ----------------------------------------------------------- Action
+            $data = Penelitian::findOrFail($Tinjauan_pustaka->id);
 
-            
+
+
             if($request->file('tinjauan_pustaka_roadmap') == "") {
 
                 $data->update([
-                    'tinjauan_pustaka_state_of_the_art'     => $request->tinjauan_pustaka_state_of_the_art, 
+                    'tinjauan_pustaka_state_of_the_art'     => $request->tinjauan_pustaka_state_of_the_art,
                     'tinjauan_pustaka_sebelum'              => $request->tinjauan_pustaka_sebelum,
                     'tinjauan_pustaka_setelah'              => $request->tinjauan_pustaka_setelah,
-                    'tinjauan_pustaka_umum'                 => $request->tinjauan_pustaka_umum,  
-    
-                    'tinjauan_pustaka_state_of_the_art_catatan'     => $request->tinjauan_pustaka_state_of_the_art_catatan, 
+                    'tinjauan_pustaka_umum'                 => $request->tinjauan_pustaka_umum,
+
+                    'tinjauan_pustaka_state_of_the_art_catatan'     => $request->tinjauan_pustaka_state_of_the_art_catatan,
                     'tinjauan_pustaka_sebelum_catatan'              => $request->tinjauan_pustaka_sebelum_catatan,
                     'tinjauan_pustaka_setelah_catatan'              => $request->tinjauan_pustaka_setelah_catatan,
-                    'tinjauan_pustaka_umum_catatan'                 => $request->tinjauan_pustaka_umum_catatan, 
-                ]); 
+                    'tinjauan_pustaka_umum_catatan'                 => $request->tinjauan_pustaka_umum_catatan,
+                ]);
 
-            } else { 
-                        
+            } else {
+
                 //hapus old image
                 Storage::disk('local')->delete('public/tinjauan_pustaka/'.$data->tinjauan_pustaka_roadmap);
 
                 //upload new image
                 $tinjauan_pustaka_roadmap = $request->file('tinjauan_pustaka_roadmap');
                 $tinjauan_pustaka_roadmap->storeAs('public/tinjauan_pustaka', $tinjauan_pustaka_roadmap->hashName());
-                
+
                 $data->update([
-                    'tinjauan_pustaka_state_of_the_art'     => $request->tinjauan_pustaka_state_of_the_art, 
+                    'tinjauan_pustaka_state_of_the_art'     => $request->tinjauan_pustaka_state_of_the_art,
                     'tinjauan_pustaka_sebelum'              => $request->tinjauan_pustaka_sebelum,
                     'tinjauan_pustaka_setelah'              => $request->tinjauan_pustaka_setelah,
-                    'tinjauan_pustaka_umum'                 => $request->tinjauan_pustaka_umum,  
-    
-                    'tinjauan_pustaka_state_of_the_art_catatan'     => $request->tinjauan_pustaka_state_of_the_art_catatan, 
+                    'tinjauan_pustaka_umum'                 => $request->tinjauan_pustaka_umum,
+
+                    'tinjauan_pustaka_state_of_the_art_catatan'     => $request->tinjauan_pustaka_state_of_the_art_catatan,
                     'tinjauan_pustaka_sebelum_catatan'              => $request->tinjauan_pustaka_sebelum_catatan,
                     'tinjauan_pustaka_setelah_catatan'              => $request->tinjauan_pustaka_setelah_catatan,
-                    'tinjauan_pustaka_umum_catatan'                 => $request->tinjauan_pustaka_umum_catatan, 
+                    'tinjauan_pustaka_umum_catatan'                 => $request->tinjauan_pustaka_umum_catatan,
 
-                    
-                    'tinjauan_pustaka_roadmap'         => $tinjauan_pustaka_roadmap->hashName(),   
-                ]); 
+
+                    'tinjauan_pustaka_roadmap'         => $tinjauan_pustaka_roadmap->hashName(),
+                ]);
             }
- 
-                
+
+
         // ----------------------------------------------------------- Send
             if($data)
             {
@@ -175,5 +175,5 @@ class Tinjauan_pustakaController extends Controller
                     ->with(['Error' => 'Data Gagal Disimpan!']);
             }
         ///////////////////////////////////////////////////////////////
-    } 
+    }
 }

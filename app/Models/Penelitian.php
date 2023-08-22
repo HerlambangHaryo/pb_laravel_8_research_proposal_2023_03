@@ -19,6 +19,18 @@ class Penelitian extends Model
     
     protected $softDelete = true; 
  
+    public function dasar_teori()
+    {         
+        return $this->hasMany(dasar_teori::class,'id_penelitian', 'id')
+                ->orderBy('id') ;
+    }
+
+    public function penelitian_terdahulu()
+    {         
+        return $this->hasMany(penelitian_terdahulu::class,'id_penelitian', 'id')
+                ->orderBy('id') ;
+    }
+
     public function publikasi_artikel()
     {
         return $this->belongsToMany(Publikasi_artikel::class, 'daftar_pustakas', 'id_penelitian', 'id_publikasi_artikel')
@@ -146,6 +158,9 @@ class Penelitian extends Model
         'metode_capaian_catatan', 
         'metode_tugas_pengusul_catatan',
         
+        'paragraf_jadwal_penelitian',
+        'paragraf_uraian_tugas',
+
         'lembar_pengesahan',
 
         'kata_kunci_1',
@@ -165,6 +180,36 @@ class Penelitian extends Model
         'surat_pernyataan_anggota_2', 
         'surat_pernyataan_mahasiswa_1', 
         'surat_pernyataan_mahasiswa_2',
+
+        'surat_pernyataan_kesanggupan_ketua', 
+        'surat_pernyataan_kesanggupan_anggota_1', 
+        'surat_pernyataan_kesanggupan_anggota_2', 
+        'surat_pernyataan_kesanggupan_mahasiswa_1', 
+        'surat_pernyataan_kesanggupan_mahasiswa_2',
+
+        'nomor_halaman_halaman_pengesahan',
+        'nomor_halaman_daftar_isi',
+        'nomor_halaman_ringkasan',
+        'nomor_halaman_latar_belakang',
+        'nomor_halaman_latar_belakang_masalah',
+        'nomor_halaman_rumusan_masalah',
+        'nomor_halaman_tujuan_penelitian',
+        'nomor_halaman_target_luaran',
+        'nomor_halaman_tinjauan_pustaka',
+        'nomor_halaman_penelitian_terdahulu',
+        'nomor_halaman_roadmap_penelitian',
+        'nomor_halaman_dasar_teori',
+        'nomor_halaman_metode_penelitian',
+        'nomor_halaman_pembagian_tugas_tim_pengusul',
+        'nomor_halaman_jadwal_penelitian',
+        'nomor_halaman_daftar_pustaka',
+        'nomor_halaman_lampiran_1',
+        'nomor_halaman_lampiran_2',
+        'nomor_halaman_lampiran_3',
+        'nomor_halaman_lampiran_4',
+        'nomor_halaman_lampiran_5',
+        'nomor_halaman_lampiran_6',
+        'nomor_halaman_lampiran_7',
     ];
 
     protected $hidden = ["deleted_at"];

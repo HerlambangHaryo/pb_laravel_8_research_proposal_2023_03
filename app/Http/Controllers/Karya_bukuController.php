@@ -23,16 +23,16 @@ class Karya_bukuController extends Controller
     public function peneliti($id)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
             session(['id_peneliti' => $id]);
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -41,50 +41,50 @@ class Karya_bukuController extends Controller
 
             $view_file      = 'data';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $pre_data       = Penulis_karya_buku::select('id_karya_buku')
                                 ->where('id_peneliti', '=', $id);
 
-            $data           = Karya_buku::whereIn('id', $pre_data) 
+            $data           = Karya_buku::whereIn('id', $pre_data)
                                 ->orderBy('tahun')
                                 ->orderBy('judul')
-                                ->get(); 
+                                ->get();
 
             $Peneliti       = Peneliti::where('id', '=', $id)
                                 ->first();
-                                    
+
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'id', 
-                    'data', 
-                    'Peneliti', 
+                    'view_file',
+                    'id',
+                    'data',
+                    'Peneliti',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    } 
-    
+    }
+
     public function create()
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -93,19 +93,19 @@ class Karya_bukuController extends Controller
 
             $view_file      = 'create';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file',  
+                    'view_file',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -114,22 +114,22 @@ class Karya_bukuController extends Controller
     public function store(Request $request)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
-            
+            $user = auth()->user();
+
         // ----------------------------------------------------------- Initialize
             $id_peneliti = $request->session()->get('id_peneliti');
 
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
-        
-            $data = Karya_buku::create([ 
-                'id_peneliti'       => $id_peneliti,  
+        // ----------------------------------------------------------- Action
+
+            $data = Karya_buku::create([
+                'id_peneliti'       => $id_peneliti,
                 'judul'             => $request->judul,
                 'penerbit'          => $request->penerbit,
                 'tahun'             => $request->tahun,
-                'halaman'           => $request->halaman,       
-            ]);  
+                'halaman'           => $request->halaman,
+            ]);
 
         // ----------------------------------------------------------- Send
             if($data)
@@ -150,15 +150,15 @@ class Karya_bukuController extends Controller
     public function edit(Karya_buku $Karya_buku)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -167,21 +167,21 @@ class Karya_bukuController extends Controller
 
             $view_file      = 'edit';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Karya_buku',   
+                    'view_file',
+                    'Karya_buku',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -190,21 +190,21 @@ class Karya_bukuController extends Controller
     public function update(Request $request, Karya_buku $Karya_buku)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
-            $data = Karya_buku::findOrFail($Karya_buku->id); 
+        // ----------------------------------------------------------- Action
+            $data = Karya_buku::findOrFail($Karya_buku->id);
 
-            $data->update([ 
-                'judul'             => $request->judul,   
+            $data->update([
+                'judul'             => $request->judul,
                 'penerbit'          => $request->penerbit,
                 'tahun'             => $request->tahun,
-                'halaman'           => $request->halaman,   
-            ]);  
-                
+                'halaman'           => $request->halaman,
+            ]);
+
         // ----------------------------------------------------------- Send
             if($data)
             {
@@ -225,17 +225,17 @@ class Karya_bukuController extends Controller
     public function show(Karya_buku $Karya_buku)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
             session(['id_karya_buku' => $Karya_buku->id]);
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -244,28 +244,28 @@ class Karya_bukuController extends Controller
 
             $view_file      = 'show';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
             $data = Karya_buku::where('id', '=', $Karya_buku->id)
-                            ->get(); 
+                            ->get();
 
             $data2 = Penulis_karya_buku::where('id_karya_buku', '=', $Karya_buku->id)
-                        ->get(); 
+                        ->get();
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Karya_buku',   
-                    'data',    
-                    'data2',  
+                    'view_file',
+                    'Karya_buku',
+                    'data',
+                    'data2',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -274,15 +274,15 @@ class Karya_bukuController extends Controller
     public function deletedata(Karya_buku $Karya_buku)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -291,32 +291,32 @@ class Karya_bukuController extends Controller
 
             $view_file      = 'delete';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Karya_buku',   
+                    'view_file',
+                    'Karya_buku',
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
-    
+
     public function destroy($id)
     {
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
+        // ----------------------------------------------------------- Action
             $data = Karya_buku::findOrFail($id);
             $data->delete();
 
@@ -333,6 +333,6 @@ class Karya_bukuController extends Controller
                     ->route($content.'.index')
                     ->with(['Error' => 'Data Gagal Disimpan!']);
             }
-        /////////////////////////////////////////////////////////////// 
+        ///////////////////////////////////////////////////////////////
     }
 }

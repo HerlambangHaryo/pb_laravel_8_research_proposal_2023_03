@@ -23,15 +23,15 @@ class PenelitiController extends Controller
     public function index()
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -40,39 +40,39 @@ class PenelitiController extends Controller
 
             $view_file      = 'data';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $data           = Peneliti::get();
-                                    
+
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'data', 
+                    'view_file',
+                    'data',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    } 
- 
+    }
+
     public function create()
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -81,23 +81,23 @@ class PenelitiController extends Controller
 
             $view_file      = 'create';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
+
+        // ----------------------------------------------------------- Action
             $Perguruan_tinggi = Perguruan_tinggi::whereNull('deleted_at')
                                     ->get();
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Perguruan_tinggi', 
+                    'view_file',
+                    'Perguruan_tinggi',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -106,63 +106,63 @@ class PenelitiController extends Controller
     public function store(Request $request)
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();  
-            
+            $user = auth()->user();
+
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
+        // ----------------------------------------------------------- Action
             $this->validate($request, [
-                'nama'     => 'required', 
+                'nama'     => 'required',
             ]);
-            
-            $data = Peneliti::create([ 
-                'nama'                          => $request->nama,  
-                'jenis_kelamin'                 => $request->jenis_kelamin,  
-                'jabatan_fungsional'            => $request->jabatan_fungsional,  
-                'nip_nik_lainnya'               => $request->nip_nik_lainnya,  
-                'nidn'                          => $request->nidn,  
-                'id_sinta_google_scholar'       => $request->id_sinta_google_scholar,  
-                'url'                           => $request->url,  
-                'id_scopus'                     => $request->id_scopus,  
-                'id_orchid'                     => $request->id_orchid,  
-                'tempat_lahir'                  => $request->tempat_lahir,  
-                'tanggal_lahir'                 => $request->tanggal_lahir,  
-                'email'                         => $request->email,  
-                'telepon'                       => $request->telepon,   
 
-                'lulusan_s1'                    => $request->lulusan_s1,  
-                'lulusan_s2'                    => $request->lulusan_s2,  
-                'lulusan_s3'                    => $request->lulusan_s3,  
+            $data = Peneliti::create([
+                'nama'                          => $request->nama,
+                'jenis_kelamin'                 => $request->jenis_kelamin,
+                'jabatan_fungsional'            => $request->jabatan_fungsional,
+                'nip_nik_lainnya'               => $request->nip_nik_lainnya,
+                'nidn'                          => $request->nidn,
+                'id_sinta_google_scholar'       => $request->id_sinta_google_scholar,
+                'url'                           => $request->url,
+                'id_scopus'                     => $request->id_scopus,
+                'id_orchid'                     => $request->id_orchid,
+                'tempat_lahir'                  => $request->tempat_lahir,
+                'tanggal_lahir'                 => $request->tanggal_lahir,
+                'email'                         => $request->email,
+                'telepon'                       => $request->telepon,
 
-                's1_perguruan_tinggi'           => $request->s1_perguruan_tinggi,  
-                's1_bidang_ilmu'                => $request->s1_bidang_ilmu,  
-                's1_tahun_masuk'                => $request->s1_tahun_masuk,  
-                's1_tahun_lulus'                => $request->s1_tahun_lulus,  
-                's1_judul'                      => $request->s1_judul,  
-                's1_pembimbing'                 => $request->s1_pembimbing,  
+                'lulusan_s1'                    => $request->lulusan_s1,
+                'lulusan_s2'                    => $request->lulusan_s2,
+                'lulusan_s3'                    => $request->lulusan_s3,
 
-                's2_perguruan_tinggi'           => $request->s2_perguruan_tinggi,  
-                's2_bidang_ilmu'                => $request->s2_bidang_ilmu,  
-                's2_tahun_masuk'                => $request->s2_tahun_masuk,  
-                's2_tahun_lulus'                => $request->s2_tahun_lulus,  
-                's2_judul'                      => $request->s2_judul,  
-                's2_pembimbing'                 => $request->s2_pembimbing,  
+                's1_perguruan_tinggi'           => $request->s1_perguruan_tinggi,
+                's1_bidang_ilmu'                => $request->s1_bidang_ilmu,
+                's1_tahun_masuk'                => $request->s1_tahun_masuk,
+                's1_tahun_lulus'                => $request->s1_tahun_lulus,
+                's1_judul'                      => $request->s1_judul,
+                's1_pembimbing'                 => $request->s1_pembimbing,
 
-                's3_perguruan_tinggi'           => $request->s3_perguruan_tinggi,  
-                's3_bidang_ilmu'                => $request->s3_bidang_ilmu,  
-                's3_tahun_masuk'                => $request->s3_tahun_masuk,  
-                's3_tahun_lulus'                => $request->s3_tahun_lulus,  
-                's3_judul'                      => $request->s3_judul,   
-                's3_pembimbing'                 => $request->s3_pembimbing,  
+                's2_perguruan_tinggi'           => $request->s2_perguruan_tinggi,
+                's2_bidang_ilmu'                => $request->s2_bidang_ilmu,
+                's2_tahun_masuk'                => $request->s2_tahun_masuk,
+                's2_tahun_lulus'                => $request->s2_tahun_lulus,
+                's2_judul'                      => $request->s2_judul,
+                's2_pembimbing'                 => $request->s2_pembimbing,
 
-                'id_perguruan_tinggi'           => $request->id_perguruan_tinggi, 
+                's3_perguruan_tinggi'           => $request->s3_perguruan_tinggi,
+                's3_bidang_ilmu'                => $request->s3_bidang_ilmu,
+                's3_tahun_masuk'                => $request->s3_tahun_masuk,
+                's3_tahun_lulus'                => $request->s3_tahun_lulus,
+                's3_judul'                      => $request->s3_judul,
+                's3_pembimbing'                 => $request->s3_pembimbing,
 
-                'screenshot_sister'             => $request->screenshot_sister, 
-                'screenshot_sinta'              => $request->screenshot_sinta,  
+                'id_perguruan_tinggi'           => $request->id_perguruan_tinggi,
 
-                'npm'                           => $request->npm,     
-            ]);  
+                'screenshot_sister'             => $request->screenshot_sister,
+                'screenshot_sinta'              => $request->screenshot_sinta,
+
+                'npm'                           => $request->npm,
+            ]);
 
         // ----------------------------------------------------------- Send
             if($data)
@@ -183,15 +183,15 @@ class PenelitiController extends Controller
     public function edit(Peneliti $Peneliti)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -200,24 +200,24 @@ class PenelitiController extends Controller
 
             $view_file      = 'edit';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
             $Perguruan_tinggi = Perguruan_tinggi::whereNull('deleted_at')
                                     ->get();
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Peneliti',   
-                    'Perguruan_tinggi',   
+                    'view_file',
+                    'Peneliti',
+                    'Perguruan_tinggi',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -226,138 +226,101 @@ class PenelitiController extends Controller
     public function update(Request $request, Peneliti $Peneliti)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action   
+        // ----------------------------------------------------------- Action
             $this->validate($request, [
-                'nama'     => 'required', 
+                'nama'     => 'required',
             ]);
-        
-            $data = Peneliti::findOrFail($Peneliti->id); 
 
-            if($request->file('screenshot_sister') == "" && $request->file('screenshot_sinta') == "") 
-            { 
-                $data->update([
-                    'nama'                          => $request->nama,  
-                    'jenis_kelamin'                 => $request->jenis_kelamin,  
-                    'jabatan_fungsional'            => $request->jabatan_fungsional,  
-                    'nip_nik_lainnya'               => $request->nip_nik_lainnya,  
-                    'nidn'                          => $request->nidn,  
-                    'id_sinta_google_scholar'       => $request->id_sinta_google_scholar,  
-                    'url'                           => $request->url,  
-                    'id_scopus'                     => $request->id_scopus,  
-                    'id_orchid'                     => $request->id_orchid,  
-                    'tempat_lahir'                  => $request->tempat_lahir,  
-                    'tanggal_lahir'                 => $request->tanggal_lahir,  
-                    'email'                         => $request->email,  
-                    'telepon'                       => $request->telepon,   
-                    
-                    'lulusan_s1'                    => $request->lulusan_s1,  
-                    'lulusan_s2'                    => $request->lulusan_s2,  
-                    'lulusan_s3'                    => $request->lulusan_s3,  
-    
-                    's1_perguruan_tinggi'           => $request->s1_perguruan_tinggi,  
-                    's1_bidang_ilmu'                => $request->s1_bidang_ilmu,  
-                    's1_tahun_masuk'                => $request->s1_tahun_masuk,  
-                    's1_tahun_lulus'                => $request->s1_tahun_lulus,  
-                    's1_judul'                      => $request->s1_judul,  
-                    's1_pembimbing'                 => $request->s1_pembimbing,  
-    
-                    's2_perguruan_tinggi'           => $request->s2_perguruan_tinggi,  
-                    's2_bidang_ilmu'                => $request->s2_bidang_ilmu,  
-                    's2_tahun_masuk'                => $request->s2_tahun_masuk,  
-                    's2_tahun_lulus'                => $request->s2_tahun_lulus,  
-                    's2_judul'                      => $request->s2_judul,  
-                    's2_pembimbing'                 => $request->s2_pembimbing,  
-    
-                    's3_perguruan_tinggi'           => $request->s3_perguruan_tinggi,  
-                    's3_bidang_ilmu'                => $request->s3_bidang_ilmu,  
-                    's3_tahun_masuk'                => $request->s3_tahun_masuk,  
-                    's3_tahun_lulus'                => $request->s3_tahun_lulus,  
-                    's3_judul'                      => $request->s3_judul,   
-                    's3_pembimbing'                 => $request->s3_pembimbing,   
-    
-                    'id_perguruan_tinggi'           => $request->id_perguruan_tinggi,  
+            $data = Peneliti::findOrFail($Peneliti->id);
 
-                    'npm'                           => $request->npm,     
-                ]);   
-            } 
-            else 
+            $data->update([
+                'nama'                          => $request->nama,
+                'jenis_kelamin'                 => $request->jenis_kelamin,
+                'jabatan_fungsional'            => $request->jabatan_fungsional,
+                'nip_nik_lainnya'               => $request->nip_nik_lainnya,
+                'nidn'                          => $request->nidn,
+                'id_sinta_google_scholar'       => $request->id_sinta_google_scholar,
+                'url'                           => $request->url,
+                'id_scopus'                     => $request->id_scopus,
+                'id_orchid'                     => $request->id_orchid,
+                'tempat_lahir'                  => $request->tempat_lahir,
+                'tanggal_lahir'                 => $request->tanggal_lahir,
+                'email'                         => $request->email,
+                'telepon'                       => $request->telepon,
+
+                'lulusan_s1'                    => $request->lulusan_s1,
+                'lulusan_s2'                    => $request->lulusan_s2,
+                'lulusan_s3'                    => $request->lulusan_s3,
+
+                's1_perguruan_tinggi'           => $request->s1_perguruan_tinggi,
+                's1_bidang_ilmu'                => $request->s1_bidang_ilmu,
+                's1_tahun_masuk'                => $request->s1_tahun_masuk,
+                's1_tahun_lulus'                => $request->s1_tahun_lulus,
+                's1_judul'                      => $request->s1_judul,
+                's1_pembimbing'                 => $request->s1_pembimbing,
+
+                's2_perguruan_tinggi'           => $request->s2_perguruan_tinggi,
+                's2_bidang_ilmu'                => $request->s2_bidang_ilmu,
+                's2_tahun_masuk'                => $request->s2_tahun_masuk,
+                's2_tahun_lulus'                => $request->s2_tahun_lulus,
+                's2_judul'                      => $request->s2_judul,
+                's2_pembimbing'                 => $request->s2_pembimbing,
+
+                's3_perguruan_tinggi'           => $request->s3_perguruan_tinggi,
+                's3_bidang_ilmu'                => $request->s3_bidang_ilmu,
+                's3_tahun_masuk'                => $request->s3_tahun_masuk,
+                's3_tahun_lulus'                => $request->s3_tahun_lulus,
+                's3_judul'                      => $request->s3_judul,
+                's3_pembimbing'                 => $request->s3_pembimbing,
+
+                'id_perguruan_tinggi'           => $request->id_perguruan_tinggi,
+
+                'npm'                           => $request->npm,
+            ]);
+
+
+            if($request->file('screenshot_sister') != "")
             {
-                if($request->file('screenshot_sister') != "")
-                {
-                    //hapus old image
-                    Storage::disk('local')->delete('public/peneliti/'.$data->screenshot_sister);
+                //hapus old image
+                Storage::disk('local')->delete('public/peneliti/'.$data->screenshot_sister);
 
-                    //upload new image
-                    $ss_sister = $request->file('screenshot_sister');
-                    $ss_sister->storeAs('public/peneliti', $ss_sister->hashName());
-                }
-                if($request->file('screenshot_sinta') != "")
-                {
-                    //hapus old image
-                    Storage::disk('local')->delete('public/peneliti/'.$data->screenshot_sinta);
+                //upload new image
+                $ss_sister = $request->file('screenshot_sister');
+                $ss_sister->storeAs('public/peneliti', $ss_sister->hashName());
 
-                    //upload new image
-                    $ss_sinta = $request->file('screenshot_sinta');
-                    $ss_sinta->storeAs('public/peneliti', $ss_sinta->hashName());
-                }
- 
- 
-                
-                $data->update([
-                    'nama'                          => $request->nama,  
-                    'jenis_kelamin'                 => $request->jenis_kelamin,  
-                    'jabatan_fungsional'            => $request->jabatan_fungsional,  
-                    'nip_nik_lainnya'               => $request->nip_nik_lainnya,  
-                    'nidn'                          => $request->nidn,  
-                    'id_sinta_google_scholar'       => $request->id_sinta_google_scholar,  
-                    'url'                           => $request->url,  
-                    'id_scopus'                     => $request->id_scopus,  
-                    'id_orchid'                     => $request->id_orchid,  
-                    'tempat_lahir'                  => $request->tempat_lahir,  
-                    'tanggal_lahir'                 => $request->tanggal_lahir,  
-                    'email'                         => $request->email,  
-                    'telepon'                       => $request->telepon,   
-                    
-                    'lulusan_s1'                    => $request->lulusan_s1,  
-                    'lulusan_s2'                    => $request->lulusan_s2,  
-                    'lulusan_s3'                    => $request->lulusan_s3,  
-    
-                    's1_perguruan_tinggi'           => $request->s1_perguruan_tinggi,  
-                    's1_bidang_ilmu'                => $request->s1_bidang_ilmu,  
-                    's1_tahun_masuk'                => $request->s1_tahun_masuk,  
-                    's1_tahun_lulus'                => $request->s1_tahun_lulus,  
-                    's1_judul'                      => $request->s1_judul,  
-                    's1_pembimbing'                 => $request->s1_pembimbing,  
-    
-                    's2_perguruan_tinggi'           => $request->s2_perguruan_tinggi,  
-                    's2_bidang_ilmu'                => $request->s2_bidang_ilmu,  
-                    's2_tahun_masuk'                => $request->s2_tahun_masuk,  
-                    's2_tahun_lulus'                => $request->s2_tahun_lulus,  
-                    's2_judul'                      => $request->s2_judul,  
-                    's2_pembimbing'                 => $request->s2_pembimbing,  
-    
-                    's3_perguruan_tinggi'           => $request->s3_perguruan_tinggi,  
-                    's3_bidang_ilmu'                => $request->s3_bidang_ilmu,  
-                    's3_tahun_masuk'                => $request->s3_tahun_masuk,  
-                    's3_tahun_lulus'                => $request->s3_tahun_lulus,  
-                    's3_judul'                      => $request->s3_judul,   
-                    's3_pembimbing'                 => $request->s3_pembimbing,   
-    
-                    'id_perguruan_tinggi'           => $request->id_perguruan_tinggi, 
+                $data->update([ 'screenshot_sister' => $ss_sister->hashName() ]);
+            }
+            if($request->file('screenshot_sinta') != "")
+            {
+                //hapus old image
+                Storage::disk('local')->delete('public/peneliti/'.$data->screenshot_sinta);
 
-                    'screenshot_sister'           => $ss_sister->hashName(), 
-                    'screenshot_sinta'           => $ss_sinta->hashName(), 
-          
-                ]);  
+                //upload new image
+                $ss_sinta = $request->file('screenshot_sinta');
+                $ss_sinta->storeAs('public/peneliti', $ss_sinta->hashName());
 
+                $data->update([ 'screenshot_sinta' => $ss_sinta->hashName() ]);
+            }
+            if($request->file('tanda_tangan') != "")
+            {
+                //hapus old image
+                Storage::disk('local')->delete('public/peneliti/'.$data->tanda_tangan);
+
+                //upload new image
+                $ss_tanda_tangan = $request->file('tanda_tangan');
+                $ss_tanda_tangan->storeAs('public/peneliti', $ss_tanda_tangan->hashName());
+
+                $data->update([ 'tanda_tangan' => $ss_tanda_tangan->hashName() ]);
             }
 
-            
+
+
+
 
 
         // ----------------------------------------------------------- Send
@@ -379,15 +342,15 @@ class PenelitiController extends Controller
     public function show(Peneliti $Peneliti)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -396,21 +359,21 @@ class PenelitiController extends Controller
 
             $view_file      = 'show';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Peneliti',   
+                    'view_file',
+                    'Peneliti',
                 )
             );
         ///////////////////////////////////////////////////////////////
@@ -419,15 +382,15 @@ class PenelitiController extends Controller
     public function deletedata(Peneliti $Peneliti)
     {
         // ----------------------------------------------------------- Auth
-            $user = auth()->user();  
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
             $panel_name     = ucwords(str_replace("_"," ", $this->content));
-            
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -436,32 +399,32 @@ class PenelitiController extends Controller
 
             $view_file      = 'delete';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action 
+
+        // ----------------------------------------------------------- Action
 
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'Peneliti',   
+                    'view_file',
+                    'Peneliti',
                 )
             );
         ///////////////////////////////////////////////////////////////
     }
-    
+
     public function destroy($id)
     {
         // ----------------------------------------------------------- Initialize
             $content        = $this->content;
 
-        // ----------------------------------------------------------- Action  
+        // ----------------------------------------------------------- Action
             $data = Peneliti::findOrFail($id);
             $data->delete();
 
@@ -478,6 +441,6 @@ class PenelitiController extends Controller
                     ->route($content.'.index')
                     ->with(['Error' => 'Data Gagal Disimpan!']);
             }
-        /////////////////////////////////////////////////////////////// 
+        ///////////////////////////////////////////////////////////////
     }
 }

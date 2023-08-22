@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Jenssegers\Agent\Agent;
-use DB;   
+use DB;
 
 class DashboardController extends Controller
 {
@@ -15,19 +15,19 @@ class DashboardController extends Controller
     public $themecolor  = '';
     public $content     = 'Dashboard';
     public $type        = 'backend';
- 
+
     public function index()
     {
         // ----------------------------------------------------------- Auth
-            // $user = auth()->user();   
+            $user = auth()->user();
 
         // ----------------------------------------------------------- Agent
-            $agent              = new Agent(); 
+            $agent              = new Agent();
             $additional_view    = define_additionalview($agent->isDesktop(), $agent->isMobile(), $agent->isTablet());
 
         // ----------------------------------------------------------- Initialize
-            $panel_name     = ucwords(str_replace("_"," ", $this->content));  
-            
+            $panel_name     = ucwords(str_replace("_"," ", $this->content));
+
             $template       = $this->template;
             $mode           = $this->mode;
             $themecolor     = $this->themecolor;
@@ -36,26 +36,26 @@ class DashboardController extends Controller
 
             $view_file      = 'dashboard';
             $view           = define_view($this->template, $this->type, $this->content, $additional_view, $view_file);
-            
-        // ----------------------------------------------------------- Action  
-        
+
+        // ----------------------------------------------------------- Action
+
             $data       = array();
-                                    
+
         // ----------------------------------------------------------- Send
-            return view($view,  
+            return view($view,
                 compact(
-                    'template', 
-                    'mode', 
+                    'template',
+                    'mode',
                     'themecolor',
-                    'content', 
-                    // 'user', 
-                    'panel_name', 
+                    'content',
+                    'user',
+                    'panel_name',
                     'active_as',
-                    'view_file', 
-                    'data',  
+                    'view_file',
+                    'data',
                 )
             );
         ///////////////////////////////////////////////////////////////
-    } 
- 
+    }
+
 }
